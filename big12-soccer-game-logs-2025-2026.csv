@@ -1,0 +1,649 @@
+Season,Date,Team,Opponent,H/A,Big12,Result,GF,GA,Shots,SOG,OppShots,OppSOG,Corners,OppCorners,Saves,Fouls,Goals
+2025,2025-08-14,Arizona,UNLV,H,,W,5,0,15,8,6,1,4,0,1,4,"08:14 Aurora Gaines (Sami Baytosh) [us] | 12:55 Aurora Gaines (Lily Boydstun, Rose Calkins) [us] | 13:43 Lily Boydstun (Trinity Dorsey, Ella Hatteberg) [us] | 20:39 Narissa Fults (Sami Baytosh) [us] | 21:51 0 [us]"
+2025,2025-08-17,Arizona,UC Irvine,H,,W,1,0,10,6,3,1,8,0,1,9,88:25 Kennedy Fletcher (Lily Boydstun) [us]
+2025,2025-08-21,Arizona,New Mexico State,A,,W,2,0,13,5,4,2,5,2,2,8,"49:45 Jessica Bedolla (Rose Calkins, Marissa Arnst) [us] | 74:55 Jessica Bedolla (Aurora Gaines) [us]"
+2025,2025-08-28,Arizona,Stanford,A,,L,0,6,6,1,32,16,1,15,10,2,"06:10 Jasmine Aikey [them] | 12:30 Charlotte Kohler (Allie Montoya) [them] | 16:36 Shae Harvey [them] | 57:58 Charlotte Kohler (Andrea Kitahata) [them] | 59:28 Jasmine Aikey (Joelle Jung, Sammy Smith) [them] | 70:10 Elise Evans (Joelle Jung) [them]"
+2025,2025-08-31,Arizona,California,A,,L,1,2,13,5,18,9,2,6,7,12,"02:28 Coco Thistle (Noelle Bond-Flasza) [them] | 26:13 Elle Kivo (Lumi Kostmayer, Coco Thistle) [them] | 58:26 Lily Boydstun [us]"
+2025,2025-09-04,Arizona,Denver,H,,W,2,1,11,7,9,4,7,3,3,3,19:02 Narissa Fults (Aurora Gaines) [us] | 77:56 Sami Baytosh [us] | 84:57 Annie Philbin (Lily O'Grady) [them]
+2025,2025-09-07,Arizona,Pepperdine,H,,L,0,3,13,7,7,7,2,3,4,14,30:11 Julia Quinonez [them] | 84:09 Alex Pendleton (Sarah Spears) [them] | 86:31 Kyra Murphy (Julia Quinonez) [them]
+2025,2025-09-14,Arizona,Grand Canyon,H,,W,5,2,19,11,16,9,5,7,7,10,"05:54 Jessica Bedolla (Aurora Gaines) [us] | 19:22 Aurora Gaines (Narissa Fults) [us] | 63:52 Ellie Johannes (Samantha Amato, Hannah Smith) [them] | 65:23 Ella Hatteberg (Sami Baytosh) [us] | 82:06 Ella Weathersby [us] | 88:17 Caprice Chiuchiolo [them] | 89:39 Sami Baytosh (Ella Weathersby) [us]"
+2025,2025-09-18,Arizona,Iowa State,A,Y,L,0,1,8,2,11,6,6,5,5,13,78:22 Megan Walters (Kasey Cannistraro) [them]
+2025,2025-09-25,Arizona,UCF,H,Y,W,1,0,7,4,8,2,6,1,2,9,42:37 Aurora Gaines [us]
+2025,2025-09-28,Arizona,Oklahoma State,H,Y,W,3,1,21,12,6,5,7,2,4,6,61:01 0 [us] | 66:17 MIreya Stephenson [us] | 74:35 Marissa Arnst (Sami Baytosh) [us] | 88:17 Sonora De Fini (Sophie Wilson) [them]
+2025,2025-10-02,Arizona,West Virginia,A,Y,L,0,3,4,2,16,6,4,6,3,6,20:08 Maddie Levy (Taylor White) [them] | 52:47 Taylor White (Jacey Rase) [them] | 60:06 Taylor White (Ajanae Respass) [them]
+2025,2025-10-05,Arizona,Cincinnati,A,Y,L,0,1,1,0,14,6,5,6,5,8,83:22 Megan Smith (Coley Sidloski) [them]
+2025,2025-10-10,Arizona,Utah,H,Y,L,0,1,5,0,9,6,4,5,5,5,01:02 Bella Woods (Kelly Bullock) [them]
+2025,2025-10-16,Arizona,BYU,A,Y,L,2,3,11,5,17,7,4,10,4,8,"16:33 Ellie Walbruch (Camryn Jorgensen, Mika Krommenhoek) [them] | 21:12 Ellie Walbruch (MacKenzee Vance) [them] | 50:52 Jessica Bedolla (Lily Boydstun, Narissa Fults) [us] | 59:13 Lily Boydstun (Narissa Fults, Kyleigh Johnson) [us] | 75:46 Ellie Walbruch (Afton Perry, Presley Freeman) [them]"
+2025,2025-10-19,Arizona,Texas Tech,H,Y,L,0,2,7,3,8,4,6,3,2,5,"09:25 Raleigh Greason (Peyton Parsons) [them] | 33:42 Taylor Zdrojewski (Macy Blackburn, Emilie McCartney) [them]"
+2025,2025-10-23,Arizona,TCU,H,Y,L,0,1,6,3,6,4,3,3,3,12,12:31 Emma Yolinsky (Cameron Patton) [them]
+2025,2025-10-26,Arizona,Colorado,A,Y,L,0,1,12,2,11,6,5,4,5,12,"26:28 Hope Leyba (Faith Leyba, Caley Swierenga) [them]"
+2025,2025-10-30,Arizona,Arizona State,H,Y,T,0,0,13,4,7,2,7,5,2,9,
+2025,2025-08-14,Arizona State,Nevada,H,,W,2,0,18,11,5,2,12,0,2,4,49:20 Peyton Marcisz Assisted by: Cameron Valladares [us]
+2025,2025-08-21,Arizona State,Texas,A,,T,1,1,14,5,17,6,9,2,5,8,58:21 Amalia Villarreal EmJ Witt Assisted by: Annie Gnidula [them]
+2025,2025-08-24,Arizona State,Texas State,A,,W,5,1,20,11,8,4,6,4,3,10,19:43 Grace Gillard Sierra Bergen Assisted by: Cameron Valladares [us] | 30:33 Ava Wright Assisted by: Lucy Fazackerley [us] | 42:32 Meighan Farrell Addison Baltodano Assisted by: Tano Uzezi-Itesa [us] | 47:15 Izzy Monck Sierra Bergen Assisted by: Cameron Valladares [us] | 62:08 Tatum Thomason Assisted by: Adrielle Mibe [us]
+2025,2025-08-28,Arizona State,UNLV,A,,W,3,0,12,10,6,2,4,2,2,13,47:51 Izzy Monck Assisted by: Peyton Marcisz [us] | 50:17 Tatum Thomason Adrielle Mibe Assisted by: Cameron Valladares [us]
+2025,2025-08-31,Arizona State,New Mexico State,H,,W,1,0,17,6,6,4,12,2,4,3,
+2025,2025-09-04,Arizona State,Pepperdine,H,,W,1,0,6,4,18,6,7,6,6,9,
+2025,2025-09-07,Arizona State,Denver,H,,W,3,1,20,10,10,3,16,6,2,7,77:51 Brooke Ahern Assisted by: Audrey Miller [them] | 80:19 Lucy Fazackerley Izzy Monck Assisted by: Addison Baltodano [us] | 85:13 Sierra Bergen Assisted by: Ava Wright [us]
+2025,2025-09-12,Arizona State,UTEP,H,,W,4,1,18,8,9,5,8,1,4,2,54:06 Ana Quintero Assisted by: Dannique Wilson [them] | 58:19 Tatum Thomason Assisted by: Addison Baltodano [us] | 73:56 Lucy Fazackerley Assisted by: Peyton Marcisz [us] | 84:53 Tatum Thomason Addison Baltodano Assisted by: Cameron Valladares [us]
+2025,2025-09-18,Arizona State,BYU,H,Y,W,2,1,16,7,15,4,2,8,3,9,49:11 Cameron Valladares Addison Baltodano Assisted by: Sierra Bergen [us] | 84:53 Presley Freeman Assisted by: Mika Krommenhoek [them]
+2025,2025-09-25,Arizona State,Oklahoma State,H,Y,T,0,0,28,9,6,2,11,4,2,13,
+2025,2025-09-28,Arizona State,UCF,H,Y,L,2,3,14,5,9,5,6,1,2,8,51:34 Cameron Valladares Lucy Fazackerley Assisted by: Tatum Thomason [us] | 53:57 Gabi Berchon [them] | 69:34 Rajanah Reed Assisted by: Liz Worden [them] | 76:57 Tatum Thomason Assisted by: Tano Uzezi-Itesa [us]
+2025,2025-10-02,Arizona State,Cincinnati,A,Y,W,1,0,16,5,5,3,7,3,3,7,
+2025,2025-10-05,Arizona State,West Virginia,A,Y,L,0,2,6,1,14,4,9,10,2,5,88:54 Sophia Nickel [them]
+2025,2025-10-10,Arizona State,Colorado,A,Y,L,0,2,9,6,27,11,4,5,9,6,77:31 Jace Holley Assisted by: Maddie Sharrer [them]
+2025,2025-10-16,Arizona State,Texas Tech,H,Y,L,2,3,10,5,21,9,5,4,6,9,30:47 Sam Courtwright Storie Sexton Assisted by: Macy Blackburn [them] | 50:14 Peyton Marcisz [us] | 60:01 Cameron Valladares Sierra Bergen Assisted by: Peyton Marcisz [us] | 84:50 Molly Skurcenski Taylor Zdrojewski Assisted by: Storie Sexton [them]
+2025,2025-10-19,Arizona State,Iowa State,A,Y,T,1,1,12,5,12,5,7,3,4,11,84:28 Taylor Spitzer Assisted by: Isabella Agrusso [them]
+2025,2025-10-23,Arizona State,Utah,A,Y,W,1,0,7,1,22,8,4,8,8,10,83:15 Sierra Bergen (Adrielle Mibe) [us]
+2025,2025-10-26,Arizona State,TCU,H,Y,L,1,2,5,3,23,8,2,7,6,13,59:27 Cameron Patton [them] | 66:33 Tatum Thomason Assisted by: Addison Baltodano [us]
+2025,2025-10-30,Arizona State,Arizona,A,Y,T,0,0,7,2,13,4,5,7,4,6,
+2025,2025-08-14,Baylor,Texas A&M,A,,T,1,1,16,5,18,5,6,7,4,12,"03:21 Leah Diaz (Kaylee Noble, Mia Scranton) [them] | 81:00 Lauren Omholt (Alysiah Lockette) [us]"
+2025,2025-08-21,Baylor,Denver,A,,T,0,0,23,9,5,2,10,1,2,6,
+2025,2025-08-24,Baylor,Montana,A,,W,2,0,11,7,15,4,6,1,4,6,07:08 Hallie Augustyn (Tyler Isgrig) [us] | 42:16 Alysiah Lockette (Hallie Augustyn) [us]
+2025,2025-08-28,Baylor,Mississippi State,H,,W,2,0,16,6,9,1,9,6,1,9,03:24 Olivia Hess (Theresa McCullough) [us] | 81:38 Aryanna Jimison (Alysiah Lockette) [us]
+2025,2025-09-04,Baylor,Texas,H,,W,1,0,20,4,13,3,4,5,3,4,38:50 Alysiah Lockette (Aryanna Jimison) [us]
+2025,2025-09-07,Baylor,Texas State,A,,W,4,1,18,9,8,5,5,3,4,6,13:54 Angela Gatto (Lilah Dupree) [them] | 25:26 Tyler Isgrig [us] | 48:05 Tyler Isgrig (Lauren Omholt) [us] | 63:36 0 [us] | 68:40 0 [us]
+2025,2025-09-14,Baylor,Abilene Christian,H,,W,2,0,30,12,6,2,14,2,2,8,"05:43 Tyler Isgrig [us] | 34:31 Tyler Isgrig (Aryanna Jimison, Kai Hayes) [us]"
+2025,2025-09-19,Baylor,Texas Tech,H,Y,L,0,1,10,4,19,7,3,4,6,8,71:31 Peyton Parsons [them]
+2025,2025-09-25,Baylor,Kansas,A,Y,W,3,0,11,7,19,3,2,5,3,2,"34:09 Aryanna Jimison (Tyler Isgrig, Natalie Vatter) [us] | 56:47 Callie Conrad (Theresa McCullough) [us] | 62:31 Theresa McCullough (Callie Conrad) [us]"
+2025,2025-09-28,Baylor,Kansas State,A,Y,W,3,0,11,7,13,4,3,7,4,8,54:21 Olivia Hess (Aryanna Jimison) [us] | 58:43 Tyler Isgrig [us] | 81:07 Kai Hayes [us]
+2025,2025-10-02,Baylor,Iowa State,H,Y,W,3,0,16,10,10,3,7,2,3,9,"20:48 Callie Conrad (Theresa McCullough, Hannah Augustyn) [us] | 33:46 Callie Conrad (Aryanna Jimison) [us] | 71:01 Alysiah Lockette (Aryanna Jimison, Lauren Omholt) [us]"
+2025,2025-10-05,Baylor,Colorado,H,Y,W,2,1,17,8,8,3,4,3,2,7,29:46 Aryanna Jimison (Tyler Isgrig) [us] | 57:31 Emerson Layne (Caley Swierenga) [them] | 60:37 Aryanna Jimison (Natalie Vatter) [us]
+2025,2025-10-10,Baylor,BYU,H,Y,W,4,2,15,8,15,7,8,4,5,7,"33:46 Mattyn Summers-Oviatt [them] | 38:22 Kai Hayes (Tyler Isgrig) [us] | 52:34 Ellie Walbruch (Camryn Jorgensen, Mia Goettsche) [them] | 52:47 Tyler Isgrig (Theresa McCullough, Callie Conrad) [us] | 58:46 Tyler Isgrig (Blythe Obar, Olivia Hess) [us] | 83:54 Theresa McCullough (Kai Hayes, Nyela Calnek) [us]"
+2025,2025-10-16,Baylor,TCU,A,Y,L,0,3,8,1,25,14,5,8,11,7,"22:02 Seven Castain (Emma Yolinsky, Katana Norman) [them] | 26:17 Seven Castain (Cameron Patton) [them] | 53:08 Cate Sarinopoulos (Morgan Brown, Seven Castain) [them]"
+2025,2025-10-19,Baylor,Utah,H,Y,W,2,0,12,4,10,3,10,5,3,5,"32:54 Kai Hayes (Tyler Isgrig) [us] | 84:11 Blythe Obar (Olivia Hess, Tyler Isgrig) [us]"
+2025,2025-10-23,Baylor,UCF,A,Y,L,1,2,19,8,9,4,9,4,2,8,"36:28 Jada Silvest (Honoka Hamano, Liz Worden) [them] | 56:17 Rajanah Reed (Maria Tregansin) [them] | 57:37 Tyler Isgrig (Adriana Merriam) [us]"
+2025,2025-10-26,Baylor,Houston,A,Y,T,1,1,6,2,7,3,8,4,2,6,"48:08 Callie Conrad (Tyler Isgrig, Theresa McCullough) [us] | 52:53 Cameryn Maddox [them]"
+2025,2025-10-30,Baylor,Oklahoma State,A,Y,W,2,0,15,11,14,8,5,4,8,5,28:05 Tyler Isgrig [us] | 34:42 Theresa McCullough (Alysiah Lockette) [us]
+2025,2025-11-03,Baylor,Texas Tech,A,,T,1,1,14,8,16,8,6,5,7,5,02:38 Sam Courtwright (Macy Blackburn) [them] | 54:33 Hannah Augustyn (Aryanna Jimison) [us]
+2025,2025-11-05,Baylor,BYU,H,,L,0,4,15,3,21,8,9,4,4,3,"29:58 Ellie Walbruch (Afton Perry, Presley Freeman) [them] | 35:50 Mattyn Summers-Oviatt (Halle Dixon) [them] | 66:44 Ellie Walbruch (Mia Goettsche) [them] | 77:23 Ella Labrum (Izzi Stratton, Halle Dixon) [them]"
+2025,2025-11-14,Baylor,Texas State,H,,W,3,0,17,8,11,3,3,3,3,5,"35:42 Kai Hayes (Theresa McCullough, Tyler Isgrig) [us] | 60:27 Hallie Augustyn [us] | 65:05 Olivia Hess (Lauren Omholt) [us]"
+2025,2025-11-20,Baylor,Wisconsin,A,,W,1,0,10,5,20,7,3,10,7,6,44:26 Tyler Isgrig [us]
+2025,2025-11-23,Baylor,Ohio State,H,,L,1,2,11,5,34,12,4,15,10,9,64:49 Amanda Schlueter (Jadin Bonham) [them] | 69:11 Kai Hayes (Lauren Omholt) [us] | 104:34 Anika Poremba (Amanda Schlueter) [them]
+2025,2025-08-14,BYU,Minnesota,A,,W,3,1,,,,,,,,,
+2025,2025-08-18,BYU,Cal Poly,A,,T,2,2,,,,,,,,,
+2025,2025-08-23,BYU,UCLA,A,,W,1,0,,,,,,,,,
+2025,2025-08-29,BYU,Auburn,A,,W,2,0,,,,,,,,,
+2025,2025-09-02,BYU,Arkansas,A,,L,0,1,,,,,,,,,
+2025,2025-09-06,BYU,Utah State,A,,W,2,0,,,,,,,,,
+2025,2025-09-12,BYU,Utah Valley,A,,W,2,0,,,,,,,,,
+2025,2025-09-18,BYU,Arizona State,A,Y,L,1,2,15,4,16,7,8,2,5,12,49:11 Cameron Valladares Addison Baltodano Assisted by: Sierra Bergen [them] | 84:53 Presley Freeman Assisted by: Mika Krommenhoek [us]
+2025,2025-09-24,BYU,West Virginia,H,Y,L,2,3,15,3,13,6,8,3,3,1,"24:02 Maya Leoni (Taylor White) [them] | 67:51 Mia Lopez [us] | 68:07 Layla Thompson (Taylor White) [them] | 72:24 Taylor White (Olivia Shertzer) [them] | 88:44 Halle Dixon (Ellie Walbruch, Mia Goettsche) [us]"
+2025,2025-09-27,BYU,Cincinnati,H,Y,W,3,0,13,5,5,1,13,4,1,11,13:39 Mia Lopez [us] | 64:04 MacKenzee Vance (PK) [us]
+2025,2025-10-02,BYU,Houston,A,Y,T,1,1,13,4,9,5,7,0,4,10,36:15 Casey Maddox (Kyrsten Kizer) [them] | 44:17 Avery Frischknecht [us]
+2025,2025-10-06,BYU,Oklahoma State,A,Y,W,4,1,26,11,10,3,6,4,2,5,25:48 Lucy Kesler [us] | 30:28 Madi Asel (Taryn Thibeau) [them] | 30:54 Ellie Walbruch (Presley Freeman) [us] | 81:46 Mattyn Summers-Oviatt (Mia Goettsche) [us] | 87:30 Lucy Kesler (Emma Hamberlin) [us]
+2025,2025-10-10,BYU,Baylor,A,Y,L,2,4,15,7,15,8,4,8,4,6,"33:46 Mattyn Summers-Oviatt [us] | 38:22 Kai Hayes (Tyler Isgrig) [them] | 52:34 Ellie Walbruch (Camryn Jorgensen, Mia Goettsche) [us] | 52:47 Tyler Isgrig (Theresa McCullough, Callie Conrad) [them] | 58:46 Tyler Isgrig (Blythe Obar, Olivia Hess) [them] | 83:54 Theresa McCullough (Kai Hayes, Nyela Calnek) [them]"
+2025,2025-10-16,BYU,Arizona,H,Y,W,3,2,17,7,11,5,10,4,3,2,"16:33 Ellie Walbruch (Camryn Jorgensen, Mika Krommenhoek) [us] | 21:12 Ellie Walbruch (MacKenzee Vance) [us] | 50:52 Jessica Bedolla (Lily Boydstun, Narissa Fults) [them] | 59:13 Lily Boydstun (Narissa Fults, Kyleigh Johnson) [them] | 75:46 Ellie Walbruch (Afton Perry, Presley Freeman) [us]"
+2025,2025-10-20,BYU,Colorado,H,Y,T,2,2,23,9,19,8,4,6,6,5,"15:03 Ellie Walbruch (Mika Krommenhoek, Lucy Kesler) [us] | 22:09 Faith Leyba (Ava Priest, Jace Holley) [them] | 22:48 Hope Leyba (Caley Swierenga) [them] | 27:48 Mia Goettsche (Camryn Jorgensen) [us]"
+2025,2025-10-23,BYU,Kansas,H,Y,L,1,3,15,6,12,6,5,4,3,14,07:11 Saige Wimes (Livvy Moore) [them] | 12:21 Jillian Gregorski (Kate Langfelder) [them] | 23:59 Lexi Watts (Jillian Gregorski) [them] | 54:55 Ellie Walbruch (Afton Perry) [us]
+2025,2025-10-27,BYU,UCF,H,Y,L,1,2,,,,,,,,,
+2025,2025-10-30,BYU,Utah,A,Y,W,2,0,13,6,18,5,7,2,5,10,08:24 Mia Lopez [us] | 25:22 MacKenzee Vance [us]
+2025,2025-11-03,BYU,TCU,A,,T,2,2,9,5,23,9,1,5,7,11,"26:59 Ellie Walbruch [us] | 46:13 Sydney Becerra [them] | 50:07 Ellie Walbruch [us] | 69:03 AJ Hennessey (Sydney Becerra, Grace Coppinger) [them]"
+2025,2025-11-05,BYU,Baylor,A,,W,4,0,21,8,15,3,4,9,3,6,"29:58 Ellie Walbruch (Afton Perry, Presley Freeman) [us] | 35:50 Mattyn Summers-Oviatt (Halle Dixon) [us] | 66:44 Ellie Walbruch (Mia Goettsche) [us] | 77:23 Ella Labrum (Izzi Stratton, Halle Dixon) [us]"
+2025,2025-11-08,BYU,Kansas,A,,W,1,0,10,5,17,7,4,9,7,16,"20:50 Ellie Walbruch (Mia Goettsche, Lucy Kesler) [us]"
+2025,2025-11-14,BYU,Utah State,A,,T,1,1,,,,,,,,,
+2025,2025-11-21,BYU,UCLA,A,,T,1,1,,,,,,,,,
+2025,2025-11-24,BYU,Stanford,A,,L,0,6,,,,,,,,,
+2025,2025-08-14,Cincinnati,Eastern Mich.,A,,W,4,0,19,8,6,2,7,10,2,14,55:27 Faith Broering Assisted by: Claire Rea [us] | 61:02 Claire Rea Maddie Swingle Assisted by: Faith Broering [us] | 65:22 Anna Barber Bryana Gaynor Assisted by: Ellie Flower [us]
+2025,2025-08-17,Cincinnati,Toledo,H,,T,1,1,12,8,5,3,9,1,2,12,66:19 Morgan Spitler [them]
+2025,2025-08-21,Cincinnati,Notre Dame,A,,L,0,4,4,1,17,9,0,6,5,9,13:14 Izzy Engle Assisted by: Grace Restovich [them] | 60:22 Grace Restovich Annabelle Chukwu Assisted by: Morgan Roy [them] | 87:52 Ellie Hodsden [them]
+2025,2025-08-24,Cincinnati,Xavier,H,,L,0,3,5,2,21,11,2,7,8,23,19:08 Natalie Bain [them] | 30:41 Samantha Erbach (PK) [them]
+2025,2025-08-28,Cincinnati,Central Mich.,H,,W,2,0,21,9,9,6,6,3,6,10,82:40 Jada Arthurs Assisted by: Coley Sidloski [us]
+2025,2025-08-31,Cincinnati,Bowling Green,A,,T,0,0,12,7,6,1,4,5,1,10,
+2025,2025-09-04,Cincinnati,Pittsburgh,A,,T,1,1,11,4,6,2,2,5,1,7,27:45 Coley Sidloski Assisted by: Rylee Felton [us]
+2025,2025-09-07,Cincinnati,Northern Kentucky,H,,T,1,1,22,7,6,4,14,4,3,6,68:41 Claire Rea Assisted by: Jada Arthurs [us]
+2025,2025-09-18,Cincinnati,Houston,A,Y,L,1,3,3,2,15,10,2,7,7,12,"32:35 Ava Shannon (Adelhia Ghonda) [them] | 59:19 Samira Minor (Amanda Adams) [them] | 71:05 Samira Minor (Cameryn Maddox) [them] | 73:55 Coley Sidloski (Rylee Felton, Kayla Gaynor) [us]"
+2025,2025-09-24,Cincinnati,Utah,A,Y,T,0,0,5,1,19,4,2,5,4,10,
+2025,2025-09-27,Cincinnati,BYU,A,Y,L,0,3,5,1,13,5,4,13,2,9,13:39 Mia Lopez [them] | 64:04 MacKenzee Vance (PK) [them]
+2025,2025-10-02,Cincinnati,Arizona State,H,Y,L,0,1,5,3,16,5,3,7,4,7,
+2025,2025-10-05,Cincinnati,Arizona,H,Y,W,1,0,14,6,1,0,6,5,0,6,83:22 Megan Smith (Coley Sidloski) [us]
+2025,2025-10-12,Cincinnati,UCF,H,Y,T,0,0,8,4,12,8,5,7,8,6,
+2025,2025-10-16,Cincinnati,Kansas State,A,Y,L,0,2,6,0,17,9,1,7,7,13,68:18 Andra Mohler Assisted by: Jayce Woodward [them]
+2025,2025-10-19,Cincinnati,Kansas,A,Y,L,0,1,2,0,17,4,0,6,3,13,"58:37 Lexi Watts (Jillian Gregorski, Kate Langfelder) [them]"
+2025,2025-10-23,Cincinnati,Oklahoma State,H,Y,W,1,0,17,6,8,2,5,5,2,5,"37:32 Rylee Felton (Karson Yon, Bryana Gaynor) [us]"
+2025,2025-10-26,Cincinnati,Iowa State,H,Y,W,3,0,15,9,11,5,6,6,5,7,19:37 Rylee Felton Assisted by: Coley Sidloski [us] | 35:38 Coley Sidloski [us]
+2025,2025-10-30,Cincinnati,West Virginia,A,Y,L,1,2,6,1,11,6,5,3,4,6,46:08 Anna Hauer Assisted by: Maddie Levy [them] | 56:30 Maddie Swingle Assisted by: Coley Sidloski [us]
+2025,2025-08-14,Colorado,Michigan State,H,,T,1,1,9,3,20,5,2,14,4,8,03:30 Hope Leyba [us] | 50:57 Kennedy Bell (Bella Najera) [them]
+2025,2025-08-17,Colorado,Air Force,H,,W,4,1,14,7,15,8,7,1,7,4,"15:33 Jace Holley (Vivi Zacarias) [us] | 26:48 Reagan Kotschau [us] | 48:04 Hope Leyba (Faith Leyba, Reagan Kotschau) [us] | 64:37 Peyton Ferrell [them] | 85:48 Jace Holley (Caley Swierenga) [us]"
+2025,2025-08-21,Colorado,Fordham,H,,W,7,1,16,9,10,4,3,3,3,6,09:15 Hope Leyba (Lilian Zamorano) [us] | 18:07 Jace Holley (Jordan Whiteaker) [us] | 21:01 Emerson Layne (Jace Holley) [us] | 29:19 Emerson Layne (Reagan Kotschau) [us] | 53:28 Hope Leyba (Jace Holley) [us] | 55:47 Hope Leyba (Jace Holley) [us] | 73:52 Lena Johnsen [them] | 88:53 Josie Master (Ruby Hayward) [us]
+2025,2025-08-24,Colorado,UNC Greensboro,H,,W,8,0,20,13,9,2,2,5,2,11,"12:01 Hope Leyba (Emerson Layne, Jordan Whiteaker) [us] | 23:04 Emerson Layne [us] | 29:57 Jace Holley (Caley Swierenga, Jordan Whiteaker) [us] | 49:22 Reagan Kotschau (Caley Swierenga, Ava Priest) [us] | 54:25 Jace Holley (Vivi Zacarias) [us] | 58:29 Hope Leyba (Emerson Layne) [us] | 72:43 Sami Fisher (Ruby Hayward, Maddie Sharrer) [us] | 82:32 Maddie Sharrer (Mallory Allen) [us]"
+2025,2025-08-28,Colorado,New Mexico State,H,,W,4,1,15,10,12,6,8,5,5,10,"03:18 Jace Holley (Emerson Layne) [us] | 10:45 Hope Leyba (Jace Holley, Jordan Whiteaker) [us] | 28:15 Hope Leyba [us] | 89:11 Tessa O'Neill (Milana Eyrich) [them] | 89:49 Ava Priest [us]"
+2025,2025-08-31,Colorado,Wyoming,H,,W,2,1,19,7,8,5,4,2,4,9,00:25 Alyssa Glover (Jennah Wanner) [them] | 59:48 Jace Holley [us] | 81:45 Reagan Kotschau (Emerson Layne) [us]
+2025,2025-09-07,Colorado,Wisconsin,A,,L,0,1,9,5,11,6,9,5,5,8,73:26 Adee Boer [them]
+2025,2025-09-11,Colorado,Denver,A,,W,2,0,20,7,3,1,9,1,1,6,03:10 Jace Holley (Emerson Layne) [us] | 07:47 Vivi Zacarias [us]
+2025,2025-09-18,Colorado,Kansas State,H,Y,T,0,0,14,5,7,1,8,6,1,10,
+2025,2025-09-25,Colorado,Iowa State,H,Y,W,3,1,17,7,10,4,11,2,3,11,"16:19 Hope Leyba (Ava Priest) [us] | 36:41 Hope Leyba (Ruby Hayward) [us] | 52:17 Hope Leyba (Caley Swierenga, Greer Maguire) [us] | 81:09 Morgan Goodman [them]"
+2025,2025-09-28,Colorado,Houston,H,Y,W,1,0,13,6,7,4,3,2,4,6,"85:16 Hope Leyba (Faith Leyba, Jordan Whiteaker) [us]"
+2025,2025-10-02,Colorado,TCU,A,Y,W,3,1,9,3,26,10,1,8,9,6,"15:37 Emma Yolinsky (Sydney Becerra, Grace Coppinger) [them] | 34:54 Jace Holley (Hope Leyba, Ruby Hayward) [us] | 57:04 Emerson Layne (Reagan Kotschau, Lilian Zamorano) [us] | 64:42 Hope Leyba (Caley Swierenga, Lexi Meyer) [us]"
+2025,2025-10-05,Colorado,Baylor,A,Y,L,1,2,8,3,17,8,3,4,6,5,29:46 Aryanna Jimison (Tyler Isgrig) [them] | 57:31 Emerson Layne (Caley Swierenga) [us] | 60:37 Aryanna Jimison (Natalie Vatter) [them]
+2025,2025-10-10,Colorado,Arizona State,H,Y,W,2,0,27,11,9,6,5,4,6,7,77:31 Jace Holley Assisted by: Maddie Sharrer [us]
+2025,2025-10-16,Colorado,Utah,A,Y,W,2,1,10,6,22,7,3,5,6,8,07:35 Jace Holley (Emerson Layne) [us] | 67:31 Lexi Meyer (Emerson Layne) [us] | 76:07 Callie Blaylock (Ryann Cull) [them]
+2025,2025-10-20,Colorado,BYU,A,Y,T,2,2,19,8,23,9,6,4,7,6,"15:03 Ellie Walbruch (Mika Krommenhoek, Lucy Kesler) [them] | 22:09 Faith Leyba (Ava Priest, Jace Holley) [us] | 22:48 Hope Leyba (Caley Swierenga) [us] | 27:48 Mia Goettsche (Camryn Jorgensen) [them]"
+2025,2025-10-23,Colorado,Texas Tech,H,Y,W,3,0,12,7,23,10,1,9,10,5,11:54 Ava Priest (Jace Holley) [us] | 14:09 Hope Leyba [us] | 62:49 Hope Leyba (Reagan Kotschau) [us]
+2025,2025-10-26,Colorado,Arizona,H,Y,W,1,0,11,6,12,2,4,5,2,5,"26:28 Hope Leyba (Faith Leyba, Caley Swierenga) [us]"
+2025,2025-10-30,Colorado,Kansas,A,Y,W,2,1,9,7,22,5,1,8,4,10,"08:14 Hope Leyba (Emerson Layne, Reagan Kotschau) [us] | 81:10 Jillian Gregorski (Caroline Castans) [them] | 86:55 Reagan Kotschau [us]"
+2025,2025-11-03,Colorado,UCF,H,,W,3,2,19,10,14,7,12,3,5,7,11:19 Rajanah Reed (Liz Worden) [them] | 29:45 Ella Holloran (Gabi Berchon) [them] | 52:32 Hope Leyba (Emerson Layne) [us] | 56:23 Jace Holley (Reagan Kotschau) [us] | 64:39 Hope Leyba (Ava Priest) [us]
+2025,2025-11-05,Colorado,Kansas,H,,L,1,2,13,4,13,6,10,7,4,11,"26:38 Faith Leyba (Emerson Layne, Ava Priest) [us] | 54:26 Saige Wimes (Lexi Watts) [them] | 73:12 Lydia Viets [them]"
+2025,2025-11-14,Colorado,Utah Valley,H,Y,W,2,1,28,7,21,8,12,11,7,7,04:30 Bailey Peterson (Ruby Hladek) [them] | 38:55 Vivi Zacarias [us] | 105:35 Reagan Kotschau (Ava Priest) [us]
+2025,2025-11-20,Colorado,Xavier,H,,W,4,1,18,7,28,13,7,4,12,11,"17:43 Faith Leyba (Jordan Whiteaker) [us] | 31:00 Reagan Kotschau (Faith Leyba, Jordan Whiteaker) [us] | 86:07 Hope Leyba (Vivi Zacarias) [us] | 88:10 Presley Pennekamp (Emma Flick) [them] | 88:51 Riley MacDonald (Josie Master, Sami Fisher) [us]"
+2025,2025-11-23,Colorado,Michigan State,A,,L,1,2,12,8,18,9,6,7,7,15,00:46 Bella Najera (Sofia Beerworth) [them] | 32:25 Faith Leyba (Ava Priest) [us] | 55:20 Bella Najera [them]
+2025,2025-08-14,Houston,UTSA,A,,T,0,0,18,7,10,3,7,1,3,8,
+2025,2025-08-17,Houston,St. Mary's (TX),H,,W,4,0,27,9,2,0,4,2,0,8,"11:17 Ava Shannon [us] | 12:40 Adelhia Ghonda [us] | 34:44 Jocelyn Chinea (Nadia Ortiz, Casey Maddox) [us] | 88:15 Casey Maddox (Ava Shannon) [us]"
+2025,2025-08-24,Houston,Texas,H,,W,4,1,14,8,9,5,3,6,4,7,"11:50 Amalia Villarreal (Olivia Ahern) [them] | 46:21 Morgan Donohue (Amanda Adams) [us] | 48:33 Cameryn Maddox [us] | 53:29 Blake Hodgson (Cameryn Maddox, Amaris Bumba) [us] | 69:06 Kyrsten Kizer (Samira Minor) [us]"
+2025,2025-09-01,Houston,Southern U.,H,,W,6,0,46,27,2,2,9,0,2,10,08:38 Adelhia Ghonda (Ava Shannon) [us] | 12:41 Cameryn Maddox [us] | 25:10 Samira Minor (Jaden Humbyrd) [us] | 29:10 Savannah Tafireyi [us] | 40:55 Nadia Ortiz (Samira Minor) [us] | 55:43 Adelhia Ghonda [us]
+2025,2025-09-04,Houston,McNeese,H,,W,8,0,20,15,2,2,11,0,2,14,02:29 Morgan Donohue [us] | 14:34 Amanda Adams (Kyrsten Kizer) [us] | 32:08 Amaris Bumba (Madyson Bentil) [us] | 43:29 Adelhia Ghonda (Nadia Ortiz) [us] | 53:35 Casey Maddox (Peyton Machado) [us] | 63:41 Savannah Tafireyi (Cameryn Maddox) [us] | 76:30 Madyson Bentil (Samira Minor) [us] | 85:42 Cameryn Maddox [us]
+2025,2025-09-07,Houston,SFA,A,,T,0,0,27,11,5,4,10,0,4,8,
+2025,2025-09-11,Houston,UTRGV,H,,W,1,0,19,5,2,0,13,0,0,7,43:44 Savannah Tafireyi [us]
+2025,2025-09-18,Houston,Cincinnati,H,Y,W,3,1,15,10,3,2,7,2,1,15,"32:35 Ava Shannon (Adelhia Ghonda) [us] | 59:19 Samira Minor (Amanda Adams) [us] | 71:05 Samira Minor (Cameryn Maddox) [us] | 73:55 Coley Sidloski (Rylee Felton, Kayla Gaynor) [them]"
+2025,2025-09-25,Houston,Texas Tech,A,Y,T,1,1,8,3,10,3,4,10,2,4,59:22 Samira Minor (Blake Hodgson) [us] | 82:45 Macy Blackburn [them]
+2025,2025-09-28,Houston,Colorado,A,Y,L,0,1,7,4,13,6,2,3,5,13,"85:16 Hope Leyba (Faith Leyba, Jordan Whiteaker) [them]"
+2025,2025-10-02,Houston,BYU,H,Y,T,1,1,9,5,13,4,0,7,3,11,36:15 Casey Maddox (Kyrsten Kizer) [us] | 44:17 Avery Frischknecht [them]
+2025,2025-10-05,Houston,Utah,H,Y,L,0,1,13,5,6,4,8,2,3,6,14:43 Bella Woods [them]
+2025,2025-10-10,Houston,West Virginia,A,Y,L,2,3,5,5,11,5,3,5,2,11,42:49 Sabrina Taber [us] | 55:52 Maddie Levy (Ava Arnold) [them] | 79:05 Samira Minor (Kyrsten Kizer) [us] | 79:01 Taylor White (Ava Arnold) [them] | 82:14 Taylor White [them]
+2025,2025-10-16,Houston,Iowa State,A,Y,W,2,1,12,8,19,4,6,3,3,17,01:06 Megan Walters (Isabella Agrusso) [them] | 03:41 Amaris Bumba (Ava Shannon) [us] | 34:38 Madyson Bentil [us]
+2025,2025-10-19,Houston,UCF,H,Y,T,1,1,7,3,10,3,1,4,2,13,"13:03 Honoka Hamano (Liz Worden, Rajanah Reed) [them] | 51:29 Samira Minor (Adelhia Ghonda) [us]"
+2025,2025-10-23,Houston,Kansas State,H,Y,T,0,0,8,3,20,12,5,8,12,9,
+2025,2025-10-26,Houston,Baylor,H,Y,T,1,1,7,3,6,2,4,8,1,9,"48:08 Callie Conrad (Tyler Isgrig, Theresa McCullough) [them] | 52:53 Cameryn Maddox [us]"
+2025,2025-10-30,Houston,TCU,A,Y,L,0,2,6,4,17,6,1,4,4,16,"18:41 AJ Hennessey (Sydney Becerra, Cate Sarinopoulos) [them] | 56:39 Emma Yolinsky (Cameron Patton) [them]"
+2025,2025-08-14,Iowa State,Portland State,H,,T,2,2,13,4,12,3,6,2,1,16,13:13 Aliayha Saldana [them] | 21:15 Lauren Hernandez (Regan John) [us] | 51:32 Morgan Goodman (Megan Walters) [us] | 81:30 Kalo Iongi (Carmen Lewis) [them]
+2025,2025-08-21,Iowa State,Creighton,A,,W,1,0,9,5,15,7,2,2,7,15,88:41 Isabella Agrusso (Ella Ciardullo) [us]
+2025,2025-08-24,Iowa State,Drake,H,,T,1,1,11,6,12,6,5,3,5,10,"55:58 Angela Gutierrez (Izzy Snowden) [them] | 89:30 Lucy Froitzheim (Lauren Hernandez, Isabella Agrusso) [us]"
+2025,2025-09-04,Iowa State,Iowa,A,,L,0,1,4,2,27,10,1,7,9,8,49:52 Abby Skiff (Liana Tarasco) [them]
+2025,2025-09-07,Iowa State,North Dakota,H,,W,4,0,19,11,10,2,7,1,2,18,"18:56 Regan John (Taylor Spitzer, Sophie Forrester) [us] | 19:17 Ella Zimmerman [us] | 50:13 Taylor Spitzer [us] | 76:19 Sophie Forrester [us]"
+2025,2025-09-11,Iowa State,Northern Iowa,A,,W,4,1,,,,,,,,,
+2025,2025-09-18,Iowa State,Arizona,H,Y,W,1,0,11,6,8,2,5,6,2,5,78:22 Megan Walters (Kasey Cannistraro) [us]
+2025,2025-09-25,Iowa State,Colorado,A,Y,L,1,3,10,4,17,7,2,11,4,11,"16:19 Hope Leyba (Ava Priest) [them] | 36:41 Hope Leyba (Ruby Hayward) [them] | 52:17 Hope Leyba (Caley Swierenga, Greer Maguire) [them] | 81:09 Morgan Goodman [us]"
+2025,2025-09-28,Iowa State,Texas Tech,H,Y,L,0,2,9,2,22,6,1,6,4,9,"00:20 Sam Courtwright (Kylie Bahr) [them] | 17:42 Peyton Parsons (Macy Blackburn, Kate Leibel) [them]"
+2025,2025-10-02,Iowa State,Baylor,A,Y,L,0,3,10,3,16,10,2,7,7,8,"20:48 Callie Conrad (Theresa McCullough, Hannah Augustyn) [them] | 33:46 Callie Conrad (Aryanna Jimison) [them] | 71:01 Alysiah Lockette (Aryanna Jimison, Lauren Omholt) [them]"
+2025,2025-10-05,Iowa State,TCU,A,Y,L,1,3,2,1,12,6,2,2,3,9,"07:31 AJ Hennessey (Kamdyn Fuller) [them] | 08:22 Cameron Patton (AJ Hennessey, Quinn Cornog) [them] | 31:19 Seven Castain (Kaela Martinez) [them] | 69:42 Sophie Forrester (Ella Ciardullo) [us]"
+2025,2025-10-10,Iowa State,Kansas,H,Y,L,1,3,5,4,25,10,0,10,7,11,"16:17 Megan Walters [us] | 25:14 Kate Langfelder (Livvy Moore) [them] | 54:37 Jillian Gregorski (Kate Langfelder, Lexi Watts) [them] | 76:57 Emika Kawagishi (Caroline Castans) [them]"
+2025,2025-10-16,Iowa State,Houston,H,Y,L,1,2,19,4,12,8,3,6,6,12,01:06 Megan Walters (Isabella Agrusso) [us] | 03:41 Amaris Bumba (Ava Shannon) [them] | 34:38 Madyson Bentil [them]
+2025,2025-10-19,Iowa State,Arizona State,H,Y,T,1,1,12,5,12,5,3,7,4,9,84:28 Taylor Spitzer Assisted by: Isabella Agrusso [us]
+2025,2025-10-23,Iowa State,West Virginia,A,Y,L,0,1,5,3,19,7,3,10,6,7,21:38 Anna Hauer (Taylor White) [them]
+2025,2025-10-26,Iowa State,Cincinnati,A,Y,L,0,3,11,5,15,9,6,6,6,8,19:37 Rylee Felton Assisted by: Coley Sidloski [them] | 35:38 Coley Sidloski [them]
+2025,2025-10-30,Iowa State,Kansas State,A,Y,T,2,2,12,5,14,6,6,4,4,10,"26:31 Andra Mohler (Jayce Woodward, Rilyn Rintoul) [them] | 59:41 Rilyn Rintoul (Allison Marshall, Chloe Dillbeck) [them] | 66:04 Morgan Goodman [us] | 77:42 Taylor Spitzer (Gili Johnson, Ella Ciardullo) [us]"
+2025,2025-08-14,Kansas,Missouri State,H,,W,5,2,23,12,5,3,12,1,1,11,06:30 Jillian Gregorski (Caroline Castans) [us] | 18:00 Lexi Watts (Kate Langfelder) [us] | 38:53 Faith Johnston [us] | 53:07 Caroline Castans (Kate Langfelder) [us] | 54:04 Maggie O'Keefe (Riley Smith) [them] | 60:35 Jillian Gregorski [us] | 79:39 Abby Hansen (Reilly Heman) [them]
+2025,2025-08-17,Kansas,South Dakota State,H,,W,1,0,16,6,5,3,5,5,3,10,57:44 Livvy Moore (Caroline Castans) [us]
+2025,2025-08-21,Kansas,Utah Valley,H,,W,3,2,14,7,9,6,3,4,4,12,"00:34 Lexi Watts (Livvy Moore) [us] | 21:54 Faith Webber (Ruby Hladek, Greta Davis) [them] | 23:35 Lexi Watts [us] | 30:14 Jordan Rowan (Lexi Watts, Caroline Castans) [us] | 84:48 Ruby Hladek (Marie Quentel) [them]"
+2025,2025-08-24,Kansas,Utah State,A,,T,0,0,10,4,9,4,6,0,4,12,
+2025,2025-08-28,Kansas,Florida State,H,,T,1,1,14,4,8,4,5,5,3,11,12:46 Jordynn Dudley [them] | 25:37 Mary Sola [us]
+2025,2025-08-31,Kansas,Drake,H,,W,3,1,15,7,7,4,10,3,3,19,21:21 Lexi Watts (Emily Tobin) [us] | 32:58 Jordan Rowan (Lydia Viets) [us] | 50:42 Jillian Gregorski (Caroline Castans) [us] | 72:23 Isabella Balsley [them]
+2025,2025-09-07,Kansas,Yale,A,,W,4,0,19,10,3,2,3,0,2,11,"06:49 Livvy Moore [us] | 37:35 Jordan Rowan (Jocelyn Herrema) [us] | 56:25 Lexi Watts (Livvy Moore) [us] | 81:11 Saige Wimes (Caroline Castans, Molly Shepherd) [us]"
+2025,2025-09-14,Kansas,Liberty,A,,W,3,2,17,13,9,4,8,3,2,10,"09:10 Olivia Page (Saige Wimes) [us] | 15:37 Gabby Miranda (Ivy Garner) [them] | 26:14 Mary Sola (Jocelyn Herrema) [us] | 48:26 Jillian Gregorski (Saige Wimes) [us] | 82:19 Halle Engle (Ivy Garner, Lauren Littleton) [them]"
+2025,2025-09-18,Kansas,Oklahoma State,A,Y,W,1,0,13,6,5,1,6,6,1,5,55:23 Caroline Castans [us]
+2025,2025-09-25,Kansas,Baylor,H,Y,L,0,3,19,3,11,7,5,2,4,9,"34:09 Aryanna Jimison (Tyler Isgrig, Natalie Vatter) [them] | 56:47 Callie Conrad (Theresa McCullough) [them] | 62:31 Theresa McCullough (Callie Conrad) [them]"
+2025,2025-09-28,Kansas,TCU,H,Y,L,2,3,19,8,12,7,4,1,4,10,04:44 Lexi Watts [us] | 23:40 Seven Castain [them] | 62:36 Seven Castain (Emma Yolinsky) [them] | 64:49 Seven Castain (Grace Vest) [them] | 82:13 Saige Wimes [us]
+2025,2025-10-02,Kansas,Kansas State,H,Y,W,4,1,20,10,7,4,7,1,3,12,"07:20 Andra Mohler (Jayce Woodward) [them] | 31:21 Jillian Gregorski [us] | 41:54 Becca Smith (Jordan Fjelstad, Jordan Rowan) [us] | 66:33 Livvy Moore (Faith Johnston, Saige Wimes) [us] | 74:11 Becca Smith (Jillian Gregorski, Caroline Castans) [us]"
+2025,2025-10-05,Kansas,Texas Tech,A,Y,L,0,2,7,5,13,10,5,2,8,4,"09:25 Taylor Zdrojewski [them] | 68:24 Taylor Zdrojewski (Peyton Parsons, Emilie McCartney) [them]"
+2025,2025-10-10,Kansas,Iowa State,A,Y,W,3,1,25,10,5,4,10,0,3,12,"16:17 Megan Walters [them] | 25:14 Kate Langfelder (Livvy Moore) [us] | 54:37 Jillian Gregorski (Kate Langfelder, Lexi Watts) [us] | 76:57 Emika Kawagishi (Caroline Castans) [us]"
+2025,2025-10-16,Kansas,West Virginia,H,Y,T,2,2,13,5,7,2,11,1,1,8,"12:59 0 [them] | 28:33 Jordan Rowan (Caroline Castans, Olivia Page) [us] | 36:08 Becca Smith (Lydia Viets) [us] | 39:19 Alexis Ré [them]"
+2025,2025-10-19,Kansas,Cincinnati,H,Y,W,1,0,17,4,2,0,6,0,0,14,"58:37 Lexi Watts (Jillian Gregorski, Kate Langfelder) [us]"
+2025,2025-10-23,Kansas,BYU,A,Y,W,3,1,12,6,15,6,4,5,5,11,07:11 Saige Wimes (Livvy Moore) [us] | 12:21 Jillian Gregorski (Kate Langfelder) [us] | 23:59 Lexi Watts (Jillian Gregorski) [us] | 54:55 Ellie Walbruch (Afton Perry) [them]
+2025,2025-10-26,Kansas,Utah,A,Y,W,2,0,15,7,4,1,9,0,1,11,74:48 Livvy Moore [us] | 82:04 Lexi Watts (Caroline Castans) [us]
+2025,2025-10-30,Kansas,Colorado,H,Y,L,1,2,22,5,9,7,8,1,5,8,"08:14 Hope Leyba (Emerson Layne, Reagan Kotschau) [them] | 81:10 Jillian Gregorski (Caroline Castans) [us] | 86:55 Reagan Kotschau [them]"
+2025,2025-11-03,Kansas,West Virginia,A,,W,4,0,22,13,7,2,3,1,2,11,"32:36 Jocelyn Herrema (Lexi Watts) [us] | 76:22 Kate Langfelder (Lydia Viets, Faith Johnston) [us] | 83:32 Mackenzie Hammontree [us] | 84:21 Lexi Watts (Saige Wimes, Caroline Castans) [us]"
+2025,2025-11-05,Kansas,Colorado,A,,W,2,1,13,6,13,4,7,10,3,7,"26:38 Faith Leyba (Emerson Layne, Ava Priest) [them] | 54:26 Saige Wimes (Lexi Watts) [us] | 73:12 Lydia Viets [us]"
+2025,2025-11-08,Kansas,BYU,H,,L,0,1,17,7,10,5,9,4,4,12,"20:50 Ellie Walbruch (Mia Goettsche, Lucy Kesler) [them]"
+2025,2025-11-20,Kansas,Louisville,H,,W,3,1,17,7,6,3,10,1,2,7,"18:39 Grace Maddox (Karsyn Cherry) [them] | 41:00 Faith Johnston (Lydia Viets, Caroline Castans) [us] | 81:52 Jillian Gregorski (Caroline Castans) [us] | 85:34 Lexi Watts (Livvy Moore) [us]"
+2025,2025-11-23,Kansas,Duke,A,,L,0,2,9,2,13,5,8,3,3,13,36:53 Mia Minestrella (Kat Rader) [them] | 46:55 Kat Rader [them]
+2025,2025-08-14,Kansas State,Oral Roberts,H,,W,2,0,8,5,6,2,4,3,2,15,60:44 Rilyn Rintoul (Hannah Palmer) [us] | 70:59 Alix Regier (Hannah Palmer) [us]
+2025,2025-08-17,Kansas State,Portland State,H,,W,2,0,18,4,3,1,11,1,1,13,72:53 Hannah Palmer (Mabry Williams) [us] | 81:51 Mabry Williams [us]
+2025,2025-08-21,Kansas State,South Dakota,A,,W,2,0,14,7,9,4,1,6,4,9,35:29 Hannah Palmer (Mabry Williams) [us] | 49:20 Allison Marshall (McKinnan Braswell) [us]
+2025,2025-08-28,Kansas State,UMass Lowell,A,,W,4,0,20,9,4,2,7,1,2,10,27:38 Andra Mohler (McKinnan Braswell) [us] | 60:03 Allison Marshall (McKinnan Braswell) [us] | 61:18 Hannah Palmer (Andra Mohler) [us] | 85:03 Gabby DeMers (Hannah Palmer) [us]
+2025,2025-09-01,Kansas State,Harvard,A,,T,0,0,14,8,9,6,8,4,6,14,
+2025,2025-09-07,Kansas State,Nebraska,A,,L,0,2,11,4,10,6,5,5,4,16,"54:07 Kayma Carpenter (Sadie Waite) [them] | 58:10 Kayma Carpenter (Ava Makovicka, Sadie Waite) [them]"
+2025,2025-09-11,Kansas State,Colorado Col.,H,,W,3,1,22,12,16,4,4,7,3,22,"18:12 Allison Marshall [us] | 25:03 Andra Mohler [us] | 54:13 Rilyn Rintoul (Hannah Palmer, McKinnan Braswell) [us] | 74:08 Jessica Anderson (Kylie Smith) [them]"
+2025,2025-09-18,Kansas State,Colorado,A,Y,T,0,0,7,1,14,5,6,8,5,9,
+2025,2025-09-25,Kansas State,TCU,H,Y,L,0,1,10,5,16,5,2,6,4,10,82:36 Sydney Becerra (AJ Hennessey) [them]
+2025,2025-09-28,Kansas State,Baylor,H,Y,L,0,3,13,4,11,7,7,3,4,16,54:21 Olivia Hess (Aryanna Jimison) [them] | 58:43 Tyler Isgrig [them] | 81:07 Kai Hayes [them]
+2025,2025-10-02,Kansas State,Kansas,A,Y,L,1,4,7,4,20,10,1,7,6,16,"07:20 Andra Mohler (Jayce Woodward) [us] | 31:21 Jillian Gregorski [them] | 41:54 Becca Smith (Jordan Fjelstad, Jordan Rowan) [them] | 66:33 Livvy Moore (Faith Johnston, Saige Wimes) [them] | 74:11 Becca Smith (Jillian Gregorski, Caroline Castans) [them]"
+2025,2025-10-05,Kansas State,UCF,A,Y,T,0,0,18,5,10,3,9,5,3,7,
+2025,2025-10-10,Kansas State,Oklahoma State,A,Y,W,2,1,25,9,9,4,10,2,3,16,03:34 Sonora De Fini (Sandrine Brault) [them] | 65:30 Hannah Palmer [us] | 71:51 Hannah Palmer (Allison Marshall) [us]
+2025,2025-10-16,Kansas State,Cincinnati,H,Y,W,2,0,17,9,6,0,7,1,0,12,68:18 Andra Mohler Assisted by: Jayce Woodward [us]
+2025,2025-10-19,Kansas State,West Virginia,H,Y,L,2,3,14,5,10,3,4,8,0,6,29:53 Rilyn Rintoul (Chloe Dillbeck) [us] | 43:00 Kailyn Effah [them] | 81:52 Taylor White (Maya Leoni) [them] | 83:42 Taylor White (Olivia Shertzer) [them] | 85:15 McKinnan Braswell (Emerson DeLuca) [us]
+2025,2025-10-23,Kansas State,Houston,A,Y,T,0,0,20,12,8,3,8,5,3,8,
+2025,2025-10-26,Kansas State,Texas Tech,A,Y,L,1,3,7,4,10,6,5,3,3,7,"20:14 Taylor Zdrojewski (Sam Courtwright, Molly Skurcenski) [them] | 54:44 Allison Marshall (Emerson DeLuca, Anna Pagano) [us] | 67:12 Taylor Zdrojewski (Raleigh Greason, Alana Harry) [them] | 71:45 Macy Blackburn (Sam Courtwright, Taylor Zdrojewski) [them]"
+2025,2025-10-30,Kansas State,Iowa State,H,Y,T,2,2,14,6,12,5,4,6,3,22,"26:31 Andra Mohler (Jayce Woodward, Rilyn Rintoul) [us] | 59:41 Rilyn Rintoul (Allison Marshall, Chloe Dillbeck) [us] | 66:04 Morgan Goodman [them] | 77:42 Taylor Spitzer (Gili Johnson, Ella Ciardullo) [them]"
+2025,2025-08-14,Oklahoma State,Mercer,H,,W,2,0,26,8,8,4,11,2,4,7,"80:42 Reganne Morris (Jazmin Brown, Xcaret Pineda) [us] | 88:21 Xcaret Pineda [us]"
+2025,2025-08-17,Oklahoma State,Oklahoma,A,,L,1,4,6,5,19,9,5,4,6,15,"00:39 0 [them] | 09:33 Xcaret Pineda [us] | 34:13 Naomi Clark (Caroline Duffy, Luciana Setteducate) [them] | 41:24 Ashley Tutas (Michelle Pak, Ally Laccinole) [them] | 82:05 Naomi Clark (Lexi Dendis) [them]"
+2025,2025-08-21,Oklahoma State,Nebraska,H,,T,1,1,14,3,15,8,4,7,7,11,80:13 Carson Bohonek (Kayma Carpenter) [them] | 83:09 Xcaret Pineda [us]
+2025,2025-08-24,Oklahoma State,Arkansas State,H,,W,3,2,19,7,8,3,12,2,1,14,"25:15 Xcaret Pineda [us] | 43:33 Jazmin Brown (Taryn Thibeau) [us] | 60:20 Xcaret Pineda (Sonora De Fini) [us] | 82:55 Kennedy Horn (Alexia Watts, Ellen Hampton) [them] | 83:48 Leigha Dobbins [them]"
+2025,2025-08-28,Oklahoma State,Rice,A,,L,2,3,18,5,14,8,8,2,5,13,16:32 Sonora De Fini (Taryn Thibeau) [us] | 18:47 Leah Chancey [them] | 42:28 Allie Love (Camille Quarterman) [them] | 48:39 Piper Biziorek (Leah Chancey) [them] | 74:54 Jazmin Brown (Taryn Thibeau) [us]
+2025,2025-08-31,Oklahoma State,Mississippi State,H,,L,0,1,10,5,11,1,4,5,0,10,"45:54 Tatum Borman (Zoe Main, Alivia Buxton) [them]"
+2025,2025-09-04,Oklahoma State,Oral Roberts,A,,W,1,0,10,4,11,5,3,4,5,10,59:41 Sonora De Fini (Landry Fieker) [us]
+2025,2025-09-11,Oklahoma State,East Texas A&M,A,,W,5,1,19,10,10,4,6,4,3,21,"08:03 Ellie Geoffroy (Chloe Wright) [us] | 13:00 Ellie Geoffroy (Emmy Hedden) [us] | 13:42 Reganne Morris (Sonora De Fini, Ellie Geoffroy) [us] | 17:48 Emmy Hedden [us] | 46:29 Mya Mitchell [them] | 61:09 Emma Alvord [us]"
+2025,2025-09-18,Oklahoma State,Kansas,H,Y,L,0,1,5,1,13,6,6,6,5,13,55:23 Caroline Castans [them]
+2025,2025-09-25,Oklahoma State,Arizona State,A,Y,T,0,0,6,2,28,9,4,11,9,9,
+2025,2025-09-28,Oklahoma State,Arizona,A,Y,L,1,3,6,5,21,12,2,7,10,6,61:01 0 [them] | 66:17 MIreya Stephenson [them] | 74:35 Marissa Arnst (Sami Baytosh) [them] | 88:17 Sonora De Fini (Sophie Wilson) [us]
+2025,2025-10-02,Oklahoma State,Texas Tech,A,Y,L,0,4,3,1,20,9,1,1,5,17,"25:04 Peyton Parsons (Kate Leibel) [them] | 31:57 Macy Blackburn (Sam Courtwright) [them] | 56:47 Taylor Zdrojewski (Storie Sexton, Sam Courtwright) [them] | 83:37 Millie Elwood [them]"
+2025,2025-10-06,Oklahoma State,BYU,H,Y,L,1,4,10,3,26,11,4,6,7,10,25:48 Lucy Kesler [them] | 30:28 Madi Asel (Taryn Thibeau) [us] | 30:54 Ellie Walbruch (Presley Freeman) [them] | 81:46 Mattyn Summers-Oviatt (Mia Goettsche) [them] | 87:30 Lucy Kesler (Emma Hamberlin) [them]
+2025,2025-10-10,Oklahoma State,Kansas State,H,Y,L,1,2,9,4,25,9,2,10,7,11,03:34 Sonora De Fini (Sandrine Brault) [us] | 65:30 Hannah Palmer [them] | 71:51 Hannah Palmer (Allison Marshall) [them]
+2025,2025-10-16,Oklahoma State,UCF,H,Y,L,1,2,7,1,15,9,3,6,7,13,"30:52 Liz Worden (Ainsley Moy) [them] | 58:50 Rajanah Reed (Liz Worden, Jada Silvest) [them] | 65:10 Emma Alvord (Xcaret Pineda) [us]"
+2025,2025-10-19,Oklahoma State,TCU,A,Y,L,1,3,5,2,18,6,2,3,3,10,"09:49 Sydney Becerra (Grace Coppinger) [them] | 39:06 Grace Vest (Cameron Patton, Marli Galdamez) [them] | 53:25 Emma Yolinsky [them] | 55:07 Emma Alvord (Sophie Wilson) [us]"
+2025,2025-10-23,Oklahoma State,Cincinnati,A,Y,L,0,1,8,2,17,6,5,5,5,12,"37:32 Rylee Felton (Karson Yon, Bryana Gaynor) [them]"
+2025,2025-10-26,Oklahoma State,West Virginia,A,Y,L,0,2,1,0,27,10,2,13,8,7,04:43 Ava Arnold (Anna Hauer) [them] | 54:19 Abbey Olexa (Ajanae Respass) [them]
+2025,2025-10-30,Oklahoma State,Baylor,H,Y,L,0,2,14,8,15,11,4,5,9,6,28:05 Tyler Isgrig [them] | 34:42 Theresa McCullough (Alysiah Lockette) [them]
+2025,2025-08-14,TCU,Pepperdine,H,,W,6,1,17,11,7,2,4,1,1,5,"02:51 Seven Castain (Grace Coppinger, Georgia Leb) [us] | 07:00 Emma Yolinsky (Kamdyn Fuller, Morgan Brown) [us] | 18:29 AJ Hennessey [us] | 19:14 Kamdyn Fuller (Seven Castain) [us] | 55:19 Kyra Murphy (Tatum Wynalda) [them] | 57:18 Kamdyn Fuller (Cameron Patton) [us] | 73:05 Zoe Calyer (Allyson Brown) [us]"
+2025,2025-08-17,TCU,UTSA,A,,W,1,0,13,5,5,4,7,1,4,6,"80:50 Cameron Patton (Grace Vest, Allyson Brown) [us]"
+2025,2025-08-21,TCU,Iowa,A,,W,3,2,15,8,15,4,4,6,2,7,"09:20 Emma Yolinsky [us] | 42:29 Olivia Lebdaoui [them] | 54:01 Seven Castain (Morgan Brown, Kamdyn Fuller) [us] | 64:33 Seven Castain [us] | 88:13 Olivia Lebdaoui [them]"
+2025,2025-08-28,TCU,Texas,A,,W,3,2,18,12,20,6,7,4,4,6,"08:00 Amalia Villarreal [them] | 19:52 Kamdyn Fuller (AJ Hennessey, Morgan Brown) [us] | 33:51 Kaela Martinez [us] | 54:41 Carly Montgomery (Olivia Ahern) [them] | 84:00 Morgan Brown (Kamdyn Fuller) [us]"
+2025,2025-09-04,TCU,Northwestern,H,,L,0,1,6,1,11,6,5,4,5,10,06:28 Kennedy Roesch (Caterina Regazzoni) [them]
+2025,2025-09-07,TCU,Texas A&M,H,,W,2,1,15,7,6,2,7,5,1,6,"51:12 Sydney Becerra (Emma Yolinsky, Seven Castain) [us] | 57:53 Leah Diaz [them] | 85:24 AJ Hennessey (Emma Yolinsky) [us]"
+2025,2025-09-12,TCU,Gonzaga,H,,W,2,1,20,10,8,3,10,1,2,6,"25:17 Seven Castain (Grace Vest, Kamdyn Fuller) [us] | 76:20 Olivia Lester (Amelia Severn) [them] | 79:39 Seven Castain (Cameron Patton, AJ Hennessey) [us]"
+2025,2025-09-19,TCU,Utah,H,Y,W,1,0,16,5,12,4,9,5,4,8,"19:52 Seven Castain (Sydney Becerra, Cameron Patton) [us]"
+2025,2025-09-25,TCU,Kansas State,A,Y,W,1,0,16,5,10,5,6,2,5,5,82:36 Sydney Becerra (AJ Hennessey) [us]
+2025,2025-09-28,TCU,Kansas,A,Y,W,3,2,12,7,19,8,1,4,6,9,04:44 Lexi Watts [them] | 23:40 Seven Castain [us] | 62:36 Seven Castain (Emma Yolinsky) [us] | 64:49 Seven Castain (Grace Vest) [us] | 82:13 Saige Wimes [them]
+2025,2025-10-02,TCU,Colorado,H,Y,L,1,3,26,10,9,3,8,1,0,10,"15:37 Emma Yolinsky (Sydney Becerra, Grace Coppinger) [us] | 34:54 Jace Holley (Hope Leyba, Ruby Hayward) [them] | 57:04 Emerson Layne (Reagan Kotschau, Lilian Zamorano) [them] | 64:42 Hope Leyba (Caley Swierenga, Lexi Meyer) [them]"
+2025,2025-10-05,TCU,Iowa State,H,Y,W,3,1,12,6,2,1,2,2,0,9,"07:31 AJ Hennessey (Kamdyn Fuller) [us] | 08:22 Cameron Patton (AJ Hennessey, Quinn Cornog) [us] | 31:19 Seven Castain (Kaela Martinez) [us] | 69:42 Sophie Forrester (Ella Ciardullo) [them]"
+2025,2025-10-10,TCU,Texas Tech,A,Y,T,1,1,5,2,15,6,7,4,5,9,24:25 Raleigh Greason [them] | 60:28 Morgan Brown (Sydney Becerra) [us]
+2025,2025-10-16,TCU,Baylor,H,Y,W,3,0,25,14,8,1,8,5,1,10,"22:02 Seven Castain (Emma Yolinsky, Katana Norman) [us] | 26:17 Seven Castain (Cameron Patton) [us] | 53:08 Cate Sarinopoulos (Morgan Brown, Seven Castain) [us]"
+2025,2025-10-19,TCU,Oklahoma State,H,Y,W,3,1,18,6,5,2,3,2,1,11,"09:49 Sydney Becerra (Grace Coppinger) [us] | 39:06 Grace Vest (Cameron Patton, Marli Galdamez) [us] | 53:25 Emma Yolinsky [us] | 55:07 Emma Alvord (Sophie Wilson) [them]"
+2025,2025-10-23,TCU,Arizona,A,Y,W,1,0,6,4,6,3,3,3,3,5,12:31 Emma Yolinsky (Cameron Patton) [us]
+2025,2025-10-26,TCU,Arizona State,A,Y,W,2,1,23,8,5,3,7,2,2,11,59:27 Cameron Patton [us] | 66:33 Tatum Thomason Assisted by: Addison Baltodano [them]
+2025,2025-10-30,TCU,Houston,H,Y,W,2,0,17,6,6,4,4,1,4,13,"18:41 AJ Hennessey (Sydney Becerra, Cate Sarinopoulos) [us] | 56:39 Emma Yolinsky (Cameron Patton) [us]"
+2025,2025-11-03,TCU,BYU,H,,T,2,2,23,9,9,5,5,1,3,14,"26:59 Ellie Walbruch [them] | 46:13 Sydney Becerra [us] | 50:07 Ellie Walbruch [them] | 69:03 AJ Hennessey (Sydney Becerra, Grace Coppinger) [us]"
+2025,2025-11-14,TCU,Grambling,H,,W,7,0,22,11,5,2,6,2,2,8,"10:34 Seven Castain [us] | 21:38 Emma Yolinsky (Seven Castain) [us] | 52:44 Emma Yolinsky [us] | 60:28 Seven Castain (AJ Hennessey, Sydney Becerra) [us] | 67:49 Seven Castain (Cameron Patton, Marli Galdamez) [us] | 77:50 Cameron Patton (Grace Vest) [us] | 84:36 Grace Vest [us]"
+2025,2025-11-21,TCU,Memphis,H,,W,4,0,17,6,10,3,5,3,3,13,"02:00 Seven Castain (Emma Yolinsky) [us] | 09:23 Katana Norman (Morgan Brown, Sydney Becerra) [us] | 11:30 Sydney Becerra [us] | 41:29 Seven Castain (Marli Galdamez) [us]"
+2025,2025-11-24,TCU,North Carolina,H,,T,1,1,4,3,16,9,3,3,8,11,81:20 Bella Devey (Riley Kennedy) [them] | 89:54 Kamdyn Fuller (Sydney Becerra) [us]
+2025,2025-11-29,TCU,Vanderbilt,A,,W,2,1,8,3,31,10,2,10,9,13,"76:22 Sydney Watts (Vivian Akyirem, Ally Bollig) [them] | 85:48 Emma Yolinsky [us] | 95:48 Sydney Becerra [us]"
+2025,2025-12-05,TCU,Florida State,H,,L,0,1,7,2,15,8,6,4,7,16,"72:47 Wrianna Hudson (Peyton McGovern, Sophia Nguyen) [them]"
+2025,2025-08-14,Texas Tech,San Diego State,A,,W,4,0,15,8,8,3,5,5,3,8,"03:56 Kaitlyn Giametta (Taylor Zdrojewski, Macy Blackburn) [us] | 06:32 Sam Courtwright (Kaitlyn Giametta, Macy Blackburn) [us] | 33:47 Taylor Zdrojewski (Macy Blackburn) [us] | 78:32 Raleigh Greason (Chloe Japic, Millie Elwood) [us]"
+2025,2025-08-17,Texas Tech,Youngstown State,H,,W,4,1,38,16,2,2,12,1,1,8,"07:45 Peyton Parsons (Taylor Zdrojewski) [us] | 11:02 Taylor Zdrojewski (Peyton Parsons, Molly Skurcenski) [us] | 22:49 Sam Courtwright (Kylie Bahr, Molly Skurcenski) [us] | 69:35 Camille Bultel (Chloe Weiland, Kamryn Rosa) [them] | 74:57 Taylor Zdrojewski [us]"
+2025,2025-08-21,Texas Tech,Santa Clara,A,,W,2,1,18,6,15,6,6,4,5,9,"00:19 Peyton Parsons (Alana Harry, Macy Blackburn) [us] | 03:35 Taylor Zdrojewski (Peyton Parsons, Kate Leibel) [us] | 48:22 Adee Goulden (Mailin Orozco) [them]"
+2025,2025-08-24,Texas Tech,San Francisco,A,,L,0,2,12,3,11,6,3,5,4,9,27:47 Kaitlyn Sasadeusz [them] | 79:13 Kaitlyn Sasadeusz (Sydney Harpster) [them]
+2025,2025-08-28,Texas Tech,SMU,H,,W,2,0,16,5,9,1,6,4,1,11,"12:29 Emilie McCartney (Macy Blackburn) [us] | 58:04 Macy Blackburn (Emma Torres, Chloe Japic) [us]"
+2025,2025-09-04,Texas Tech,New Mexico State,A,,W,2,0,22,9,1,1,11,1,1,4,"69:16 Taylor Zdrojewski (Macy Blackburn) [us] | 76:14 Taylor Zdrojewski (Raleigh Greason, Macy Blackburn) [us]"
+2025,2025-09-14,Texas Tech,Utah State,H,,W,2,1,9,5,8,6,7,1,5,8,51:34 Summer Diamond (Tess Werts) [them] | 54:46 Taylor Zdrojewski (Macy Blackburn) [us] | 74:54 Peyton Parsons [us]
+2025,2025-09-19,Texas Tech,Baylor,A,Y,W,1,0,19,7,10,4,4,3,4,10,71:31 Peyton Parsons [us]
+2025,2025-09-25,Texas Tech,Houston,H,Y,T,1,1,10,3,8,3,10,4,2,11,59:22 Samira Minor (Blake Hodgson) [them] | 82:45 Macy Blackburn [us]
+2025,2025-09-28,Texas Tech,Iowa State,A,Y,W,2,0,22,6,9,2,6,1,2,8,"00:20 Sam Courtwright (Kylie Bahr) [us] | 17:42 Peyton Parsons (Macy Blackburn, Kate Leibel) [us]"
+2025,2025-10-02,Texas Tech,Oklahoma State,H,Y,W,4,0,20,9,3,1,1,1,1,15,"25:04 Peyton Parsons (Kate Leibel) [us] | 31:57 Macy Blackburn (Sam Courtwright) [us] | 56:47 Taylor Zdrojewski (Storie Sexton, Sam Courtwright) [us] | 83:37 Millie Elwood [us]"
+2025,2025-10-05,Texas Tech,Kansas,H,Y,W,2,0,13,10,7,5,2,5,5,9,"09:25 Taylor Zdrojewski [us] | 68:24 Taylor Zdrojewski (Peyton Parsons, Emilie McCartney) [us]"
+2025,2025-10-10,Texas Tech,TCU,H,Y,T,1,1,15,6,5,2,4,7,1,13,24:25 Raleigh Greason [us] | 60:28 Morgan Brown (Sydney Becerra) [them]
+2025,2025-10-16,Texas Tech,Arizona State,A,Y,W,3,2,21,9,10,5,4,5,3,11,30:47 Sam Courtwright Storie Sexton Assisted by: Macy Blackburn [us] | 50:14 Peyton Marcisz [them] | 60:01 Cameron Valladares Sierra Bergen Assisted by: Peyton Marcisz [them] | 84:50 Molly Skurcenski Taylor Zdrojewski Assisted by: Storie Sexton [us]
+2025,2025-10-19,Texas Tech,Arizona,A,Y,W,2,0,8,4,7,3,3,6,3,1,"09:25 Raleigh Greason (Peyton Parsons) [us] | 33:42 Taylor Zdrojewski (Macy Blackburn, Emilie McCartney) [us]"
+2025,2025-10-23,Texas Tech,Colorado,A,Y,L,0,3,23,10,12,7,9,1,4,8,11:54 Ava Priest (Jace Holley) [them] | 14:09 Hope Leyba [them] | 62:49 Hope Leyba (Reagan Kotschau) [them]
+2025,2025-10-26,Texas Tech,Kansas State,H,Y,W,3,1,10,6,7,4,3,5,3,8,"20:14 Taylor Zdrojewski (Sam Courtwright, Molly Skurcenski) [us] | 54:44 Allison Marshall (Emerson DeLuca, Anna Pagano) [them] | 67:12 Taylor Zdrojewski (Raleigh Greason, Alana Harry) [us] | 71:45 Macy Blackburn (Sam Courtwright, Taylor Zdrojewski) [us]"
+2025,2025-10-30,Texas Tech,UCF,H,Y,T,0,0,20,5,3,2,4,2,2,10,
+2025,2025-11-03,Texas Tech,Baylor,H,,T,1,1,16,8,14,8,5,6,7,16,02:38 Sam Courtwright (Macy Blackburn) [us] | 54:33 Hannah Augustyn (Aryanna Jimison) [them]
+2025,2025-11-14,Texas Tech,UTSA,H,,W,2,1,20,9,8,4,7,2,3,8,"13:09 Peyton Parsons (Macy Blackburn, Sam Courtwright) [us] | 60:39 Jasmine Kessler [them] | 76:25 Taylor Zdrojewski (Kate Leibel, Peyton Parsons) [us]"
+2025,2025-11-21,Texas Tech,North Carolina,H,,T,1,1,11,4,20,7,7,8,6,6,"57:05 Linda Ullmark (Bella Devey, Lauren Malsom) [them] | 59:48 Macy Blackburn (Peyton Parsons) [us]"
+2025,2025-08-14,UCF,UAB,A,,W,2,1,,,,,,,,,
+2025,2025-08-17,UCF,Fla. Atlantic,A,,W,3,1,,,,,,,,,
+2025,2025-08-21,UCF,South Florida,A,,W,4,1,,,,,,,,,
+2025,2025-08-24,UCF,LSU,A,,W,2,1,,,,,,,,,
+2025,2025-08-28,UCF,Florida,A,,W,1,0,,,,,,,,,
+2025,2025-09-04,UCF,FIU,A,,L,0,1,,,,,,,,,
+2025,2025-09-11,UCF,North Florida,A,,W,2,0,,,,,,,,,
+2025,2025-09-18,UCF,West Virginia,H,Y,T,0,0,14,4,8,1,7,2,1,10,
+2025,2025-09-25,UCF,Arizona,A,Y,L,0,1,8,2,7,4,1,6,3,9,42:37 Aurora Gaines [them]
+2025,2025-09-28,UCF,Arizona State,A,Y,W,3,2,9,5,14,5,1,6,3,8,51:34 Cameron Valladares Lucy Fazackerley Assisted by: Tatum Thomason [them] | 53:57 Gabi Berchon [us] | 69:34 Rajanah Reed Assisted by: Liz Worden [us] | 76:57 Tatum Thomason Assisted by: Tano Uzezi-Itesa [them]
+2025,2025-10-02,UCF,Utah,H,Y,W,2,0,8,3,20,7,4,6,7,10,23:40 Honoka Hamano [us] | 31:37 Liz Worden [us]
+2025,2025-10-05,UCF,Kansas State,H,Y,T,0,0,10,3,18,5,5,9,5,7,
+2025,2025-10-12,UCF,Cincinnati,A,Y,T,0,0,12,8,8,4,7,5,4,6,
+2025,2025-10-16,UCF,Oklahoma State,A,Y,W,2,1,15,9,7,1,6,3,0,8,"30:52 Liz Worden (Ainsley Moy) [us] | 58:50 Rajanah Reed (Liz Worden, Jada Silvest) [us] | 65:10 Emma Alvord (Xcaret Pineda) [them]"
+2025,2025-10-19,UCF,Houston,A,Y,T,1,1,10,3,7,3,4,1,2,10,"13:03 Honoka Hamano (Liz Worden, Rajanah Reed) [us] | 51:29 Samira Minor (Adelhia Ghonda) [them]"
+2025,2025-10-23,UCF,Baylor,H,Y,W,2,1,9,4,19,8,4,9,7,9,"36:28 Jada Silvest (Honoka Hamano, Liz Worden) [us] | 56:17 Rajanah Reed (Maria Tregansin) [us] | 57:37 Tyler Isgrig (Adriana Merriam) [them]"
+2025,2025-10-27,UCF,BYU,A,Y,W,2,1,,,,,,,,,
+2025,2025-10-30,UCF,Texas Tech,A,Y,T,0,0,3,2,20,5,2,4,5,5,
+2025,2025-11-03,UCF,Colorado,A,,L,2,3,14,7,19,10,3,12,7,7,11:19 Rajanah Reed (Liz Worden) [us] | 29:45 Ella Holloran (Gabi Berchon) [us] | 52:32 Hope Leyba (Emerson Layne) [them] | 56:23 Jace Holley (Reagan Kotschau) [them] | 64:39 Hope Leyba (Ava Priest) [them]
+2025,2025-11-14,UCF,Maine,A,,W,2,0,,,,,,,,,
+2025,2025-11-20,UCF,Duke,A,,L,0,1,,,,,,,,,
+2025,2025-08-14,Utah,Gonzaga,A,,W,2,1,18,7,11,3,4,3,2,9,"52:27 Shila Rasoul (Katelyn Rigg, Samantha Snorsky) [them] | 67:19 Julia Oka (Grace Watkins) [us] | 80:04 Kelly Bullock (Grace Watkins) [us]"
+2025,2025-08-18,Utah,Utah Valley,A,,L,0,2,28,11,15,6,15,3,4,6,"02:09 Ruby Hladek [them] | 14:33 Nixan Jackson (Faith Webber, Ruby Hladek) [them]"
+2025,2025-08-21,Utah,Westminster (UT),H,,W,4,0,24,13,2,2,7,1,2,8,"11:34 Shannon Davidson (Katie Callaway) [us] | 60:31 Lilliah Blum (Kelly Bullock, Ali Swensen) [us] | 82:59 Shannon Davidson [us] | 83:59 Sophie Bellini (Ali Swensen, Londyn Lovell) [us]"
+2025,2025-08-28,Utah,Utah State,A,,T,1,1,9,3,9,4,8,4,3,10,27:13 Ellie Hendrix [them] | 72:02 Lilliah Blum [us]
+2025,2025-08-31,Utah,NC State,H,,W,3,0,20,8,7,1,3,3,1,7,"09:47 Lilliah Blum (Kelly Bullock, Grace Watkins) [us] | 72:31 Ali Swensen (Bella Woods) [us] | 77:49 Rylan Park [us]"
+2025,2025-09-04,Utah,Washington,A,,W,1,0,12,4,7,3,4,4,3,14,83:54 Kelly Bullock (Grace Watkins) [us]
+2025,2025-09-07,Utah,LSU,H,,L,0,2,15,1,5,3,12,2,1,10,14:41 Sariyah Bailey [them] | 42:50 Ava Galligan (Makenna Dominguez) [them]
+2025,2025-09-11,Utah,Utah Tech,H,,W,2,1,12,3,7,3,4,4,2,14,16:20 Kelly Bullock [us] | 36:06 Abigail Affleck (Reese Kennel) [us] | 39:24 Kyah Le [them]
+2025,2025-09-14,Utah,Oregon State,H,,L,1,2,17,4,8,4,7,2,2,5,01:52 Mia Paugh (Ryann Cull) [us] | 46:12 Mia Erba [them] | 71:02 Carly Carraher (Alyssa White) [them]
+2025,2025-09-19,Utah,TCU,A,Y,L,0,1,12,4,16,5,5,9,4,10,"19:52 Seven Castain (Sydney Becerra, Cameron Patton) [them]"
+2025,2025-09-24,Utah,Cincinnati,H,Y,T,0,0,19,4,5,1,5,2,1,12,
+2025,2025-09-27,Utah,West Virginia,H,Y,T,1,1,15,6,14,8,4,4,7,6,"56:42 Lilliah Blum (Grace Watkins, Shannon Davidson) [us] | 57:41 Anna Hauer (Maddie Levy) [them]"
+2025,2025-10-02,Utah,UCF,A,Y,L,0,2,20,7,8,3,6,4,1,8,23:40 Honoka Hamano [them] | 31:37 Liz Worden [them]
+2025,2025-10-05,Utah,Houston,A,Y,W,1,0,6,4,13,5,2,8,5,5,14:43 Bella Woods [us]
+2025,2025-10-10,Utah,Arizona,A,Y,W,1,0,9,6,5,0,5,4,0,8,01:02 Bella Woods (Kelly Bullock) [us]
+2025,2025-10-16,Utah,Colorado,H,Y,L,1,2,22,7,10,6,5,3,4,8,07:35 Jace Holley (Emerson Layne) [them] | 67:31 Lexi Meyer (Emerson Layne) [them] | 76:07 Callie Blaylock (Ryann Cull) [us]
+2025,2025-10-19,Utah,Baylor,A,Y,L,0,2,10,3,12,4,5,10,2,15,"32:54 Kai Hayes (Tyler Isgrig) [them] | 84:11 Blythe Obar (Olivia Hess, Tyler Isgrig) [them]"
+2025,2025-10-23,Utah,Arizona State,H,Y,L,0,1,22,8,7,1,8,4,0,8,83:15 Sierra Bergen (Adrielle Mibe) [them]
+2025,2025-10-26,Utah,Kansas,H,Y,L,0,2,4,1,15,7,0,9,5,10,74:48 Livvy Moore [them] | 82:04 Lexi Watts (Caroline Castans) [them]
+2025,2025-10-30,Utah,BYU,H,Y,L,0,2,18,5,13,6,2,7,4,4,08:24 Mia Lopez [them] | 25:22 MacKenzee Vance [them]
+2025,2025-08-14,West Virginia,Virginia,H,,L,0,1,14,5,8,2,5,7,1,5,63:36 Ella Carter (Lia Godfrey) [them]
+2025,2025-08-21,West Virginia,Akron,H,,W,3,0,19,8,0,0,8,0,0,3,"16:11 Abbey Olexa (Anna Hauer) [us] | 48:18 Ava Arnold (Taylor White, Abbey Olexa) [us] | 51:17 Taylor White (Roxanne Vilain) [us]"
+2025,2025-08-24,West Virginia,Penn State,A,,L,1,3,14,3,6,4,6,1,1,6,"11:45 Hannah Jordan [them] | 48:29 Amelia White (Julia Raich, Aubrey Kulpa) [them] | 50:18 Julia Raich (Kaitlyn MacBean) [them] | 64:49 Taylor White (Maddie Levy) [us]"
+2025,2025-08-28,West Virginia,Duquesne,H,,W,3,0,20,9,5,4,6,2,4,6,16:06 Taylor White (Alexis Ré) [us] | 23:55 Maddie Levy (Taylor White) [us] | 52:21 Maddie Levy (Taylor White) [us]
+2025,2025-08-31,West Virginia,Dayton,A,,W,2,0,18,11,9,3,6,4,3,10,24:02 Abbey Olexa (Anna Hauer) [us] | 46:00 Abbey Olexa (Maddie Levy) [us]
+2025,2025-09-06,West Virginia,Army West Point,H,,W,3,0,17,8,3,0,6,1,0,9,"53:40 Maddie Levy (Taylor White, Ajanae Respass) [us] | 71:27 0 [us] | 82:40 Kailyn Effah [us]"
+2025,2025-09-11,West Virginia,Marshall,A,,W,2,0,13,5,3,0,4,2,0,5,38:48 Maya Leoni [us] | 87:44 Ajanae Respass [us]
+2025,2025-09-18,West Virginia,UCF,A,Y,T,0,0,8,1,14,4,2,7,4,15,
+2025,2025-09-24,West Virginia,BYU,A,Y,W,3,2,13,6,15,3,3,8,1,7,"24:02 Maya Leoni (Taylor White) [us] | 67:51 Mia Lopez [them] | 68:07 Layla Thompson (Taylor White) [us] | 72:24 Taylor White (Olivia Shertzer) [us] | 88:44 Halle Dixon (Ellie Walbruch, Mia Goettsche) [them]"
+2025,2025-09-27,West Virginia,Utah,A,Y,T,1,1,14,8,15,6,4,4,5,6,"56:42 Lilliah Blum (Grace Watkins, Shannon Davidson) [them] | 57:41 Anna Hauer (Maddie Levy) [us]"
+2025,2025-10-02,West Virginia,Arizona,H,Y,W,3,0,16,6,4,2,6,4,2,5,20:08 Maddie Levy (Taylor White) [us] | 52:47 Taylor White (Jacey Rase) [us] | 60:06 Taylor White (Ajanae Respass) [us]
+2025,2025-10-05,West Virginia,Arizona State,H,Y,W,2,0,14,4,6,1,10,9,1,0,88:54 Sophia Nickel [us]
+2025,2025-10-10,West Virginia,Houston,H,Y,W,3,2,11,5,5,5,5,3,3,9,42:49 Sabrina Taber [them] | 55:52 Maddie Levy (Ava Arnold) [us] | 79:05 Samira Minor (Kyrsten Kizer) [them] | 79:01 Taylor White (Ava Arnold) [us] | 82:14 Taylor White [us]
+2025,2025-10-16,West Virginia,Kansas,A,Y,T,2,2,7,2,13,5,1,11,3,8,"12:59 0 [us] | 28:33 Jordan Rowan (Caroline Castans, Olivia Page) [them] | 36:08 Becca Smith (Lydia Viets) [them] | 39:19 Alexis Ré [us]"
+2025,2025-10-19,West Virginia,Kansas State,A,Y,W,3,2,10,3,14,5,8,4,3,9,29:53 Rilyn Rintoul (Chloe Dillbeck) [them] | 43:00 Kailyn Effah [us] | 81:52 Taylor White (Maya Leoni) [us] | 83:42 Taylor White (Olivia Shertzer) [us] | 85:15 McKinnan Braswell (Emerson DeLuca) [them]
+2025,2025-10-23,West Virginia,Iowa State,H,Y,W,1,0,19,7,5,3,10,3,3,7,21:38 Anna Hauer (Taylor White) [us]
+2025,2025-10-26,West Virginia,Oklahoma State,H,Y,W,2,0,27,10,1,0,13,2,0,8,04:43 Ava Arnold (Anna Hauer) [us] | 54:19 Abbey Olexa (Ajanae Respass) [us]
+2025,2025-10-30,West Virginia,Cincinnati,H,Y,W,2,1,11,6,6,1,3,5,0,12,46:08 Anna Hauer Assisted by: Maddie Levy [us] | 56:30 Maddie Swingle Assisted by: Coley Sidloski [them]
+2025,2025-11-03,West Virginia,Kansas,H,,L,0,4,7,2,22,13,1,3,9,12,"32:36 Jocelyn Herrema (Lexi Watts) [them] | 76:22 Kate Langfelder (Lydia Viets, Faith Johnston) [them] | 83:32 Mackenzie Hammontree [them] | 84:21 Lexi Watts (Saige Wimes, Caroline Castans) [them]"
+2025,2025-11-14,West Virginia,Wagner,H,,W,5,0,34,18,1,1,5,0,1,2,"00:44 Anna Hauer [us] | 21:44 Abbey Olexa (Maddie Levy) [us] | 39:49 Alicia Riggins (Layla Thompson) [us] | 41:11 Alicia Riggins (Kailyn Effah, Alexis Ré) [us] | 56:19 Abbey Olexa (Taylor White, Maddie Levy) [us]"
+2025,2025-11-20,West Virginia,Georgetown,A,,T,1,1,14,8,13,7,2,6,6,4,"02:27 Ajanae Respass (Taylor White) [us] | 22:26 Lizzie Heller (Mary Cochran, Maja Lardner) [them]"
+2026,2026-08-12,Arizona,Grand Canyon,A,,L,0,2,9,2,10,3,7,1,1,12,46:43 Sabrina Guzman (Amanda Adams) [them] | 54:58 Sophia Rubano [them]
+2026,2026-08-15,Arizona,New Mexico State,H,,W,2,0,19,10,3,1,4,0,1,5,50:58 Jessica Bedolla [us] | 65:25 Lainey Swanson (Ashley May) [us]
+2026,2026-08-20,Arizona,Gonzaga,A,,W,2,1,12,7,8,5,1,4,4,15,28:22 Samantha Snorsky [them] | 67:06 MIreya Stephenson (Whitney Reinhardt) [us] | 72:55 MIreya Stephenson (Lily Boydstun) [us]
+2026,2026-08-30,Arizona,LSU,H,,T,1,1,13,2,6,2,4,3,1,9,43:30 Ava Galligan (Senai Rogers) [them] | 67:28 Kyleigh Johnson (Allyson Brown) [us]
+2026,2026-09-03,Arizona,North Carolina,H,,L,1,2,5,4,19,9,3,5,7,14,48:07 Summer Denigan [them] | 75:10 Bella Devey (Riley Kennedy) [them] | 79:12 Jessica Bedolla (Lainey Swanson) [us]
+2026,2026-09-06,Arizona,Dartmouth,H,,L,0,1,14,5,1,1,6,2,0,6,12:29 Michal Cagungun [them]
+2026,2026-09-10,Arizona,Northern Ariz.,H,,W,3,0,19,8,9,3,5,4,3,13,"11:50 Ella Weathersby (Jessica Bedolla) [us] | 43:38 Kyleigh Johnson [us] | 72:46 Allyson Brown (Kyleigh Johnson, Emerson Stoft) [us]"
+2026,2026-09-13,Arizona,Pepperdine,A,,L,0,2,8,4,12,5,10,4,3,14,02:30 Julia Quinonez (Alex Pendleton) [them] | 29:14 Julia Quinonez [them]
+2026,2026-09-18,Arizona,BYU,H,Y,T,1,1,6,3,18,5,2,3,4,11,"50:31 Mia Goettsche (Mika Krommenhoek, Camryn Jorgensen) [them] | 84:40 Lainey Swanson (Shanti Weddington) [us]"
+2026,2026-09-24,Arizona,Kansas State,A,Y,T,1,1,10,3,20,9,4,6,8,9,54:40 Gabby DeMers (McKinnan Braswell) [them] | 57:14 Allyson Brown (Lainey Swanson) [us]
+2026,2026-09-27,Arizona,Kansas,A,Y,L,0,2,1,1,12,4,1,5,2,9,"81:05 Jillian Gregorski (Caroline Castans, Livvy Moore) [them] | 83:37 Jillian Gregorski (Norah Jacomen) [them]"
+2026,2026-10-02,Arizona,Oklahoma State,A,Y,T,3,3,16,6,17,3,4,3,0,8,"18:22 Emmy Hedden [them] | 23:32 MIreya Stephenson (Zoe Mendiola, Marissa Arnst) [us] | 44:45 Emily Senatore (Ellie Geoffroy) [them] | 47:47 Lily Boydstun [us] | 49:43 Sonora De Fini (Aubrey Wagner, Emmy Hedden) [them] | 86:35 Ella Weathersby [us]"
+2026,2026-10-08,Arizona,Houston,H,Y,W,1,0,10,6,9,1,5,3,1,8,74:12 Lily Boydstun [us]
+2026,2026-10-11,Arizona,Iowa State,H,Y,W,2,1,11,6,12,8,6,1,7,9,24:22 Lainey Swanson (MIreya Stephenson) [us] | 52:50 Megan Walters [them] | 72:10 Kyleigh Johnson (Ella Weathersby) [us]
+2026,2026-10-16,Arizona,Utah,A,Y,T,0,0,5,2,12,4,2,4,4,10,
+2026,2026-10-22,Arizona,Colorado,H,Y,L,0,4,5,0,13,6,4,8,2,10,"21:30 Reagan Kotschau [them] | 23:56 Michaela McGowan (Sloane Phillips, Jace Holley) [them] | 54:15 Jace Holley [them] | 74:07 Faith Leyba (Reagan Kotschau) [them]"
+2026,2026-10-25,Arizona,Baylor,H,Y,L,2,3,9,4,14,7,3,3,4,10,00:26 Callie Conrad [them] | 16:09 Lainey Swanson (Lily Boydstun) [us] | 18:17 Lainey Swanson (Allyson Brown) [us] | 44:10 Sydney Miller [them] | 46:01 Lauren Omholt (Aryanna Jimison) [them]
+2026,2026-10-30,Arizona,Arizona State,A,Y,L,0,1,9,3,22,8,1,4,7,3,"65:12 Kierra Blundell (Gator DeMark, Amy Medley) [them]"
+2026,2026-11-05,Arizona,TCU,A,Y,T,1,1,7,3,18,7,0,6,6,6,47:43 Ella Weathersby (MIreya Stephenson) [us] | 73:49 Cameron Patton [them]
+2026,2026-08-12,Arizona State,New Mexico State,A,,W,3,1,13,5,3,3,8,2,2,8,44:04 Miki Hayashi [us] | 79:57 Kierra Blundell (PK) [us] | 84:04 Ava Willard Maja Madon Assisted by: Kierra Blundell [us]
+2026,2026-08-20,Arizona State,Texas,H,,T,1,1,9,3,14,5,5,3,4,9,29:47 Lucy Fazackerley Assisted by: Addison Baltodano [us]
+2026,2026-08-23,Arizona State,Buffalo,H,,W,5,0,25,12,9,4,8,4,4,3,24:57 Ella Kettles Assisted by: Sierra Bergen [us] | 36:26 Jenna Whinney Bela Puccinelli Assisted by: Sierra Bergen [us] | 43:47 Jenna Whinney (PK) [us] | 66:14 Jenna Whinney Bela Puccinelli Assisted by: Maja Madon [us]
+2026,2026-08-27,Arizona State,LSU,H,,W,1,0,15,1,10,3,8,1,3,15,
+2026,2026-08-30,Arizona State,Cal Poly,H,,W,2,0,14,6,5,1,6,2,1,8,81:58 Lucy Fazackerley Mya Angus Assisted by: Emmie Ennis [us]
+2026,2026-09-03,Arizona State,Dartmouth,H,,T,1,1,18,5,4,3,8,0,2,13,89:59 Sierra Bergen Kierra Blundell Assisted by: Amy Medley [us]
+2026,2026-09-06,Arizona State,North Carolina,H,,L,0,1,3,1,4,2,2,6,1,12,
+2026,2026-09-11,Arizona State,Grambling,H,,W,8,0,40,20,5,2,14,0,2,6,19:07 Emmie Ennis Peyton Marcisz Assisted by: Mya Angus [us] | 28:02 Peyton Marcisz Assisted by: Mya Angus [us] | 36:58 Lucy Fazackerley Assisted by: Addison Baltodano [us] | 47:55 Sierra Bergen Assisted by: Amy Medley [us] | 56:35 Peyton Marcisz Emmie Ennis Assisted by: Amy Medley [us] | 71:56 Ella Kettles Assisted by: May Balmer [us] | 83:13 Kierra Blundell Assisted by: Addison Baltodano [us]
+2026,2026-09-18,Arizona State,Utah,H,Y,W,3,1,15,7,13,6,5,4,5,9,"11:18 Kierra Blundell (Mya Angus) [us] | 35:33 Reese Clem (Sophie Bellini, Brooke Gardner) [them] | 42:19 Bela Puccinelli (Miki Hayashi) [us] | 67:41 Kierra Blundell [us]"
+2026,2026-09-24,Arizona State,Kansas,A,Y,L,0,2,7,2,12,5,4,5,3,14,32:05 Jocelyn Herrema (Livvy Moore) [them] | 53:42 Caroline Castans (Livvy Moore) [them]
+2026,2026-09-27,Arizona State,Kansas State,A,Y,W,2,0,10,4,16,9,5,5,9,10,08:58 Peyton Marcisz [us] | 22:53 Kierra Blundell (Peyton Marcisz) [us]
+2026,2026-10-02,Arizona State,Texas Tech,A,Y,L,0,2,5,4,20,6,1,8,4,11,40:50 Lauren Alvarez [them] | 77:07 Kaitlyn Giametta [them]
+2026,2026-10-08,Arizona State,Iowa State,H,Y,T,1,1,29,13,4,2,10,0,1,11,"17:47 Mya Angus (Lucy Fazackerley, Amy Medley) [us] | 31:02 Alaina Villa (Allison Charleston, Izzy Kapanke) [them]"
+2026,2026-10-11,Arizona State,Houston,H,Y,L,2,3,15,4,17,8,8,2,5,11,"01:47 Sierra Bergen (Kierra Blundell, Mya Angus) [us] | 02:23 Jocelyn Chinea (Samira Minor) [them] | 24:57 Adelhia Ghonda [them] | 30:19 Ava Shannon [them] | 82:21 Kierra Blundell [us]"
+2026,2026-10-16,Arizona State,Oklahoma State,A,Y,W,2,1,12,5,17,7,4,6,6,9,"20:06 Sierra Bergen (Lucy Fazackerley, Miki Hayashi) [us] | 81:24 Gator DeMark (Amy Medley, Ella Kettles) [us] | 89:10 Laudan Wilson [them]"
+2026,2026-10-22,Arizona State,Baylor,H,Y,L,0,2,15,5,21,7,6,6,5,7,56:30 Theresa McCullough (Olivia Hess) [them] | 81:30 Aryanna Jimison (Brynnlee Bohannon) [them]
+2026,2026-10-25,Arizona State,Colorado,H,Y,L,0,2,14,7,20,9,5,5,7,9,32:11 Hope Leyba (Jordan Whiteaker) [them] | 61:11 Faith Leyba (Caley Swierenga) [them]
+2026,2026-10-30,Arizona State,Arizona,H,Y,W,1,0,22,8,9,3,4,1,3,6,"65:12 Kierra Blundell (Gator DeMark, Amy Medley) [us]"
+2026,2026-11-05,Arizona State,BYU,A,Y,L,0,1,7,3,21,6,2,4,5,14,
+2026,2026-08-12,Baylor,Arkansas,A,,W,4,1,15,10,7,3,3,2,2,10,"15:54 Lauren Omholt [us] | 55:05 Callie Conrad (Brynnlee Bohannon, Natalie Vatter) [us] | 63:22 Olivia Hess (Theresa McCullough) [us] | 65:42 Noelle Sather [us] | 67:40 Aniyah Nurse-Whyte (Jordyn Bryant) [them]"
+2026,2026-08-16,Baylor,Texas A&M,H,,W,2,1,19,7,7,2,3,2,1,12,"06:38 Callie Conrad (Brynnlee Bohannon, Lauren Omholt) [us] | 31:11 Grace White (Aryanna Jimison, Theresa McCullough) [us] | 44:14 Finley Lacher (Riley Crooks) [them]"
+2026,2026-08-23,Baylor,Texas State,H,,L,1,3,16,5,9,5,8,1,2,12,01:42 Matsuri Tsutsui [them] | 01:52 Lauren Omholt (Olivia Hess) [us] | 55:59 Helen Alormenu (Ava Kooker) [them] | 71:52 Helen Alormenu [them]
+2026,2026-08-27,Baylor,Texas,A,,W,2,1,16,4,17,9,2,8,8,15,"15:44 Callan Harrington (Ava McDonald, Hannah Tate) [them] | 32:00 Aryanna Jimison [us] | 74:40 Theresa McCullough [us]"
+2026,2026-08-30,Baylor,Pepperdine,H,,W,3,1,11,4,9,4,1,6,3,9,"01:09 Grace White (Callie Conrad, Lauren Omholt) [us] | 05:14 Julia Quinonez [them] | 70:30 Lauren Omholt (Theresa McCullough, Brynnlee Bohannon) [us] | 85:20 Brynnlee Bohannon (Theresa McCullough, Aryanna Jimison) [us]"
+2026,2026-09-03,Baylor,LSU,A,,W,2,0,9,2,11,3,4,2,3,15,"34:27 Grace White (Sydney Miller, Kate Runyon) [us] | 78:22 Theresa McCullough (Kate Runyon, Olivia Hess) [us]"
+2026,2026-09-10,Baylor,Marquette,H,,W,1,0,14,8,8,1,4,2,1,12,43:42 Aryanna Jimison [us]
+2026,2026-09-13,Baylor,Oral Roberts,A,,W,2,1,14,10,10,6,10,3,5,11,"40:45 Grace White (Olivia Hess) [us] | 79:25 Brianna Castleberry [them] | 80:46 Aryanna Jimison (Callie Conrad, Sydney Miller) [us]"
+2026,2026-09-18,Baylor,West Virginia,A,Y,T,1,1,4,1,20,7,3,6,6,7,"77:51 Lauren Omholt (Aryanna Jimison, Callie Conrad) [us] | 89:42 Saige Wimes (Anna Hauer) [them]"
+2026,2026-09-24,Baylor,Oklahoma State,H,Y,W,2,1,19,8,9,5,8,1,4,8,"04:00 Laudan Wilson (Sonora De Fini) [them] | 11:30 Aryanna Jimison (Olivia Hess, Theresa McCullough) [us] | 55:42 Noelle Sather (Sydney Miller) [us]"
+2026,2026-09-27,Baylor,Cincinnati,H,Y,W,2,1,21,5,12,4,4,3,3,4,"36:28 Noelle Sather (Olivia Hess) [us] | 48:54 Lauren Omholt (Olivia Hess) [us] | 72:13 Joy Kimwemwe (Ava Hendrick, Jade Dubois) [them]"
+2026,2026-10-02,Baylor,Kansas,H,Y,W,3,1,11,9,21,6,1,11,5,6,"44:14 Aryanna Jimison [us] | 46:17 Aryanna Jimison (Sydney Miller, Theresa McCullough) [us] | 67:42 Brynnlee Bohannon (Olivia Hess, Theresa McCullough) [us] | 89:36 Jillian Gregorski (Livvy Moore) [them]"
+2026,2026-10-08,Baylor,Colorado,A,Y,L,0,3,7,6,13,7,2,4,4,7,"11:08 Hope Leyba (Reagan Kotschau, Berkley Mensik) [them] | 42:58 Hope Leyba (Reagan Kotschau, Jace Holley) [them] | 67:04 Jace Holley (Sloane Phillips, Lexi Meyer) [them]"
+2026,2026-10-11,Baylor,Kansas State,H,Y,W,3,2,18,6,12,5,5,3,3,5,34:13 Adelle Francis (Alix Regier) [them] | 65:51 Noelle Sather [us] | 70:57 Adelle Francis (Alix Regier) [them] | 73:46 Grace White (Brynnlee Bohannon) [us] | 76:27 Theresa McCullough (Sydney Miller) [us]
+2026,2026-10-16,Baylor,TCU,H,Y,W,1,0,14,5,12,7,4,8,7,7,25:43 Aryanna Jimison [us]
+2026,2026-10-22,Baylor,Arizona State,A,Y,W,2,0,21,7,15,5,6,6,5,7,56:30 Theresa McCullough (Olivia Hess) [us] | 81:30 Aryanna Jimison (Brynnlee Bohannon) [us]
+2026,2026-10-25,Baylor,Arizona,A,Y,W,3,2,14,7,9,4,3,3,2,5,00:26 Callie Conrad [us] | 16:09 Lainey Swanson (Lily Boydstun) [them] | 18:17 Lainey Swanson (Allyson Brown) [them] | 44:10 Sydney Miller [us] | 46:01 Lauren Omholt (Aryanna Jimison) [us]
+2026,2026-10-30,Baylor,Texas Tech,A,Y,L,0,1,12,3,17,8,6,11,7,4,76:00 Gianna Gregoire [them]
+2026,2026-11-05,Baylor,Houston,H,Y,W,2,1,16,7,16,2,5,7,1,11,15:29 Lauren Omholt [us] | 54:10 Noelle Sather [us] | 61:28 Bailey Cate (Samira Minor) [them]
+2026,2026-11-09,Baylor,Houston,H,,W,1,0,11,4,15,4,7,7,4,10,81:13 Natalie Vatter (Theresa McCullough) [us]
+2026,2026-11-11,Baylor,Texas Tech,A,,W,2,1,13,3,23,7,6,6,6,8,15:52 Taylor Zdrojewski (Raleigh Greason) [them] | 60:12 Aryanna Jimison (Theresa McCullough) [us] | 104:50 Grace White (Sydney Miller) [us]
+2026,2026-11-14,Baylor,BYU,A,,L,2,3,16,4,19,6,5,7,3,10,"25:37 Mattyn Summers-Oviatt (Lucy Kesler) [them] | 45:50 Bella Woods [them] | 54:22 Noelle Sather (Aryanna Jimison, Theresa McCullough) [us] | 75:53 Mattyn Summers-Oviatt [them] | 78:09 Lauren Omholt (Nyela Calnek) [us]"
+2026,2026-11-20,Baylor,Lamar University,H,,W,3,0,27,16,6,2,7,3,2,3,"01:35 Lauren Omholt (Aryanna Jimison, Callie Conrad) [us] | 26:57 Brynnlee Bohannon (Lauren Omholt, Aryanna Jimison) [us] | 87:02 Aryanna Jimison (Sydney Miller, Noelle Sather) [us]"
+2026,2026-08-12,BYU,UCLA,A,,W,2,1,14,7,10,3,4,2,2,13,41:59 Mattyn Summers-Oviatt [us] | 59:23 Brynnli Tolbert [us]
+2026,2026-08-19,BYU,Wisconsin,A,,L,0,1,12,4,9,3,4,7,2,10,
+2026,2026-08-22,BYU,Southern California,H,,W,2,0,12,5,11,5,7,4,5,8,83:38 Emma Hamberlin Assisted by: Afton Perry [us]
+2026,2026-08-27,BYU,Minnesota,H,,W,1,0,12,5,4,1,7,3,1,5,
+2026,2026-09-03,BYU,Colorado State,H,,W,2,1,19,5,11,5,10,3,4,11,51:33 Emma Hamberlin Assisted by: Presley Freeman [us] | 56:37 Hadley Delaney [them]
+2026,2026-09-05,BYU,Oklahoma,H,,T,1,1,15,4,10,6,16,4,5,6,83:36 Sophie Sivulich [us]
+2026,2026-09-10,BYU,Utah State,A,,L,0,4,9,2,22,6,3,6,2,7,47:51 Summer Diamond Assisted by: Rachel Reitz [them] | 67:07 Solena Sellers Assisted by: Austin Miller [them] | 87:43 Mia Lopez Victoria Espinoza Assisted by: Capriel Winder [them]
+2026,2026-09-18,BYU,Arizona,A,Y,T,1,1,18,5,6,3,3,2,2,10,"50:31 Mia Goettsche (Mika Krommenhoek, Camryn Jorgensen) [us] | 84:40 Lainey Swanson (Shanti Weddington) [them]"
+2026,2026-09-24,BYU,UCF,H,Y,W,3,1,24,9,7,2,8,1,1,3,12:44 Maria Tregansin Naomi Clark Assisted by: Ainsley Moy [them] | 69:27 Afton Perry Assisted by: Mika Krommenhoek [us] | 77:47 Mika Krommenhoek Assisted by: Lucy Kesler [us]
+2026,2026-09-28,BYU,TCU,H,Y,W,2,0,15,3,5,2,9,4,2,9,"65:29 Emma Hamberlin (Anna Neff, Afton Perry) [us] | 81:45 Sophie Sivulich [us]"
+2026,2026-10-02,BYU,Kansas State,H,Y,W,2,1,21,11,9,3,15,5,2,6,42:29 Adelle Francis (Lauren Moylan) [them] | 52:34 Afton Perry (Lucy Kesler) [us] | 60:55 Bella Woods [us]
+2026,2026-10-08,BYU,West Virginia,A,Y,L,0,2,19,9,9,5,6,5,3,7,"47:43 Sophia Nickel (Maya Leoni, Saige Wimes) [them] | 80:20 Sophia Nickel [them]"
+2026,2026-10-12,BYU,Cincinnati,A,Y,W,1,0,15,6,11,4,8,5,4,11,
+2026,2026-10-16,BYU,Texas Tech,H,Y,W,3,2,13,5,14,6,5,4,4,11,"00:46 Taylor Zdrojewski [them] | 16:57 Mia Goettsche (Emma Hamberlin, Mika Krommenhoek) [us] | 43:53 Mattyn Summers-Oviatt (Sydney Snow, Presley Freeman) [us] | 56:24 Mattyn Summers-Oviatt (Mika Krommenhoek) [us] | 70:02 Taylor Zdrojewski (Raleigh Greason) [them]"
+2026,2026-10-22,BYU,Kansas,A,Y,T,1,1,14,8,17,3,5,8,2,10,16:43 Emma Hamberlin (Mika Krommenhoek) [us] | 81:26 Jordan Rowan (Marit McLaughlin) [them]
+2026,2026-10-26,BYU,Iowa State,A,Y,W,3,0,24,11,3,2,9,3,2,8,"24:05 Avery Frischknecht (Sophie Sivulich) [us] | 74:45 Presley Freeman (Afton Perry) [us] | 76:07 Mattyn Summers-Oviatt (Emma Hamberlin, Emma Neff) [us]"
+2026,2026-10-30,BYU,Utah,H,Y,W,3,1,13,6,14,4,5,4,3,6,"01:04 Mika Krommenhoek (Afton Perry, Presley Freeman) [us] | 57:06 Mia Goettsche (Avery Frischknecht, Sydney Snow) [us] | 69:15 Mia Goettsche (Kyleigh Hastings, Sydney Snow) [us] | 75:18 Kori Pickelle (Reese Kennel) [them]"
+2026,2026-11-05,BYU,Arizona State,H,Y,W,1,0,21,6,7,3,4,2,3,9,
+2026,2026-11-09,BYU,West Virginia,H,,T,1,1,11,4,24,5,6,4,4,11,"13:18 Sophie Sivulich (Lucy Kesler, Mia Goettsche) [us] | 89:52 Maya Leoni [them]"
+2026,2026-11-11,BYU,Colorado,H,,T,1,1,26,4,15,7,9,6,6,9,"06:47 Hope Leyba (Jordan Whiteaker) [them] | 19:14 Mia Goettsche (Sophie Sivulich, Emma Neff) [us]"
+2026,2026-11-14,BYU,Baylor,H,,W,3,2,19,6,16,4,7,5,2,6,"25:37 Mattyn Summers-Oviatt (Lucy Kesler) [us] | 45:50 Bella Woods [us] | 54:22 Noelle Sather (Aryanna Jimison, Theresa McCullough) [them] | 75:53 Mattyn Summers-Oviatt [us] | 78:09 Lauren Omholt (Nyela Calnek) [them]"
+2026,2026-11-20,BYU,Weber State,H,,W,4,3,11,5,18,8,5,4,5,15,10:18 Mattyn Summers-Oviatt Assisted by: Sophie Sivulich [us] | 21:09 Mia Goettsche Assisted by: Emma Neff [us] | 44:42 Cloe Baugh [them] | 51:11 Simone Packer (PK) [them] | 65:55 Lily Blum Assisted by: Sayler Schlosser [them] | 89:50 Presley Freeman Mia Goettsche Assisted by: Ella Rustand-Ford [us]
+2026,2026-08-12,Cincinnati,Eastern Kentucky,H,,W,3,0,15,9,3,1,6,2,1,12,32:34 Tiana Campbell [us] | 88:16 Tiana Campbell Assisted by: Lexi OShea [us]
+2026,2026-08-20,Cincinnati,Illinois,A,,L,1,2,5,3,12,3,3,4,1,10,53:32 Cayla Jackson Assisted by: Alyssa White [them] | 85:38 Cayla Jackson Hedda Ornberg Assisted by: Ashlyn Adams [them]
+2026,2026-08-23,Cincinnati,Bowling Green,H,,T,0,0,5,4,4,2,2,5,2,7,
+2026,2026-08-30,Cincinnati,Ball State,A,,L,0,1,10,3,3,2,6,2,1,10,
+2026,2026-09-03,Cincinnati,Central Mich.,A,,T,1,1,17,7,6,3,8,2,2,9,77:28 Bryana Gaynor [us]
+2026,2026-09-06,Cincinnati,Northern Kentucky,A,,W,2,1,14,4,8,4,5,5,3,3,66:24 Macey Blanton [them] | 72:29 Tiana Campbell [us]
+2026,2026-09-13,Cincinnati,Eastern Ill.,H,,T,0,0,15,5,2,2,5,1,2,12,
+2026,2026-09-18,Cincinnati,Kansas,H,Y,T,1,1,3,2,14,10,0,3,9,14,65:35 Faith Johnston [them] | 81:31 Tiana Campbell (Emma Gioffre) [us]
+2026,2026-09-24,Cincinnati,Texas Tech,A,Y,L,0,2,6,2,16,8,3,4,6,14,"34:03 Kaitlyn Giametta [them] | 54:45 Taylor Zdrojewski (Emma Torres, Kylie Bahr) [them]"
+2026,2026-09-27,Cincinnati,Baylor,A,Y,L,1,2,12,4,21,5,3,4,3,5,"36:28 Noelle Sather (Olivia Hess) [them] | 48:54 Lauren Omholt (Olivia Hess) [them] | 72:13 Joy Kimwemwe (Ava Hendrick, Jade Dubois) [us]"
+2026,2026-10-02,Cincinnati,TCU,A,Y,L,0,2,5,2,13,6,3,7,4,10,"48:24 Emma Yolinsky (Giovanna Costanzo, Eres Freifeld) [them] | 73:01 Emma Yolinsky (Bella Diorio, Kamdyn Fuller) [them]"
+2026,2026-10-08,Cincinnati,Utah,H,Y,W,1,0,6,4,9,5,4,6,5,18,72:08 Brooklynn Schomaker (Dru Dorsey) [us]
+2026,2026-10-12,Cincinnati,BYU,H,Y,L,0,1,11,4,15,6,5,8,5,12,
+2026,2026-10-16,Cincinnati,Houston,H,Y,T,1,1,6,5,11,5,7,7,4,11,"07:09 Ella Morgan (Ava Shannon) [them] | 26:08 Tiana Campbell (Coley Sidloski, Amber Brandon) [us]"
+2026,2026-10-22,Cincinnati,UCF,A,Y,L,0,3,7,1,12,6,7,5,3,12,68:16 Katsi Bengoa Assisted by: Naomi Clark [them] | 70:34 Gabi Berchon [them]
+2026,2026-10-25,Cincinnati,Kansas State,H,Y,W,1,0,10,3,9,4,8,5,4,12,09:42 Tiana Campbell (Coley Sidloski) [us]
+2026,2026-10-30,Cincinnati,Colorado,A,Y,L,0,1,2,1,15,2,7,6,1,10,79:24 Michaela McGowan (Hope Leyba) [them]
+2026,2026-11-05,Cincinnati,West Virginia,H,Y,T,0,0,9,3,16,6,5,4,6,8,
+2026,2026-08-12,Colorado,Colorado State,H,,W,2,1,21,9,10,5,8,2,4,6,"15:48 Reagan Kotschau (Hope Leyba, Sloane Phillips) [us] | 66:04 Ava Wallhead (Kaja Dionne) [them] | 76:09 Lilian Zamorano [us]"
+2026,2026-08-16,Colorado,Army West Point,H,,W,6,0,21,15,0,0,8,0,0,10,07:22 Hope Leyba (Reagan Kotschau) [us] | 18:56 Michaela McGowan (Ruby Hayward) [us] | 28:14 Reagan Kotschau [us] | 28:32 Michaela McGowan (Vivi Zacarias) [us] | 48:47 Sloane Phillips [us] | 89:05 Sienna McAthy [us]
+2026,2026-08-20,Colorado,Cal State Fullerton,H,,W,3,2,22,8,9,6,10,7,4,7,"07:55 Michaela McGowan [us] | 08:16 Cassie Villanueva [them] | 27:46 Ruby Hayward (Emma Thielbahr, Hope Leyba) [us] | 52:59 Reagan Kotschau (Berkley Mensik) [us] | 79:58 Mia LaRosa (Ionare Vee) [them]"
+2026,2026-08-27,Colorado,Western Mich.,A,,T,0,0,13,7,8,3,5,5,3,11,
+2026,2026-08-30,Colorado,Michigan State,A,,L,2,3,12,6,18,6,2,11,4,12,"20:26 0 [them] | 24:53 Emerson Sargeant (Faith George, Kennedy Bell) [them] | 32:00 Emerson Sargeant (Kennedy Bell) [them] | 57:09 Reagan Kotschau (Lexi Meyer) [us] | 76:21 Hope Leyba (Faith Leyba, Emma Thielbahr) [us]"
+2026,2026-09-03,Colorado,New Mexico,H,,W,3,0,21,13,10,5,10,1,5,7,"07:06 Ruby Hayward (Hope Leyba, Caley Swierenga) [us] | 13:37 Emma Thielbahr (Faith Leyba, Reagan Kotschau) [us] | 66:49 Michaela McGowan [us]"
+2026,2026-09-06,Colorado,Utah State,H,,W,2,0,15,7,16,7,12,3,7,10,10:51 Reagan Kotschau [us] | 63:33 Hope Leyba (Reagan Kotschau) [us]
+2026,2026-09-11,Colorado,Denver,H,,W,6,0,23,17,3,1,6,1,1,4,"09:47 Michaela McGowan (Ruby Hayward) [us] | 33:11 Hope Leyba (Reagan Kotschau) [us] | 44:56 Berkley Mensik (Jordan Whiteaker, Sienna McAthy) [us] | 53:21 Hope Leyba (Reagan Kotschau) [us] | 59:51 Hope Leyba (Michaela McGowan, Jordan Whiteaker) [us] | 74:36 Hannah Healy [us]"
+2026,2026-09-17,Colorado,Iowa State,A,Y,W,1,0,13,7,8,3,4,0,3,11,40:16 Reagan Kotschau [us]
+2026,2026-09-24,Colorado,West Virginia,H,Y,W,2,0,13,9,9,3,3,4,3,9,"35:58 Hope Leyba (Sloane Phillips, Reagan Kotschau) [us] | 68:37 Reagan Kotschau [us]"
+2026,2026-09-27,Colorado,Texas Tech,A,Y,L,1,3,20,10,14,7,7,5,5,7,36:49 Emma Thielbahr [us] | 47:08 Raleigh Greason (Emma Torres) [them] | 54:12 Taylor Zdrojewski (Millie Elwood) [them] | 69:23 0 [them]
+2026,2026-10-02,Colorado,UCF,A,Y,L,0,2,8,4,14,10,3,4,8,12,13:26 Alysiah Lockette (Kalena Bellini) [them] | 50:48 Naomi Clark [them]
+2026,2026-10-08,Colorado,Baylor,H,Y,W,3,0,13,7,7,6,4,2,6,4,"11:08 Hope Leyba (Reagan Kotschau, Berkley Mensik) [us] | 42:58 Hope Leyba (Reagan Kotschau, Jace Holley) [us] | 67:04 Jace Holley (Sloane Phillips, Lexi Meyer) [us]"
+2026,2026-10-11,Colorado,Kansas,H,Y,L,0,1,13,3,12,3,3,4,2,8,83:51 Marit McLaughlin (Jordan Rowan) [them]
+2026,2026-10-16,Colorado,Kansas State,A,Y,W,3,2,13,5,18,10,3,2,8,14,18:57 Emma Thielbahr (Reagan Kotschau) [us] | 20:32 Gabby DeMers (Chloe Dillbeck) [them] | 21:34 Reagan Kotschau [us] | 46:44 Allison Marshall (Gabby DeMers) [them] | 59:59 Lilian Zamorano (Sloane Phillips) [us]
+2026,2026-10-22,Colorado,Arizona,A,Y,W,4,0,13,6,5,0,8,4,0,9,"21:30 Reagan Kotschau [us] | 23:56 Michaela McGowan (Sloane Phillips, Jace Holley) [us] | 54:15 Jace Holley [us] | 74:07 Faith Leyba (Reagan Kotschau) [us]"
+2026,2026-10-25,Colorado,Arizona State,A,Y,W,2,0,20,9,14,7,5,5,7,5,32:11 Hope Leyba (Jordan Whiteaker) [us] | 61:11 Faith Leyba (Caley Swierenga) [us]
+2026,2026-10-30,Colorado,Cincinnati,H,Y,W,1,0,15,2,2,1,6,7,1,7,79:24 Michaela McGowan (Hope Leyba) [us]
+2026,2026-11-05,Colorado,Oklahoma State,H,Y,W,5,0,20,11,14,6,9,3,6,12,"15:42 Jace Holley (Reagan Kotschau, Sloane Phillips) [us] | 23:08 Sloane Phillips [us] | 42:32 Kai Santomarco-King (Sloane Phillips) [us] | 48:27 Faith Leyba (Reagan Kotschau) [us] | 69:03 Reagan Kotschau [us]"
+2026,2026-11-09,Colorado,Kansas,H,,W,2,1,12,6,15,6,4,8,5,10,"60:03 Jocelyn Herrema (Kate Langfelder, Lydia Viets) [them] | 71:15 Hope Leyba (Kai Santomarco-King) [us] | 88:53 Reagan Kotschau (Faith Leyba, Hope Leyba) [us]"
+2026,2026-11-11,Colorado,BYU,A,,T,1,1,15,7,26,4,6,9,3,6,"06:47 Hope Leyba (Jordan Whiteaker) [us] | 19:14 Mia Goettsche (Sophie Sivulich, Emma Neff) [them]"
+2026,2026-11-20,Colorado,Air Force,H,,W,3,0,25,12,4,2,6,1,2,6,"10:39 0 [us] | 25:33 Hope Leyba (Jordan Whiteaker, Faith Leyba) [us] | 88:30 Reagan Kotschau (Caley Swierenga) [us]"
+2026,2026-08-12,Houston,FGCU,A,,T,0,0,13,4,9,3,4,7,3,6,
+2026,2026-08-20,Houston,Northwestern State,H,,W,5,0,22,15,2,2,9,2,2,8,"01:30 Samira Minor (Skylar Miller, Blake Hodgson) [us] | 25:01 Danielle Shannon [us] | 28:18 Samira Minor [us] | 49:33 Bailey Cate [us] | 57:03 Skylar Miller (Danielle Shannon, Laney Gonzales) [us]"
+2026,2026-08-23,Houston,Tarleton State,H,,W,4,1,27,11,9,5,9,3,4,6,"17:07 Bailey Cate [us] | 50:24 Skylar Miller (Jada Arthurs, Blake Hodgson) [us] | 60:31 Elle Sloan (Laney Gonzales) [us] | 67:58 Adelhia Ghonda [us] | 86:39 Naomi Langille (Peyton Bryant) [them]"
+2026,2026-08-27,Houston,Abilene Christian,A,,T,0,0,20,8,7,2,10,4,2,10,
+2026,2026-08-30,Houston,Vanderbilt,H,,L,1,2,6,5,18,7,5,5,5,11,"08:15 Bailey Cate (Skylar Miller, Jocelyn Chinea) [us] | 46:29 Sydney Watts [them] | 66:11 Sydney Watts (Lena Tusche) [them]"
+2026,2026-09-03,Houston,Memphis,A,,T,1,1,5,3,21,10,1,11,9,5,09:13 Ellis Kelly (Abby Forsgren) [them] | 17:43 Adelhia Ghonda [us]
+2026,2026-09-10,Houston,Sam Houston,H,,W,5,0,27,11,5,0,6,0,0,13,13:40 Skylar Miller (Jada Arthurs) [us] | 17:53 Skylar Miller [us] | 40:20 Bailey Cate (Elle Sloan) [us] | 48:12 Skylar Miller (Casey Maddox) [us] | 82:11 Madyson Bentil (Ava Shannon) [us]
+2026,2026-09-13,Houston,Texas Southern,H,,W,6,0,21,14,2,1,5,1,1,6,24:11 Bailey Cate [us] | 31:05 Samira Minor [us] | 34:54 Jada Arthurs (Elle Sloan) [us] | 47:34 Alex Ledbetter (Bailey Cate) [us] | 48:52 Casey Maddox [us] | 72:11 0 [us]
+2026,2026-09-18,Houston,Kansas State,A,Y,W,3,0,20,5,19,3,13,4,3,15,13:15 Samira Minor [us] | 67:01 Ella Morgan (Laney Gonzales) [us] | 69:56 Adelhia Ghonda (Danielle Shannon) [us]
+2026,2026-09-24,Houston,Iowa State,H,Y,W,2,1,21,9,5,2,5,2,1,9,"17:54 Lucy Froitzheim (Sophie Forrester, Erin Hopewell) [them] | 67:57 Laney Gonzales [us] | 72:54 Bailey Cate (Laney Gonzales) [us]"
+2026,2026-09-27,Houston,Oklahoma State,H,Y,W,1,0,11,4,7,0,6,4,0,10,"40:44 Skylar Miller (Morgan Donohue, Peyton Machado) [us]"
+2026,2026-10-02,Houston,West Virginia,H,Y,L,0,2,17,5,13,9,1,6,7,0,"62:54 Sophia Nickel (Abbey Olexa, Olivia Shertzer) [them] | 72:11 Olivia Shertzer [them]"
+2026,2026-10-08,Houston,Arizona,A,Y,L,0,1,9,1,10,6,3,5,5,16,74:12 Lily Boydstun [them]
+2026,2026-10-11,Houston,Arizona State,A,Y,W,3,2,17,8,15,4,2,8,2,14,"01:47 Sierra Bergen (Kierra Blundell, Mya Angus) [them] | 02:23 Jocelyn Chinea (Samira Minor) [us] | 24:57 Adelhia Ghonda [us] | 30:19 Ava Shannon [us] | 82:21 Kierra Blundell [them]"
+2026,2026-10-16,Houston,Cincinnati,A,Y,T,1,1,11,5,6,5,7,7,4,11,"07:09 Ella Morgan (Ava Shannon) [us] | 26:08 Tiana Campbell (Coley Sidloski, Amber Brandon) [them]"
+2026,2026-10-22,Houston,TCU,H,Y,W,2,0,11,8,9,2,0,1,2,11,"19:05 Jada Arthurs (Bailey Cate, Samira Minor) [us] | 64:32 Ava Shannon (Adelhia Ghonda) [us]"
+2026,2026-10-25,Houston,UCF,A,Y,W,1,0,9,5,7,3,9,3,3,16,11:20 Bailey Cate (Jada Arthurs) [us]
+2026,2026-10-30,Houston,Kansas,H,Y,W,2,0,9,6,8,2,3,11,2,10,46:43 Ella Morgan (Skylar Miller) [us] | 78:37 Ava Shannon [us]
+2026,2026-11-05,Houston,Baylor,A,Y,L,1,2,16,2,16,7,7,5,5,13,15:29 Lauren Omholt [them] | 54:10 Noelle Sather [them] | 61:28 Bailey Cate (Samira Minor) [us]
+2026,2026-11-09,Houston,Baylor,A,,L,0,1,15,4,11,4,7,7,3,8,81:13 Natalie Vatter (Theresa McCullough) [them]
+2026,2026-11-20,Houston,Texas,A,,W,4,3,21,11,14,6,8,5,3,9,"11:53 Caroline Swann (Sadie Hoch) [them] | 17:14 Audrey Bryant [them] | 25:23 Morgan Donohue [us] | 47:53 Samira Minor (Ella Morgan, Danielle Shannon) [us] | 52:20 Ella Morgan (Skylar Miller) [us] | 70:14 Caroline Swann [them] | 97:08 Samira Minor [us]"
+2026,2026-08-12,Iowa State,Omaha,A,,W,1,0,12,4,6,2,9,3,2,6,22:53 Danica Lunceford [us]
+2026,2026-08-16,Iowa State,Kansas City,H,,W,4,0,18,8,11,3,2,3,3,14,"25:45 Mia Sowders (Izzy Kapanke, Morgan Goodman) [us] | 41:23 Aubrey Crawford (Morgan Goodman) [us] | 47:08 Grace Luedde (Morgan Goodman, Breezie Brewer) [us] | 60:22 Morgan Goodman (Makenna Marshall) [us]"
+2026,2026-08-20,Iowa State,Drake,A,,L,0,2,6,4,8,2,6,5,0,11,"07:03 Angela Gutierrez (Claire Emmerich) [them] | 37:07 Alexa Aylward (Zoey Mahoney, Izzy Snowden) [them]"
+2026,2026-08-23,Iowa State,Creighton,H,,T,0,0,15,3,7,2,3,7,2,11,
+2026,2026-08-27,Iowa State,Iowa,H,,L,0,2,2,1,26,12,0,8,10,21,"03:01 Kylie Cino [them] | 58:27 Jada Grove (Abby Skiff, Berit Parten) [them]"
+2026,2026-08-30,Iowa State,Northern Iowa,H,,W,5,0,,,,,,,,,
+2026,2026-09-03,Iowa State,Missouri State,H,,W,2,0,20,7,12,3,8,2,3,6,63:37 Alaina Villa (Erin Hopewell) [us] | 86:44 Megan Walters [us]
+2026,2026-09-10,Iowa State,Loyola Maryland,A,,T,1,1,18,7,9,4,4,2,3,9,04:05 Savannah Manset (Ella Moss) [them] | 04:24 Sophie Forrester (Makenna Marshall) [us]
+2026,2026-09-17,Iowa State,Colorado,H,Y,L,0,1,8,3,13,7,0,4,6,14,40:16 Reagan Kotschau [them]
+2026,2026-09-24,Iowa State,Houston,A,Y,L,1,2,5,2,21,9,2,5,7,10,"17:54 Lucy Froitzheim (Sophie Forrester, Erin Hopewell) [us] | 67:57 Laney Gonzales [them] | 72:54 Bailey Cate (Laney Gonzales) [them]"
+2026,2026-09-27,Iowa State,West Virginia,H,Y,L,0,2,7,3,15,8,3,6,6,7,06:51 Sophia Nickel (Anna Hauer) [them] | 55:20 Abbey Olexa [them]
+2026,2026-10-01,Iowa State,Utah,H,Y,T,1,1,8,5,19,4,2,5,3,15,"15:16 Shannon Davidson (Sophie Bellini, Reese Clem) [them] | 49:24 Breezie Brewer [us]"
+2026,2026-10-08,Iowa State,Arizona State,A,Y,T,1,1,4,2,29,13,0,10,12,14,"17:47 Mya Angus (Lucy Fazackerley, Amy Medley) [them] | 31:02 Alaina Villa (Allison Charleston, Izzy Kapanke) [us]"
+2026,2026-10-11,Iowa State,Arizona,A,Y,L,1,2,12,8,11,6,1,6,4,11,24:22 Lainey Swanson (MIreya Stephenson) [them] | 52:50 Megan Walters [us] | 72:10 Kyleigh Johnson (Ella Weathersby) [them]
+2026,2026-10-16,Iowa State,Kansas,A,Y,L,0,1,9,6,23,10,0,10,9,12,86:37 Marit McLaughlin (Livvy Moore) [them]
+2026,2026-10-22,Iowa State,Kansas State,H,Y,L,0,1,9,3,20,14,6,3,13,5,23:24 Rilyn Rintoul (Adelle Francis) [them]
+2026,2026-10-26,Iowa State,BYU,H,Y,L,0,3,3,2,24,11,3,9,8,5,"24:05 Avery Frischknecht (Sophie Sivulich) [them] | 74:45 Presley Freeman (Afton Perry) [them] | 76:07 Mattyn Summers-Oviatt (Emma Hamberlin, Emma Neff) [them]"
+2026,2026-10-29,Iowa State,Oklahoma State,H,Y,L,0,2,14,4,13,5,1,9,3,14,02:40 Emma Jensen (Laudan Wilson) [them] | 14:12 Sonora De Fini (Raquelle Mitchell) [them]
+2026,2026-11-05,Iowa State,UCF,A,Y,L,0,7,7,0,26,12,1,9,5,6,"06:24 Naomi Clark (Katsi Bengoa) [them] | 22:02 Alysiah Lockette (Ainsley Moy, Naomi Clark) [them] | 27:24 Naomi Clark (Katsi Bengoa, Brooke Mulroney) [them] | 35:44 Tyra Eriksen (Payton Patrick) [them] | 41:58 Bella Douglas (Katsi Bengoa) [them] | 54:43 Sophia May (Naomi Clark) [them] | 65:50 Ainsley Moy (Ella Holloran) [them]"
+2026,2026-08-12,Kansas,Utah State,H,,W,2,0,14,4,6,3,9,2,3,5,"16:17 Jillian Gregorski [us] | 83:06 Jordan Rowan (Marit McLaughlin, Jocelyn Herrema) [us]"
+2026,2026-08-16,Kansas,Missouri State,A,,W,7,0,20,10,1,1,12,1,1,9,"06:02 Kate Langfelder [us] | 18:43 London De Fini (Gianna Weiner) [us] | 50:32 Caroline Castans (London De Fini) [us] | 61:08 Caroline Castans (London De Fini) [us] | 74:52 Marit McLaughlin (Livvy Moore) [us] | 84:25 Faith Johnston (London De Fini, Sophia Mir) [us] | 87:17 Faith Johnston [us]"
+2026,2026-08-20,Kansas,Ohio State,A,,L,0,1,14,6,12,6,3,5,5,13,39:56 Amanda Schlueter [them]
+2026,2026-08-23,Kansas,Kent State,A,,W,3,1,17,9,2,2,14,0,1,16,74:09 Jillian Gregorski (Livvy Moore) [us] | 76:07 Jillian Gregorski (Caroline Castans) [us] | 79:45 Caroline Castans (Livvy Moore) [us] | 86:24 Samantha Miller [them]
+2026,2026-08-27,Kansas,Utah Valley,A,,L,1,2,16,5,7,4,5,1,2,10,14:47 Jillian Gregorski (Livvy Moore) [us] | 35:45 Malia Jessop (Nixan Jackson) [them] | 37:09 Sadie Beardall [them]
+2026,2026-08-30,Kansas,Tulsa,H,,W,2,1,36,12,5,5,12,2,4,4,"32:45 Aniya Facen (Addison Castleberry) [them] | 66:05 Marit McLaughlin (Jocelyn Herrema, Lydia Viets) [us] | 83:38 Norah Jacomen (Livvy Moore) [us]"
+2026,2026-09-03,Kansas,Kansas City,H,,W,3,0,32,16,0,0,17,0,0,10,13:03 Norah Jacomen (London De Fini) [us] | 13:49 Caroline Castans (Livvy Moore) [us] | 84:46 Jocelyn Herrema (Norah Jacomen) [us]
+2026,2026-09-12,Kansas,Saint Louis,A,,W,1,0,16,9,3,1,7,2,1,11,85:05 Marit McLaughlin (Jocelyn Herrema) [us]
+2026,2026-09-18,Kansas,Cincinnati,A,Y,T,1,1,14,10,3,2,3,0,1,13,65:35 Faith Johnston [us] | 81:31 Tiana Campbell (Emma Gioffre) [them]
+2026,2026-09-24,Kansas,Arizona State,H,Y,W,2,0,12,5,7,2,5,4,2,8,32:05 Jocelyn Herrema (Livvy Moore) [us] | 53:42 Caroline Castans (Livvy Moore) [us]
+2026,2026-09-27,Kansas,Arizona,H,Y,W,2,0,12,4,1,1,5,1,1,10,"81:05 Jillian Gregorski (Caroline Castans, Livvy Moore) [us] | 83:37 Jillian Gregorski (Norah Jacomen) [us]"
+2026,2026-10-02,Kansas,Baylor,A,Y,L,1,3,21,6,11,9,11,1,6,9,"44:14 Aryanna Jimison [them] | 46:17 Aryanna Jimison (Sydney Miller, Theresa McCullough) [them] | 67:42 Brynnlee Bohannon (Olivia Hess, Theresa McCullough) [them] | 89:36 Jillian Gregorski (Livvy Moore) [us]"
+2026,2026-10-08,Kansas,Kansas State,A,Y,W,2,0,13,5,7,2,7,6,2,5,49:49 Jordan Rowan (Norah Jacomen) [us] | 65:59 Jocelyn Herrema (Caroline Castans) [us]
+2026,2026-10-11,Kansas,Colorado,A,Y,W,1,0,12,3,13,3,4,3,3,10,83:51 Marit McLaughlin (Jordan Rowan) [us]
+2026,2026-10-16,Kansas,Iowa State,H,Y,W,1,0,23,10,9,6,10,0,6,6,86:37 Marit McLaughlin (Livvy Moore) [us]
+2026,2026-10-22,Kansas,BYU,H,Y,T,1,1,17,3,14,8,8,5,7,5,16:43 Emma Hamberlin (Mika Krommenhoek) [them] | 81:26 Jordan Rowan (Marit McLaughlin) [us]
+2026,2026-10-25,Kansas,TCU,A,Y,W,3,2,17,5,6,3,6,1,1,12,"07:34 Norah Jacomen (Caroline Castans, Jillian Gregorski) [us] | 14:16 Emma Yolinsky (Bella Diorio) [them] | 43:10 Grace Vest (Madison Taylor, Cameron Byrd) [them] | 78:49 Livvy Moore (Norah Jacomen, Kate Langfelder) [us] | 83:45 Jillian Gregorski (Caroline Castans, Norah Jacomen) [us]"
+2026,2026-10-30,Kansas,Houston,A,Y,L,0,2,8,2,9,6,11,3,4,9,46:43 Ella Morgan (Skylar Miller) [them] | 78:37 Ava Shannon [them]
+2026,2026-11-05,Kansas,Texas Tech,H,Y,W,3,2,14,6,12,5,14,5,3,14,"19:00 Caroline Castans (Norah Jacomen, Jordan Rowan) [us] | 26:36 Taylor Zdrojewski (Kaitlyn Giametta) [them] | 37:13 Sydni Fink (Livvy Moore) [us] | 69:58 Alana Harry (Kaitlyn Giametta) [them] | 78:39 Kate Langfelder (Caroline Castans, Marit McLaughlin) [us]"
+2026,2026-11-09,Kansas,Colorado,A,,L,1,2,15,6,12,6,8,4,4,5,"60:03 Jocelyn Herrema (Kate Langfelder, Lydia Viets) [us] | 71:15 Hope Leyba (Kai Santomarco-King) [them] | 88:53 Reagan Kotschau (Faith Leyba, Hope Leyba) [them]"
+2026,2026-11-20,Kansas,Oral Roberts,H,,W,3,2,14,8,15,6,4,3,4,9,"17:00 Jillian Gregorski (Caroline Castans) [us] | 34:39 Jocelyn Herrema (Sydni Fink, Jillian Gregorski) [us] | 54:04 Layney Molini (Cameron Silva) [them] | 56:04 Layney Molini (Zoe McCabe) [them] | 99:15 Jillian Gregorski (Caroline Castans) [us]"
+2026,2026-08-13,Kansas State,Seattle U,A,,W,4,0,14,8,9,3,4,6,3,12,11:33 McKinnan Braswell (Rilyn Rintoul) [us] | 22:00 Rilyn Rintoul [us] | 65:46 Lauren Moylan [us] | 72:07 Kennedy Miller [us]
+2026,2026-08-15,Kansas State,Hawaii,A,,W,3,1,16,6,7,3,9,0,2,2,03:50 Anuhea Aluli (Jas Cayetano) [them] | 27:05 Gabby DeMers (Chloe Dillbeck) [us] | 46:22 Anna Pagano (McKinnan Braswell) [us] | 51:26 Allison Marshall [us]
+2026,2026-08-20,Kansas State,Missouri State,H,,W,3,0,32,13,2,1,11,1,1,10,05:34 McKinnan Braswell (Rilyn Rintoul) [us] | 57:09 Rilyn Rintoul (Gabby DeMers) [us] | 75:23 Kennedy Miller [us]
+2026,2026-08-23,Kansas State,South Dakota State,H,,W,2,0,22,8,5,1,2,3,1,11,"28:03 Langley Mayers (Rilyn Rintoul, Chloe Dillbeck) [us] | 51:33 Gabby DeMers (Lauren Moylan, Langley Mayers) [us]"
+2026,2026-08-30,Kansas State,Nebraska,H,,T,0,0,12,3,15,6,1,9,6,10,
+2026,2026-09-03,Kansas State,Iowa,A,,T,1,1,11,5,25,9,4,7,8,12,22:23 Allison Marshall (Gabby DeMers) [us] | 49:13 Reilly Heman (Berit Parten) [them]
+2026,2026-09-10,Kansas State,Colorado State,A,,T,2,2,18,6,8,4,5,7,2,7,32:40 Sydney Torres [them] | 86:17 Emerson DeLuca [us] | 87:03 Gabby DeMers [us] | 87:30 Mia Casey (Avery Boulom) [them]
+2026,2026-09-13,Kansas State,Colorado Col.,A,,W,3,2,17,12,13,7,4,4,5,14,"21:10 Rilyn Rintoul (Langley Mayers, Sydney Coffman) [us] | 35:34 Lauren Moylan [us] | 54:14 Bella Stewart (Charlotte Strabel) [them] | 70:10 Gabby DeMers (Langley Mayers) [us] | 87:44 Bella Stewart [them]"
+2026,2026-09-18,Kansas State,Houston,H,Y,L,0,3,19,3,20,5,4,13,2,12,13:15 Samira Minor [them] | 67:01 Ella Morgan (Laney Gonzales) [them] | 69:56 Adelhia Ghonda (Danielle Shannon) [them]
+2026,2026-09-24,Kansas State,Arizona,H,Y,T,1,1,20,9,10,3,6,4,2,13,54:40 Gabby DeMers (McKinnan Braswell) [us] | 57:14 Allyson Brown (Lainey Swanson) [them]
+2026,2026-09-27,Kansas State,Arizona State,H,Y,L,0,2,16,9,10,4,5,5,2,12,08:58 Peyton Marcisz [them] | 22:53 Kierra Blundell (Peyton Marcisz) [them]
+2026,2026-10-02,Kansas State,BYU,A,Y,L,1,2,9,3,21,11,5,15,9,13,42:29 Adelle Francis (Lauren Moylan) [us] | 52:34 Afton Perry (Lucy Kesler) [them] | 60:55 Bella Woods [them]
+2026,2026-10-08,Kansas State,Kansas,H,Y,L,0,2,7,2,13,5,6,7,3,10,49:49 Jordan Rowan (Norah Jacomen) [them] | 65:59 Jocelyn Herrema (Caroline Castans) [them]
+2026,2026-10-11,Kansas State,Baylor,A,Y,L,2,3,12,5,18,6,3,5,3,10,34:13 Adelle Francis (Alix Regier) [us] | 65:51 Noelle Sather [them] | 70:57 Adelle Francis (Alix Regier) [us] | 73:46 Grace White (Brynnlee Bohannon) [them] | 76:27 Theresa McCullough (Sydney Miller) [them]
+2026,2026-10-16,Kansas State,Colorado,H,Y,L,2,3,18,10,13,5,2,3,2,15,18:57 Emma Thielbahr (Reagan Kotschau) [them] | 20:32 Gabby DeMers (Chloe Dillbeck) [us] | 21:34 Reagan Kotschau [them] | 46:44 Allison Marshall (Gabby DeMers) [us] | 59:59 Lilian Zamorano (Sloane Phillips) [them]
+2026,2026-10-22,Kansas State,Iowa State,A,Y,W,1,0,20,14,9,3,3,6,3,12,23:24 Rilyn Rintoul (Adelle Francis) [us]
+2026,2026-10-25,Kansas State,Cincinnati,A,Y,L,0,1,9,4,10,3,5,8,2,15,09:42 Tiana Campbell (Coley Sidloski) [them]
+2026,2026-10-30,Kansas State,UCF,H,Y,T,1,1,8,4,15,6,5,6,5,6,"57:08 Allison Marshall (Lauren Moylan, Langley Mayers) [us] | 58:05 Ainsley Moy (Tyra Eriksen) [them]"
+2026,2026-11-05,Kansas State,Utah,A,,W,5,0,18,9,10,4,5,6,4,2,29:11 Rilyn Rintoul [us] | 31:26 Gabby DeMers [us] | 47:16 Lailah Benz (Lauren Moylan) [us] | 52:14 Rilyn Rintoul [us] | 75:53 Adelle Francis (Emerson DeLuca) [us]
+2026,2026-08-12,Oklahoma State,Sam Houston,H,,T,1,1,24,8,4,2,8,1,1,8,12:05 Gracie Bindbeutel (Emmy Hedden) [us] | 39:44 Gabrielle Gipson [them]
+2026,2026-08-16,Oklahoma State,SFA,H,,W,3,0,19,10,8,4,13,3,4,6,32:37 Keaton Mitchell (Laudan Wilson) [us] | 54:44 Keaton Mitchell (Emmy Hedden) [us] | 60:51 Sonora De Fini [us]
+2026,2026-08-20,Oklahoma State,Oklahoma,H,,L,0,2,5,0,13,5,4,8,3,12,"29:10 Kate McCallister (Elle Canty) [them] | 69:40 Kennedy Kaiser (Kayla Keefer, Lexi Dendis) [them]"
+2026,2026-08-27,Oklahoma State,Mississippi State,A,,L,1,4,6,1,11,6,3,7,2,12,"02:10 Brenna Rowlett (Addy Lang) [us] | 17:12 Eden Nicholson (Kati Anne Shepherd) [them] | 22:38 Hailey Johnson (Chiara Tappe) [them] | 39:19 Reganne Morris (Hailey Johnson, Abbey Dalton) [them] | 44:26 Kyli Switalski [them]"
+2026,2026-08-30,Oklahoma State,Grambling,H,,W,6,1,30,14,2,2,7,0,1,7,"10:58 Sonora De Fini (Gracie Bindbeutel, Emmy Hedden) [us] | 20:46 Addy Lang [us] | 23:48 Nyla Dore-Anderson [them] | 25:37 Laudan Wilson (Sophie Wilson) [us] | 38:08 Jada Moorman (Emma Jensen, Katelyn Hoppers) [us] | 44:07 Jada Moorman (Emma Jensen) [us] | 72:21 Emma Jensen (Emily Senatore, Bella Pierotti) [us]"
+2026,2026-09-03,Oklahoma State,San Diego State,H,,T,1,1,12,3,14,4,2,6,3,18,16:19 Naima Castro (Alexyz Nakamoto) [them] | 74:13 Addy Lang [us]
+2026,2026-09-06,Oklahoma State,Southeast Mo. State,H,,W,2,0,25,8,1,0,11,2,0,6,"27:31 Sonora De Fini (Taryn Thibeau, Keaton Mitchell) [us] | 83:22 Keaton Mitchell (Sonora De Fini) [us]"
+2026,2026-09-13,Oklahoma State,Central Ark.,H,,W,5,0,25,11,7,2,8,3,2,14,"28:54 Laudan Wilson (Sonora De Fini) [us] | 34:33 Sherline King (Emmy Hedden, Emma Jensen) [us] | 35:51 Gracie Bindbeutel (Lily Weiss) [us] | 39:40 Emma Jensen (Sherline King) [us] | 66:20 Addy Lang [us]"
+2026,2026-09-17,Oklahoma State,TCU,H,Y,W,3,1,8,4,25,8,3,5,7,3,"45:57 Sonora De Fini [us] | 51:48 Keaton Mitchell (Taryn Thibeau) [us] | 66:12 Emmy Hedden [us] | 74:34 Emma Yolinsky (Cameron Patton, Kamdyn Fuller) [them]"
+2026,2026-09-24,Oklahoma State,Baylor,A,Y,L,1,2,9,5,19,8,1,8,6,9,"04:00 Laudan Wilson (Sonora De Fini) [us] | 11:30 Aryanna Jimison (Olivia Hess, Theresa McCullough) [them] | 55:42 Noelle Sather (Sydney Miller) [them]"
+2026,2026-09-27,Oklahoma State,Houston,A,Y,L,0,1,7,0,11,4,4,6,3,16,"40:44 Skylar Miller (Morgan Donohue, Peyton Machado) [them]"
+2026,2026-10-02,Oklahoma State,Arizona,H,Y,T,3,3,17,3,16,6,3,4,3,14,"18:22 Emmy Hedden [us] | 23:32 MIreya Stephenson (Zoe Mendiola, Marissa Arnst) [them] | 44:45 Emily Senatore (Ellie Geoffroy) [us] | 47:47 Lily Boydstun [them] | 49:43 Sonora De Fini (Aubrey Wagner, Emmy Hedden) [us] | 86:35 Ella Weathersby [them]"
+2026,2026-10-08,Oklahoma State,Texas Tech,H,Y,L,0,3,11,3,17,5,4,4,2,11,"02:36 Raleigh Greason (Kylie Bahr, Eleanor Hays) [them] | 08:00 Eleanor Hays (Taylor Zdrojewski) [them] | 17:21 Taylor Zdrojewski [them]"
+2026,2026-10-11,Oklahoma State,UCF,A,Y,L,1,3,15,5,15,7,9,3,4,14,67:11 Ainsley Moy [them] | 69:39 Ainsley Moy (Ella Holloran) [them] | 74:54 Jada Moorman (Emma Jensen) [us] | 75:45 Tyra Eriksen [them]
+2026,2026-10-16,Oklahoma State,Arizona State,H,Y,L,1,2,17,7,12,5,6,4,3,11,"20:06 Sierra Bergen (Lucy Fazackerley, Miki Hayashi) [them] | 81:24 Gator DeMark (Amy Medley, Ella Kettles) [them] | 89:10 Laudan Wilson [us]"
+2026,2026-10-22,Oklahoma State,Utah,H,Y,T,2,2,13,4,15,6,6,4,4,15,"20:32 Shannon Davidson [them] | 55:25 Emma Jensen (Raquelle Mitchell) [us] | 81:33 Katie Callaway (Shannon Davidson, Jastel David) [them] | 87:06 Sonora De Fini [us]"
+2026,2026-10-25,Oklahoma State,West Virginia,H,Y,W,2,1,15,8,10,6,3,5,5,11,49:18 Sophia Nickel (Abbey Olexa) [them] | 58:26 Sonora De Fini (Emma Jensen) [us] | 88:00 Laudan Wilson [us]
+2026,2026-10-29,Oklahoma State,Iowa State,A,Y,W,2,0,13,5,14,4,9,1,4,11,02:40 Emma Jensen (Laudan Wilson) [us] | 14:12 Sonora De Fini (Raquelle Mitchell) [us]
+2026,2026-11-05,Oklahoma State,Colorado,A,Y,L,0,5,14,6,20,11,3,9,6,18,"15:42 Jace Holley (Reagan Kotschau, Sloane Phillips) [them] | 23:08 Sloane Phillips [them] | 42:32 Kai Santomarco-King (Sloane Phillips) [them] | 48:27 Faith Leyba (Reagan Kotschau) [them] | 69:03 Reagan Kotschau [them]"
+2026,2026-08-13,TCU,Wisconsin,A,,W,1,0,2,0,13,6,4,9,6,7,78:29 0 [us]
+2026,2026-08-16,TCU,UTSA,H,,T,2,2,20,8,7,2,4,4,0,11,"39:58 Mackenzie Hilderman (Kamdyn Fuller, Eres Freifeld) [us] | 53:10 Aaliyaiah Durden (Jasmine Kessler) [them] | 56:20 Ava Jackson (Addi O'Kelley, Leah Varela) [them] | 81:17 Kamdyn Fuller (Emma Yolinsky, Bella Diorio) [us]"
+2026,2026-08-20,TCU,Alabama,A,,L,2,3,9,4,15,6,6,5,4,8,07:51 Larkin Thomason [them] | 14:30 Emma Yolinsky [us] | 16:57 0 [them] | 47:18 Emma Yolinsky (Eres Freifeld) [us] | 54:17 Ashley Roni [them]
+2026,2026-08-27,TCU,Georgia,H,,W,3,2,9,5,12,4,3,6,2,11,07:03 Mya Townes (Kiera Staude) [them] | 10:12 Eres Freifeld (Peyton Nourse) [us] | 25:00 Grace Coppinger (Bella Diorio) [us] | 61:32 Emma Yolinsky (Bella Diorio) [us] | 87:48 Emma Pettersen (Maya Woolforde) [them]
+2026,2026-09-03,TCU,Texas A&M,A,,W,3,0,13,6,10,6,10,5,6,14,"09:36 Grace Vest (Kamdyn Fuller, Peyton Nourse) [us] | 35:47 Bella Diorio [us] | 57:08 Grace Coppinger (Evie Baker) [us]"
+2026,2026-09-06,TCU,Texas,H,,L,0,1,6,3,17,9,4,5,8,11,67:25 Ava McDonald [them]
+2026,2026-09-17,TCU,Oklahoma State,A,Y,L,1,3,25,8,8,4,5,3,1,7,"45:57 Sonora De Fini [them] | 51:48 Keaton Mitchell (Taryn Thibeau) [them] | 66:12 Emmy Hedden [them] | 74:34 Emma Yolinsky (Cameron Patton, Kamdyn Fuller) [us]"
+2026,2026-09-24,TCU,Utah,A,Y,W,1,0,11,2,8,5,5,4,5,22,31:40 Eres Freifeld [us]
+2026,2026-09-28,TCU,BYU,A,Y,L,0,2,5,2,15,3,4,9,1,11,"65:29 Emma Hamberlin (Anna Neff, Afton Perry) [them] | 81:45 Sophie Sivulich [them]"
+2026,2026-10-02,TCU,Cincinnati,H,Y,W,2,0,13,6,5,2,7,3,2,10,"48:24 Emma Yolinsky (Giovanna Costanzo, Eres Freifeld) [us] | 73:01 Emma Yolinsky (Bella Diorio, Kamdyn Fuller) [us]"
+2026,2026-10-08,TCU,UCF,H,Y,L,1,2,10,3,10,3,5,3,1,9,"08:25 Emma Yolinsky (Peyton Nourse) [us] | 13:32 Tyra Eriksen (Ainsley Moy, Gabi Berchon) [them] | 18:47 Alysiah Lockette (Gabi Berchon, Guta Franke) [them]"
+2026,2026-10-11,TCU,Texas Tech,H,Y,L,0,1,6,2,13,6,9,6,5,9,"47:12 Kylie Bahr (Taylor Zdrojewski, Eleanor Hays) [them]"
+2026,2026-10-16,TCU,Baylor,A,Y,L,0,1,12,7,14,5,8,4,4,11,25:43 Aryanna Jimison [them]
+2026,2026-10-22,TCU,Houston,A,Y,L,0,2,9,2,11,8,1,0,6,12,"19:05 Jada Arthurs (Bailey Cate, Samira Minor) [them] | 64:32 Ava Shannon (Adelhia Ghonda) [them]"
+2026,2026-10-25,TCU,Kansas,H,Y,L,2,3,6,3,17,5,1,6,2,15,"07:34 Norah Jacomen (Caroline Castans, Jillian Gregorski) [them] | 14:16 Emma Yolinsky (Bella Diorio) [us] | 43:10 Grace Vest (Madison Taylor, Cameron Byrd) [us] | 78:49 Livvy Moore (Norah Jacomen, Kate Langfelder) [them] | 83:45 Jillian Gregorski (Caroline Castans, Norah Jacomen) [them]"
+2026,2026-10-30,TCU,West Virginia,A,Y,T,0,0,9,3,7,1,5,2,1,11,
+2026,2026-11-05,TCU,Arizona,H,Y,T,1,1,18,7,7,3,6,0,2,7,47:43 Ella Weathersby (MIreya Stephenson) [them] | 73:49 Cameron Patton [us]
+2026,2026-08-13,Texas Tech,Hawaii,A,,W,1,0,8,5,9,3,3,6,3,12,42:11 Storie Sexton [us]
+2026,2026-08-16,Texas Tech,Seattle U,A,,T,0,0,11,6,9,7,5,6,7,9,
+2026,2026-08-23,Texas Tech,Boise State,H,,W,2,0,15,6,7,4,5,2,4,12,"16:09 Taylor Zdrojewski (Reese Liner, Kylie Bahr) [us] | 61:33 Taylor Zdrojewski (Skylar Haase) [us]"
+2026,2026-08-27,Texas Tech,Pepperdine,H,,T,1,1,16,4,5,4,10,2,3,10,"77:16 Kate Ryan (Kyra Murphy) [them] | 80:40 Taylor Zdrojewski (Emma Torres, Raleigh Greason) [us]"
+2026,2026-09-03,Texas Tech,SMU,A,,T,1,1,12,4,17,6,8,8,5,12,38:24 Storie Sexton (Alana Harry) [us] | 72:46 Julianne Richter (Libby Jannereth) [them]
+2026,2026-09-06,Texas Tech,San Diego State,H,,W,2,1,18,6,12,5,4,6,4,6,12:11 Kylie Bahr (Eleanor Hays) [us] | 17:17 Taylor Zdrojewski [us] | 70:04 Katie Senn [them]
+2026,2026-09-11,Texas Tech,Kent State,H,,W,3,0,17,6,3,2,5,0,2,17,"02:46 Eleanor Hays [us] | 08:43 Kaitlyn Giametta (Storie Sexton, Kylie Bahr) [us] | 15:43 Kaitlyn Giametta (Taylor Zdrojewski, Kylie Bahr) [us]"
+2026,2026-09-17,Texas Tech,UCF,A,Y,T,2,2,19,8,4,2,4,3,0,11,"15:54 Taylor Zdrojewski (Lauren Alvarez) [us] | 39:30 Naomi Clark (Gabi Berchon, Alysiah Lockette) [them] | 57:35 Raleigh Greason (Eleanor Hays) [us] | 71:18 Katsi Bengoa (Ainsley Moy) [them]"
+2026,2026-09-24,Texas Tech,Cincinnati,H,Y,W,2,0,16,8,6,2,4,3,2,14,"34:03 Kaitlyn Giametta [us] | 54:45 Taylor Zdrojewski (Emma Torres, Kylie Bahr) [us]"
+2026,2026-09-27,Texas Tech,Colorado,H,Y,W,3,1,14,7,20,10,5,7,9,7,36:49 Emma Thielbahr [them] | 47:08 Raleigh Greason (Emma Torres) [us] | 54:12 Taylor Zdrojewski (Millie Elwood) [us] | 69:23 0 [us]
+2026,2026-10-02,Texas Tech,Arizona State,H,Y,W,2,0,20,6,5,4,8,1,4,6,40:50 Lauren Alvarez [us] | 77:07 Kaitlyn Giametta [us]
+2026,2026-10-08,Texas Tech,Oklahoma State,A,Y,W,3,0,17,5,11,3,4,4,3,14,"02:36 Raleigh Greason (Kylie Bahr, Eleanor Hays) [us] | 08:00 Eleanor Hays (Taylor Zdrojewski) [us] | 17:21 Taylor Zdrojewski [us]"
+2026,2026-10-11,Texas Tech,TCU,A,Y,W,1,0,13,6,6,2,6,9,2,10,"47:12 Kylie Bahr (Taylor Zdrojewski, Eleanor Hays) [us]"
+2026,2026-10-16,Texas Tech,BYU,A,Y,L,2,3,14,6,13,5,4,5,2,13,"00:46 Taylor Zdrojewski [us] | 16:57 Mia Goettsche (Emma Hamberlin, Mika Krommenhoek) [them] | 43:53 Mattyn Summers-Oviatt (Sydney Snow, Presley Freeman) [them] | 56:24 Mattyn Summers-Oviatt (Mika Krommenhoek) [them] | 70:02 Taylor Zdrojewski (Raleigh Greason) [us]"
+2026,2026-10-22,Texas Tech,West Virginia,H,Y,W,2,1,20,8,9,2,5,6,1,7,"06:11 Maya Leoni [them] | 24:46 Kylie Bahr [us] | 55:39 Taylor Zdrojewski (Emma Torres, Gianna Gregoire) [us]"
+2026,2026-10-25,Texas Tech,Utah,A,Y,W,3,0,8,7,2,2,3,2,2,5,35:14 Kylie Bahr (Alana Harry) [us] | 55:26 Taylor Zdrojewski (Millie Elwood) [us] | 83:07 Kaitlyn Giametta (Raleigh Greason) [us]
+2026,2026-10-30,Texas Tech,Baylor,H,Y,W,1,0,17,8,12,3,11,6,3,9,76:00 Gianna Gregoire [us]
+2026,2026-11-05,Texas Tech,Kansas,A,Y,L,2,3,12,5,14,6,5,14,3,15,"19:00 Caroline Castans (Norah Jacomen, Jordan Rowan) [them] | 26:36 Taylor Zdrojewski (Kaitlyn Giametta) [us] | 37:13 Sydni Fink (Livvy Moore) [them] | 69:58 Alana Harry (Kaitlyn Giametta) [us] | 78:39 Kate Langfelder (Caroline Castans, Marit McLaughlin) [them]"
+2026,2026-11-09,Texas Tech,UCF,H,,W,2,0,12,5,7,2,3,5,2,13,"30:04 Gianna Gregoire (Alana Harry) [us] | 72:18 Kaitlyn Giametta (Taylor Zdrojewski, Kylie Bahr) [us]"
+2026,2026-11-11,Texas Tech,Baylor,H,,L,1,2,23,7,13,3,6,6,1,13,15:52 Taylor Zdrojewski (Raleigh Greason) [us] | 60:12 Aryanna Jimison (Theresa McCullough) [them] | 104:50 Grace White (Sydney Miller) [them]
+2026,2026-11-20,Texas Tech,Abilene Christian,H,,W,2,0,21,10,2,1,14,2,1,9,20:55 Taylor Zdrojewski (Kylie Bahr) [us] | 66:37 Raleigh Greason (Abbi Sine) [us]
+2026,2026-08-13,UCF,Florida,H,,W,4,3,11,5,24,9,5,9,6,9,18:08 Adia Symmonds [them] | 24:14 Ainsley Moy Naomi Clark Assisted by: Gabi Berchon [us] | 48:31 Ella Holloran Assisted by: Kalena Bellini [us] | 51:06 Naomi Clark Assisted by: Payton Patrick [us] | 83:23 Gabi Berchon (PK) [us] | 89:21 Hannah Jibril (PK) [them]
+2026,2026-08-20,UCF,LSU,A,,W,2,1,11,2,8,3,7,5,2,10,63:09 Tyra Eriksen Payton Patrick Assisted by: Naomi Clark [us] | 76:16 Ava Amsden [them]
+2026,2026-08-23,UCF,South Florida,A,,W,2,0,17,7,3,1,8,1,1,11,28:00 Ainsley Moy Naomi Clark Assisted by: Tyra Eriksen [us]
+2026,2026-08-27,UCF,UAB,H,,W,3,1,17,7,5,2,13,8,1,10,13:34 Lauren Lucero [them] | 70:11 Naomi Clark [us] | 78:43 Sophia May Naomi Clark Assisted by: Carli Crews [us]
+2026,2026-09-06,UCF,Brown,A,,L,0,7,6,2,12,6,4,7,0,13,28:29 Madison Malek Corine Gregory Assisted by: Claire Silverman [them] | 31:04 Audrey Lam Ayla Sahin Assisted by: Claire Silverman [them] | 38:47 Claire Silverman Jael-Marie Guy Assisted by: Madison Malek [them] | 47:07 Corine Gregory Assisted by: Brooke Birtwistle [them] | 71:25 Maja Cenanovic [them] | 82:34 Own goal (UCF) [them]
+2026,2026-09-10,UCF,North Florida,H,,W,1,0,24,8,7,2,7,0,2,10,
+2026,2026-09-17,UCF,Texas Tech,H,Y,T,2,2,4,2,19,8,3,4,6,12,"15:54 Taylor Zdrojewski (Lauren Alvarez) [them] | 39:30 Naomi Clark (Gabi Berchon, Alysiah Lockette) [us] | 57:35 Raleigh Greason (Eleanor Hays) [them] | 71:18 Katsi Bengoa (Ainsley Moy) [us]"
+2026,2026-09-24,UCF,BYU,A,Y,L,1,3,7,2,24,9,1,8,6,8,12:44 Maria Tregansin Naomi Clark Assisted by: Ainsley Moy [us] | 69:27 Afton Perry Assisted by: Mika Krommenhoek [them] | 77:47 Mika Krommenhoek Assisted by: Lucy Kesler [them]
+2026,2026-09-27,UCF,Utah,A,Y,L,0,2,6,4,15,6,6,4,4,9,"02:51 Sophie Bellini (Julia Oka, Shannon Davidson) [them] | 30:54 Brooke Gardner (Nevaeh Peregrina) [them]"
+2026,2026-10-02,UCF,Colorado,H,Y,W,2,0,14,10,8,4,4,3,4,9,13:26 Alysiah Lockette (Kalena Bellini) [us] | 50:48 Naomi Clark [us]
+2026,2026-10-08,UCF,TCU,A,Y,W,2,1,10,3,10,3,3,5,2,10,"08:25 Emma Yolinsky (Peyton Nourse) [them] | 13:32 Tyra Eriksen (Ainsley Moy, Gabi Berchon) [us] | 18:47 Alysiah Lockette (Gabi Berchon, Guta Franke) [us]"
+2026,2026-10-11,UCF,Oklahoma State,H,Y,W,3,1,15,7,15,5,3,9,4,15,67:11 Ainsley Moy [us] | 69:39 Ainsley Moy (Ella Holloran) [us] | 74:54 Jada Moorman (Emma Jensen) [them] | 75:45 Tyra Eriksen [us]
+2026,2026-10-16,UCF,West Virginia,A,Y,W,1,0,3,1,14,5,1,4,5,7,24:55 Naomi Clark (Gabi Berchon) [us]
+2026,2026-10-22,UCF,Cincinnati,H,Y,W,3,0,12,6,7,1,5,7,1,10,68:16 Katsi Bengoa Assisted by: Naomi Clark [us] | 70:34 Gabi Berchon [us]
+2026,2026-10-25,UCF,Houston,H,Y,L,0,1,7,3,9,5,3,9,4,7,11:20 Bailey Cate (Jada Arthurs) [them]
+2026,2026-10-30,UCF,Kansas State,A,Y,T,1,1,15,6,8,4,6,5,3,5,"57:08 Allison Marshall (Lauren Moylan, Langley Mayers) [them] | 58:05 Ainsley Moy (Tyra Eriksen) [us]"
+2026,2026-11-05,UCF,Iowa State,H,Y,W,7,0,26,12,7,0,9,1,0,4,"06:24 Naomi Clark (Katsi Bengoa) [us] | 22:02 Alysiah Lockette (Ainsley Moy, Naomi Clark) [us] | 27:24 Naomi Clark (Katsi Bengoa, Brooke Mulroney) [us] | 35:44 Tyra Eriksen (Payton Patrick) [us] | 41:58 Bella Douglas (Katsi Bengoa) [us] | 54:43 Sophia May (Naomi Clark) [us] | 65:50 Ainsley Moy (Ella Holloran) [us]"
+2026,2026-11-09,UCF,Texas Tech,A,,L,0,2,7,2,12,5,5,3,3,5,"30:04 Gianna Gregoire (Alana Harry) [them] | 72:18 Kaitlyn Giametta (Taylor Zdrojewski, Kylie Bahr) [them]"
+2026,2026-11-20,UCF,Florida State,A,,L,1,4,4,1,20,11,6,8,7,7,69:56 Nyanya Touray Assisted by: Sam Erbach [them] | 86:41 Wrianna Hudson Assisted by: Nyanya Touray [them] | 87:24 Shaneil Buckley Assisted by: Wrianna Hudson [them] | 87:35 Wrianna Hudson Assisted by: Nawreen Ahmad [them]
+2026,2026-08-12,Utah,Weber State,H,,T,0,0,17,7,4,2,8,5,2,6,
+2026,2026-08-17,Utah,Utah Valley,A,,W,2,0,12,7,12,4,6,7,4,11,"62:38 Reese Clem (Julia Oka, Shannon Davidson) [us] | 81:42 Katie Callaway (Maddie Stoddard) [us]"
+2026,2026-08-22,Utah,Southern Utah,H,,W,3,0,15,8,4,2,4,1,2,8,"29:17 Brooke Gardner [us] | 38:17 Katie Callaway (Maddie Stoddard, Tatym Dever) [us] | 45:05 Julia Oka (Shannon Davidson) [us]"
+2026,2026-08-27,Utah,Utah State,H,,L,0,1,8,2,7,4,5,2,3,5,75:26 Ellie Hendrix [them]
+2026,2026-08-30,Utah,Utah Tech,A,,L,1,2,28,11,9,6,10,0,4,11,45:22 Shannon Davidson (Nevaeh Peregrina) [us] | 46:00 Abby Olsen (Lexi Nelson) [them] | 69:47 Jocelyn Wright (Lataya Brost) [them]
+2026,2026-09-03,Utah,Oregon,A,,L,0,1,8,3,11,5,4,1,4,9,"78:25 Savannah Holley (Ellie Felt, Carly Cormack) [them]"
+2026,2026-09-06,Utah,Oregon State,A,,T,1,1,18,5,8,3,10,3,2,7,"09:03 Reese Clem [us] | 40:18 Abby Smith (Grace Wetzel, Sophia Zboyan) [them]"
+2026,2026-09-12,Utah,Long Beach State,A,,W,5,1,14,10,5,1,2,4,0,13,"12:23 Kennedy Fletcher [us] | 17:15 Julia Oka [us] | 22:38 Shannon Davidson (Kennedy Fletcher) [us] | 69:58 Cherrie Cox [them] | 77:07 Sophie Bellini (Julia Oka) [us] | 87:28 Katie Callaway (Kaella Chin, Rylan Park) [us]"
+2026,2026-09-18,Utah,Arizona State,A,Y,L,1,3,13,6,15,7,4,5,4,6,"11:18 Kierra Blundell (Mya Angus) [them] | 35:33 Reese Clem (Sophie Bellini, Brooke Gardner) [us] | 42:19 Bela Puccinelli (Miki Hayashi) [them] | 67:41 Kierra Blundell [them]"
+2026,2026-09-24,Utah,TCU,H,Y,L,0,1,8,5,11,2,4,5,1,14,31:40 Eres Freifeld [them]
+2026,2026-09-27,Utah,UCF,H,Y,W,2,0,15,6,6,4,4,6,4,5,"02:51 Sophie Bellini (Julia Oka, Shannon Davidson) [us] | 30:54 Brooke Gardner (Nevaeh Peregrina) [us]"
+2026,2026-10-01,Utah,Iowa State,A,Y,T,1,1,19,4,8,5,5,2,4,9,"15:16 Shannon Davidson (Sophie Bellini, Reese Clem) [us] | 49:24 Breezie Brewer [them]"
+2026,2026-10-08,Utah,Cincinnati,A,Y,L,0,1,9,5,6,4,6,4,3,14,72:08 Brooklynn Schomaker (Dru Dorsey) [them]
+2026,2026-10-11,Utah,West Virginia,A,Y,L,1,2,8,5,10,5,0,4,3,5,"08:53 Abbey Olexa (Maya Leoni, Olivia Shertzer) [them] | 50:08 Maya Leoni (Jacey Rase, Anna Hauer) [them] | 63:30 Shannon Davidson (Katie Callaway) [us]"
+2026,2026-10-16,Utah,Arizona,H,Y,T,0,0,12,4,5,2,4,2,2,6,
+2026,2026-10-22,Utah,Oklahoma State,A,Y,T,2,2,15,6,13,4,4,6,2,7,"20:32 Shannon Davidson [us] | 55:25 Emma Jensen (Raquelle Mitchell) [them] | 81:33 Katie Callaway (Shannon Davidson, Jastel David) [us] | 87:06 Sonora De Fini [them]"
+2026,2026-10-25,Utah,Texas Tech,H,Y,L,0,3,2,2,8,7,2,3,4,6,35:14 Kylie Bahr (Alana Harry) [them] | 55:26 Taylor Zdrojewski (Millie Elwood) [them] | 83:07 Kaitlyn Giametta (Raleigh Greason) [them]
+2026,2026-10-30,Utah,BYU,A,Y,L,1,3,14,4,13,6,4,5,3,6,"01:04 Mika Krommenhoek (Afton Perry, Presley Freeman) [them] | 57:06 Mia Goettsche (Avery Frischknecht, Sydney Snow) [them] | 69:15 Mia Goettsche (Kyleigh Hastings, Sydney Snow) [them] | 75:18 Kori Pickelle (Reese Kennel) [us]"
+2026,2026-11-05,Utah,Kansas State,H,,L,0,5,10,4,18,9,6,5,4,5,29:11 Rilyn Rintoul [them] | 31:26 Gabby DeMers [them] | 47:16 Lailah Benz (Lauren Moylan) [them] | 52:14 Rilyn Rintoul [them] | 75:53 Adelle Francis (Emerson DeLuca) [them]
+2026,2026-08-13,West Virginia,Dayton,H,,W,2,0,11,2,5,1,3,1,1,9,45:54 Sophia Nickel (Maya Leoni) [us] | 62:47 0 [us]
+2026,2026-08-20,West Virginia,Penn State,H,,W,2,1,10,4,7,3,1,4,2,11,10:39 Anna Babcock (Paige Kalal) [them] | 33:45 Olivia Shertzer [us] | 67:14 Sophia Nickel (Jordyn Wilson) [us]
+2026,2026-08-23,West Virginia,Duquesne,H,,W,2,0,13,9,3,2,7,0,2,4,76:31 Sophia Nickel (Alexis Ré) [us] | 81:30 Gianna Koss (Anna Hauer) [us]
+2026,2026-08-30,West Virginia,Army West Point,A,,W,2,1,20,8,13,3,9,3,2,6,64:23 Abbey Olexa (Sophia Nickel) [us] | 67:40 Bella Conti [them] | 85:40 Saige Wimes (Gianna Koss) [us]
+2026,2026-09-06,West Virginia,Marshall,H,,W,1,0,25,11,3,1,8,3,1,9,"49:33 Jordyn Wilson (Tyler Clyburn, Maya Leoni) [us]"
+2026,2026-09-13,West Virginia,UConn,H,,T,1,1,10,5,9,6,3,6,5,3,"02:26 Abbey Olexa (Ava Arnold, Anna Hauer) [us] | 51:57 Maeve Staunton (Chloe Shimkin, Jessica Carr) [them]"
+2026,2026-09-18,West Virginia,Baylor,H,Y,T,1,1,20,7,4,1,6,3,0,4,"77:51 Lauren Omholt (Aryanna Jimison, Callie Conrad) [them] | 89:42 Saige Wimes (Anna Hauer) [us]"
+2026,2026-09-24,West Virginia,Colorado,A,Y,L,0,2,9,3,13,9,4,3,7,9,"35:58 Hope Leyba (Sloane Phillips, Reagan Kotschau) [them] | 68:37 Reagan Kotschau [them]"
+2026,2026-09-27,West Virginia,Iowa State,A,Y,W,2,0,15,8,7,3,6,3,3,11,06:51 Sophia Nickel (Anna Hauer) [us] | 55:20 Abbey Olexa [us]
+2026,2026-10-02,West Virginia,Houston,A,Y,W,2,0,13,9,17,5,6,1,5,4,"62:54 Sophia Nickel (Abbey Olexa, Olivia Shertzer) [us] | 72:11 Olivia Shertzer [us]"
+2026,2026-10-08,West Virginia,BYU,H,Y,W,2,0,9,5,19,9,5,6,9,11,"47:43 Sophia Nickel (Maya Leoni, Saige Wimes) [us] | 80:20 Sophia Nickel [us]"
+2026,2026-10-11,West Virginia,Utah,H,Y,W,2,1,10,5,8,5,4,0,4,8,"08:53 Abbey Olexa (Maya Leoni, Olivia Shertzer) [us] | 50:08 Maya Leoni (Jacey Rase, Anna Hauer) [us] | 63:30 Shannon Davidson (Katie Callaway) [them]"
+2026,2026-10-16,West Virginia,UCF,H,Y,L,0,1,14,5,3,1,4,1,0,3,24:55 Naomi Clark (Gabi Berchon) [them]
+2026,2026-10-22,West Virginia,Texas Tech,A,Y,L,1,2,9,2,20,8,6,5,6,8,"06:11 Maya Leoni [us] | 24:46 Kylie Bahr [them] | 55:39 Taylor Zdrojewski (Emma Torres, Gianna Gregoire) [them]"
+2026,2026-10-25,West Virginia,Oklahoma State,A,Y,L,1,2,10,6,15,8,5,3,6,8,49:18 Sophia Nickel (Abbey Olexa) [us] | 58:26 Sonora De Fini (Emma Jensen) [them] | 88:00 Laudan Wilson [them]
+2026,2026-10-30,West Virginia,TCU,H,Y,T,0,0,7,1,9,3,2,5,3,4,
+2026,2026-11-05,West Virginia,Cincinnati,A,Y,T,0,0,16,6,9,3,4,5,3,9,
+2026,2026-11-09,West Virginia,BYU,A,,T,1,1,24,5,11,4,4,6,3,8,"13:18 Sophie Sivulich (Lucy Kesler, Mia Goettsche) [them] | 89:52 Maya Leoni [us]"
+2026,2026-11-20,West Virginia,Old Dominion,H,,W,1,0,7,4,4,0,4,0,0,9,"02:15 Abbey Olexa (Alexis Pashales, Saige Wimes) [us]"
