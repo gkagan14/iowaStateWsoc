@@ -1,0 +1,48 @@
+name: Refresh dashboard
+
+# Re-scrapes the Big 12 season, rebuilds the dashboard, commits index.html.
+# Runs every Monday morning and on demand from the Actions tab.
+
+on:
+  schedule:
+    - cron: '0 11 * * 1'      # Mondays 11:00 UTC = 6:00am Central
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-dashboard
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Re-scrape and rebuild (both seasons)
+        run: bash pipeline/refresh.sh --both
+
+      - name: Stage the published files
+        run: |
+          cp files/big12-womens-soccer-2026-dashboard.html index.html
+          cp files/big12-soccer-team-stats-2025-2026.csv .
+          cp files/big12-soccer-game-logs-2025-2026.csv .
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name  "dashboard-refresh[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- index.html big12-soccer-team-stats-2025-2026.csv big12-soccer-game-logs-2025-2026.csv; then
+            echo "No change since the last refresh."
+            exit 0
+          fi
+          git add index.html big12-soccer-team-stats-2025-2026.csv big12-soccer-game-logs-2025-2026.csv
+          git commit -m "Data refresh $(date -u +%Y-%m-%d)"
+          git push origin HEAD:main
