@@ -77,7 +77,10 @@ python3 projection.py | head -2
 python3 rosters.py   | tail -1
 python3 compose.py
 
-# ---------------------------------------------------------------- 6. render
+# ---------------------------------------------------------------- 6. audit + render
+step "Building the scrape report"
+python3 report.py
+
 step "Rendering the single-file dashboard"
 python3 render.py
 
