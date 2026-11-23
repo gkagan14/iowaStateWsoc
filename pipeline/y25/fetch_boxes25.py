@@ -58,3 +58,9 @@ with ThreadPoolExecutor(max_workers=10) as ex:
     out = list(ex.map(fetch, jobs))
 print('fetched', sum(1 for o in out if o), 'of', len(jobs))
 json.dump([o for o in out if o], open('y25/files.json','w'))
+smap = {u: (t, k) for u, k in jobs}
+rep = []
+for (url, kind), res in zip(jobs, out):
+    t, _ = smap.get(url, ('?', kind))
+    rep.append({'school': t, 'url': url, 'kind': kind, 'ok': bool(res)})
+json.dump(rep, open('y25/fetch_report.json', 'w'))
