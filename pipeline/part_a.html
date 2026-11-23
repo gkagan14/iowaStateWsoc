@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Big 12 Women's Soccer · 2026 Scouting Dashboard</title>
+<style>
+:root{
+  --bg:#0a0f14; --panel:#111a22; --panel2:#0e161d; --line:#1e2c37; --line2:#2a3d4b;
+  --text:#e9f2f7; --mut:#8ba1b0; --mut2:#5f7788;
+  --acc:#35d39a; --acc2:#ffb03a; --red:#ff5d6c; --blue:#59a8ff;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:radial-gradient(1200px 600px at 80% -10%, #14242e 0%, transparent 60%), var(--bg);
+  color:var(--text); font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased; padding-bottom:60px;
+}
+a{color:var(--acc);text-decoration:none}
+.wrap{max-width:1500px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:50;background:rgba(10,15,20,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.hd{display:flex;align-items:center;gap:18px;padding:12px 0 0;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:12px;flex:1;min-width:320px}
+.brand h1{margin:0;font-size:17px;letter-spacing:.02em;font-weight:750}
+.brand h1 span{color:var(--acc)}
+.brand .sub{color:var(--mut);font-size:11.5px;letter-spacing:.10em;text-transform:uppercase;font-weight:600}
+.pill{font:600 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line2);
+  color:var(--mut);padding:4px 7px;border-radius:5px;white-space:nowrap}
+.seg{display:inline-flex;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:3px;gap:2px}
+.seg button{background:none;border:0;color:var(--mut);font:600 12px/1 inherit;padding:7px 11px;border-radius:6px;cursor:pointer;letter-spacing:.02em}
+.seg button.on{background:var(--acc);color:#04140e}
+.seg button:hover:not(.on){color:var(--text);background:#1a2833}
+.myteam{display:flex;align-items:center;gap:8px}
+.myteam label{font:600 10px/1 var(--mono);letter-spacing:.1em;color:var(--mut2);text-transform:uppercase}
+table.ptable{font-size:12.5px}
+table.ptable th,table.ptable td{padding:7px 6px}
+table.ptable th{font-size:10px}
+select,input[type=text]{background:var(--panel);border:1px solid var(--line2);color:var(--text);border-radius:7px;
+  padding:7px 9px;font:600 12.5px/1.2 inherit;outline:none}
+select:focus,input[type=text]:focus{border-color:var(--acc)}
+nav.tabs{display:flex;gap:4px;padding:10px 0 0;overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{background:none;border:0;border-bottom:2px solid transparent;color:var(--mut);font:650 13px/1 inherit;
+  padding:9px 13px 11px;cursor:pointer;white-space:nowrap;border-radius:6px 6px 0 0}
+nav.tabs button:hover{color:var(--text);background:#131f28}
+nav.tabs button.on{color:var(--acc);border-bottom-color:var(--acc);background:#0f1a22}
+main{padding-top:22px}
+.card{background:linear-gradient(180deg,var(--panel) 0%,var(--panel2) 100%);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card h3{margin:0 0 12px;font:700 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(360px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.spacer{flex:1}
+.muted{color:var(--mut)}
+.small{font-size:12px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th,td{padding:8px 9px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
+th{font:650 10.5px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut2);
+  position:sticky;top:0;background:var(--panel);cursor:pointer;user-select:none;z-index:2}
+th.l,td.l{text-align:left}
+th:hover{color:var(--text)}
+th.on{color:var(--acc)}
+tbody tr:hover{background:#16222c}
+tbody tr.mine{background:rgba(53,211,154,.10)}
+tbody tr.mine:hover{background:rgba(53,211,154,.16)}
+td.team{font-weight:650;cursor:pointer}
+td.team:hover{color:var(--acc)}
+.tblwrap{max-height:640px;overflow:auto;border:1px solid var(--line);border-radius:10px}
+.tblwrap table th{background:#0f1a22}
+.rank{display:inline-block;min-width:20px;font:600 10px/1.5 var(--mono);color:var(--mut2)}
+.rank.top{color:var(--acc)}
+.rank.bot{color:var(--red)}
+.tag{font:600 10px/1 var(--mono);padding:3px 6px;border-radius:4px;letter-spacing:.05em;text-transform:uppercase}
+.tag.c{background:rgba(89,168,255,.14);color:var(--blue)}
+.tag.w{background:rgba(53,211,154,.16);color:var(--acc)}
+.tag.l{background:rgba(255,93,108,.15);color:var(--red)}
+.tag.t{background:rgba(255,176,58,.15);color:var(--acc2)}
+.tag.x{background:#1a2833;color:var(--mut)}
+.thero{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.badge{width:64px;height:64px;border-radius:14px;display:grid;place-items:center;font:800 20px/1 var(--mono);
+  letter-spacing:-.02em;color:#04140e}
+.thero h2{margin:0;font-size:26px;letter-spacing:-.01em}
+.thero .meta{color:var(--mut);font-size:12.5px;margin-top:3px}
+.rec{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.rec .b{background:#0d1720;border:1px solid var(--line2);border-radius:9px;padding:8px 12px;min-width:76px;text-align:center}
+.rec .b b{display:block;font:700 17px/1.2 var(--mono)}
+.rec .b span{font:600 9.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mut2)}
+.form{display:flex;gap:4px}
+.form i{width:20px;height:20px;border-radius:5px;display:grid;place-items:center;font:700 10px/1 var(--mono);font-style:normal}
+.form i.W{background:rgba(53,211,154,.18);color:var(--acc)}
+.form i.L{background:rgba(255,93,108,.16);color:var(--red)}
+.form i.T{background:rgba(255,176,58,.16);color:var(--acc2)}
+.metric{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px dashed #1a2833}
+.metric:last-child{border-bottom:0}
+.metric .k{flex:1;color:var(--mut);font-size:12.5px}
+.metric .v{font:700 14px/1 var(--mono);min-width:52px;text-align:right}
+.metric .r{width:56px}
+.bar{height:4px;background:#182633;border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px;background:var(--acc)}
+.bar.amber i{background:var(--acc2)}
+.bar.blue i{background:var(--blue)}
+.bar.red i{background:var(--red)}
+.timing{display:grid;grid-template-columns:88px 1fr;gap:8px 10px;align-items:center}
+.timing .lab{font:600 11px/1 var(--mono);color:var(--mut2);text-transform:uppercase;letter-spacing:.05em}
+.tbars{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;align-items:end;height:70px}
+.tb{position:relative;background:#16232e;border-radius:4px 4px 0 0;min-height:3px;transition:.15s}
+.tb span{position:absolute;bottom:calc(100% + 3px);left:50%;transform:translateX(-50%);font:600 9px/1 var(--mono);color:var(--mut)}
+.tb.em{background:linear-gradient(180deg,#35d39a,#1d8f68)}
+.tb.am{background:linear-gradient(180deg,#ffb03a,#a56c14)}
+.ax{display:grid;grid-template-columns:88px 1fr;gap:10px}
+.ax .tick{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.ax .tick span{text-align:center;font:600 9px/1 var(--mono);color:var(--mut2)}
+.tot{display:grid;grid-template-columns:1fr 150px 1fr;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.tot:last-child{border-bottom:0}
+.tot .side{display:flex;align-items:center;gap:8px}
+.tot .side.r{justify-content:flex-end}
+.tot .nm{font:600 12px/1 var(--mono);letter-spacing:.04em;color:var(--mut)}
+.tot .val{font:750 16px/1 var(--mono)}
+.tot .mid{text-align:center;font:650 10px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut2)}
+.tot .mid .rk{font:600 9.5px/1.7 var(--mono);color:var(--mut2);letter-spacing:.08em}
+.tot .dual{display:flex;height:6px;border-radius:3px;overflow:hidden;background:#16232e;margin-top:5px;gap:2px}
+.tot .dual i{display:block;height:100%}
+.win{color:var(--acc)}
+.insight{display:flex;gap:10px;padding:9px 0;border-bottom:1px dashed #1a2833;font-size:13px;line-height:1.5}
+.insight:last-child{border-bottom:0}
+.insight b{color:var(--text)}
+.insight .dot{width:6px;height:6px;border-radius:50%;background:var(--acc);margin-top:7px;flex:none}
+.insight.warn .dot{background:var(--acc2)}
+.insight.bad .dot{background:var(--red)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{background:#0d1720;border:1px solid var(--line2);color:var(--mut);font:600 11.5px/1 inherit;
+  padding:7px 10px;border-radius:999px;cursor:pointer}
+.chip:hover{color:var(--text)}
+.chip.on{background:rgba(53,211,154,.14);border-color:var(--acc);color:var(--acc)}
+.empty{color:var(--mut2);text-align:center;padding:40px 10px;font-size:13px}
+.hd2{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.hd2 h3{margin:0}
+.note{font-size:11.5px;color:var(--mut2);line-height:1.5}
+.scatter{width:100%;height:auto;display:block}
+
+/* ---------- prep sheet overlay ---------- */
+.prepOverlay{position:fixed;inset:0;background:#fff;color:#16181d;z-index:300;overflow:auto;padding:0 0 40px}
+.prepBar{position:sticky;top:0;background:#111a22;color:#e9f2f7;display:flex;gap:10px;align-items:center;
+  padding:9px 16px;font:600 12px/1.2 inherit;z-index:2}
+.prepBar span{flex:1;letter-spacing:.02em}
+.prepBar button{background:var(--acc);color:#04140e;border:0;border-radius:6px;padding:7px 12px;
+  font:700 12px/1 inherit;cursor:pointer}
+.prepBar #prepClose{background:#2a3d4b;color:#e9f2f7}
+.prepDoc{max-width:8.2in;margin:18px auto;padding:0 6px;font:9.4pt/1.4 Helvetica,Arial,sans-serif}
+.prepDoc h1{font-size:20pt;margin:2px 0;letter-spacing:-.02em;font-weight:700}
+.prepDoc h1 em{color:#C8102E;font-style:normal}
+.pr-kicker{font:700 7.4pt/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#8a1020}
+.pr-sub{font-size:8.3pt;color:#5a5f68;margin-bottom:7px}
+.pr-head{border-bottom:2.5px solid #C8102E;padding-bottom:6px;margin-bottom:10px}
+.prepDoc h2{font:700 7.8pt/1 var(--mono);letter-spacing:.13em;text-transform:uppercase;background:#1d2129;
+  color:#fff;padding:3.5px 7px;border-radius:3px;margin:11px 0 5px;page-break-after:avoid}
+.pr-cols{display:flex;gap:12px;align-items:flex-start}
+.pr-col{flex:none}
+table.pr{width:100%;border-collapse:collapse;font-size:8.5pt}
+table.pr th{background:#eef1f4;color:#3d434b;position:static;cursor:default;text-align:right;font:700 6.8pt/1.2 var(--mono);letter-spacing:.07em;text-transform:uppercase;
+  color:#6b7178;border-bottom:1px solid #c9ced6;padding:3px 4px}
+table.pr th:first-child{text-align:left}
+table.pr td{border-bottom:1px solid #eceef1;padding:2.8px 4px}
+table.pr td.c{text-align:center}
+table.pr td.b{font-weight:700}
+.pr-l{color:#3d434b;text-align:left!important}
+.pr-v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pr-v.pr-b{color:#3f1f6b}
+.pr-win{color:#0b7d54}
+.pr-list{margin:0;padding-left:14px;font-size:8.6pt}
+.pr-list li{margin-bottom:3px}
+.pr-box{border:1px solid #d9dde3;border-left:3px solid #C8102E;border-radius:4px;padding:6px 8px;
+  margin-top:7px;font-size:8.5pt;background:#fafbfc}
+.pr-note{font-size:7.9pt;color:#6b7178;margin-top:3px}
+.pr-foot{page-break-inside:avoid;font-size:6.9pt;color:#8b9198;border-top:1px solid #e0e3e8;margin-top:11px;padding-top:5px}
+.pt{margin-bottom:6px}
+.pt-title{font:700 7.6pt/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#3d434b;margin:0 0 6px}
+.pt-lab{font:700 6.4pt/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#8c939b}
+.pt-grid{display:grid;grid-template-columns:46px 1fr;gap:2px 8px;align-items:center}
+.pt-row{display:flex;gap:3px;align-items:flex-end;height:44px}
+.pt-cell{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.pt-bar{width:100%;border-radius:2px 2px 0 0}
+.pt-n{font:700 6.4pt/1.4 var(--mono);color:#4a5058;margin-top:2px}
+.pt-axis{display:flex;gap:3px;grid-column:2}
+.pt-axis span{flex:1;text-align:center;font:600 6.2pt/1 var(--mono);color:#8c939b}
+/* ---------- projection ---------- */
+.pbar{position:relative;height:4px;background:#16232e;border-radius:3px;margin-top:4px;width:92px}
+.pbar span{position:absolute;top:0;height:5px;background:rgba(53,211,154,.26);border-radius:3px}
+.pbar i{position:absolute;top:-1px;width:2px;height:7px;background:var(--acc);border-radius:1px}
+.up{color:var(--acc)} .down{color:var(--red)}
+.projRow:hover td{background:#16222c}
+tr.rowoff td{opacity:.45}
+tr.rowoff td .cb{background:#2a3d4b;color:transparent}
+.cb{display:inline-grid;flex:none;place-items:center;width:14px;height:14px;border-radius:3px;background:var(--acc);
+  color:#04140e;font:700 9px/1 var(--mono);margin-right:5px}
+input[type=range]{height:4px}
+.tblwrap table tbody tr[data-out]{cursor:pointer}
+@media (max-width:700px){
+  .rec{margin-left:0;width:100%}
+  .tot{grid-template-columns:1fr 104px 1fr}
+  .wrap{padding:0 12px}
+  .thero h2{font-size:21px}
+}
+@media print{
+  body.prep-open header, body.prep-open nav.tabs, body.prep-open #main{display:none!important}
+  .prepBar{display:none!important}
+  .prepOverlay{position:static!important;overflow:visible!important;padding:0!important;background:#fff}
+  .prepDoc{margin:0;max-width:none;padding:0}
+  @page{size:Letter;margin:12mm}
+  header{position:static;background:#fff;color:#000}
+  body{background:#fff;color:#000}
+  .seg,nav.tabs,.myteam,.chip{display:none}
+  .card{border:1px solid #ddd;background:#fff}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="hd">
+      <div class="brand">
+        <h1>Big 12 Women's Soccer <span id="brandSeason">· 2026</span></h1>
+        <div class="sub">Scouting &amp; Matchup Dashboard</div>
+        <div class="pill" id="asof">as of Nov 23, 2026</div>
+      </div>
+      <div class="seg" id="seasonSeg" title="Season">
+        <button data-season="2026" class="on">2026</button>
+        <button data-season="2025">2025</button>
+      </div>
+      <div class="seg" id="scopeSeg">
+        <button data-scope="all" class="on">All games</button>
+        <button data-scope="conf">Big 12 play</button>
+      </div>
+      <div class="myteam">
+        <label for="myTeamSel">My team</label>
+        <select id="myTeamSel"></select>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button data-tab="board" class="on">Conference board</button>
+      <button data-tab="team">Team pages</button>
+      <button data-tab="matchup">Matchup lab</button>
+      <button data-tab="games">Game explorer</button>
+      <button data-tab="yoy">2025 → 2026</button>
+      <button data-tab="proj">2027 projection</button>
+      <button data-tab="method">Method &amp; sources</button>
+    </nav>
+  </div>
+</header>
+<main class="wrap" id="main"></main>
+
+<script>
+const DATA = /*__DATA__*/{};
+const SEASONS = Object.keys(DATA.seasons).sort().reverse();   // newest first
+const SD = () => DATA.seasons[state.season] || DATA.seasons[SEASONS[0]];
+const B12 = Object.keys(DATA.seasons[SEASONS[0]].teams);
+const T = k => SD().teams[k];
+const COLORS = {
+  Arizona:'#c8102e','Arizona State':'#ffc72c',Baylor:'#1d7a3e',BYU:'#0047ab',Cincinnati:'#e00122',
+  Colorado:'#cfb87c',Houston:'#c8102e','Iowa State':'#c8102e',Kansas:'#0051ba','Kansas State':'#512888',
+  'Oklahoma State':'#ff7300',TCU:'#4d1979','Texas Tech':'#cc0000',UCF:'#ba9b37',Utah:'#be0000','West Virginia':'#eaaa00'
+};
+const MY_TEAM='Iowa State';
+const state = {scope:'all', season:SEASONS[0], tab:'board', myTeam:localStorage.getItem('b12_myteam')||MY_TEAM,
+  sort:{key:'pts',dir:-1}, q:'',
+  team:'Iowa State', logF:{venue:'all',res:'all',conf:'all'},
+  mA:'Iowa State', mB:'Kansas State', gF:{team:'all',conf:'all',venue:'all',res:'all'}, gSort:{key:'date',dir:-1},
+  projSort:{key:'proj_ppg',dir:-1}, projTier:'all', projSel:'', turn:null, turnOn:true,
+  yoySort:{key:'dPpg',dir:-1}, yoySel:''};
+
+const fmt = (v,d=2) => v==null? '—' : (typeof v==='number'? (Number.isInteger(v)? v : v.toFixed(d)) : v);
+const M = t => T(t).metrics[state.scope];
+const R = (t,k) => (T(t).metrics.rank[state.scope]||{})[k] || null;
+const gd = m => m.gf-m.ga;
+const rec = m => `${m.w}-${m.l}-${m.t}`;
+
+function bar(pctVal,cls=''){ return `<div class="bar ${cls}"><i style="width:${Math.max(2,Math.min(100,pctVal))}%"></i></div>`; }
+function rankBar(t,k){ const r=R(t,k); if(!r) return ''; return bar((17-r)/16*100, r>10? 'amber':(r<=5?'':'blue')); }
+function resTag(r){ return `<span class="tag ${r.toLowerCase()}">${r}</span>`; }
+function formChips(arr){ return `<div class="form">${arr.map(f=>`<i class="${f.r}" title="${f.date} ${f.ha} ${f.opp} ${f.gf}-${f.ga}">${f.r}</i>`).join('')}</div>`; }
+
+function seasonCounts(){
+  let intra=0, ooc=0, conf=0;
+  B12.forEach(t=>T(t).log.forEach(g=>{
+    if(B12.includes(g.opp)) intra++; else ooc++;
+    if(g.conf) conf++;
+  }));
+  const tot = Math.round(intra/2 + ooc), cf = Math.round(conf/2);
+  let last='';
+  B12.forEach(t=>T(t).log.forEach(g=>{ if(g.date>last) last=g.date; }));
+  const lastTxt = last ? new Date(last+'T12:00:00').toLocaleDateString('en-US',{day:'numeric',month:'short',year:'numeric'}) : '';
+  return {games:tot, conf:cf, last:lastTxt, label:`${tot} matches · ${cf} conference`};
+}
+const COLS = [
+  {k:'w',l:'W',d:-1},{k:'l',l:'L',d:1},{k:'t',l:'T',d:1},{k:'pts',l:'PTS',d:-1},
+  {k:'gf',l:'GF',d:-1},{k:'ga',l:'GA',d:1},{k:'gd',l:'GD',d:-1},
+  {k:'gpg',l:'GF/g',d:-1},{k:'gapg',l:'GA/g',d:1},
+  {k:'shpg',l:'SH/g',d:-1},{k:'sogpg',l:'SOG/g',d:-1},{k:'acc',l:'SOG%',d:-1},
+  {k:'conv',l:'CONV%',d:-1},{k:'shotshare',l:'SH%',d:-1},
+  {k:'oppshpg',l:'OSH/g',d:1},{k:'savepct',l:'SV%',d:-1},{k:'shutouts',l:'CS',d:-1},
+  {k:'cpg',l:'CK/g',d:-1},{k:'fpg',l:'F/g',d:1},{k:'yc',l:'YC',d:1}
+];
+const TITLES={gpg:'Goals per game',gapg:'Goals against per game',shpg:'Shots per game',sogpg:'Shots on target per game',
+  acc:'Shots on target ÷ shots (%)',conv:'Goals ÷ shots (%)',shotshare:'Own shots ÷ total shots (%)',oppshpg:'Opponent shots per game',
+  savepct:'Saves ÷ (saves + goals against)',shutouts:'Clean sheets',cpg:'Corner kicks per game',fpg:'Fouls per game',yc:'Yellow cards',pts:'3 points per win, 1 per draw'};
+function boardView(){
+  let rows = B12.map(t=>({t,m:M(t)}));
+  if(state.q) rows = rows.filter(r=>r.t.toLowerCase().includes(state.q.toLowerCase()));
+  rows.sort((a,b)=>{
+    const S=state.sort;
+    const get=r=>{
+      if(S.key==='pts') return r.m.w*3+r.m.t;
+      if(S.key==='gd') return gd(r.m);
+      if(S.key==='name') return r.t;
+      const v = S.key==='yc' ? (r.m.yc ?? r.m.cards) : r.m[S.key];
+      return v ?? -1;
+    };
+    const va=get(a),vb=get(b);
+    if(typeof va==='string') return (va>vb?1:-1)*S.dir;
+    if(va===vb) return b.m.w-a.m.w;
+    return S.dir===-1 ? vb-va : va-vb;
+  });
+  const body = rows.map((r,i)=>{
+    const m=r.m, isMine=r.t===state.myTeam;
+    return `<tr class="${isMine?'mine':''}">
+      <td class="l muted mono">${i+1}</td>
+      <td class="l team" data-team="${r.t}"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${COLORS[r.t]||'#555'};margin-right:8px"></span>${r.t}${isMine?' <span class="tag w" style="margin-left:6px">me</span>':''}</td>
+      <td class="mono">${rec(m)}</td><td class="mono">${m.w*3+m.t}</td>
+      <td class="mono">${m.gf}–${m.ga}</td><td class="mono">${gd(m)>0?'+':''}${gd(m)}</td>
+      <td class="mono">${fmt(m.gpg)}</td><td class="mono">${fmt(m.gapg)}</td>
+      <td class="mono">${fmt(m.shpg,1)}</td><td class="mono">${fmt(m.sogpg,1)}</td>
+      <td class="mono">${m.acc.toFixed(0)}</td><td class="mono">${m.conv.toFixed(0)}</td>
+      <td class="mono">${m.shotshare.toFixed(0)}</td>
+      <td class="mono">${fmt(m.oppshpg,1)}</td><td class="mono">${m.savepct.toFixed(0)}</td>
+      <td class="mono">${m.shutouts??'—'}</td>
+      <td class="mono">${fmt(m.cpg,1)}</td><td class="mono">${fmt(m.fpg,1)}</td><td class="mono">${m.yc??m.cards}</td>
+    </tr>`;
+  }).join('');
+  return `
+  <div class="grid g2" style="margin-bottom:14px">
+    <div class="card">
+      <div class="hd2"><h3>Shot volume vs. shot quality</h3><span class="spacer"></span><span class="note">x = shot share · y = conversion</span></div>
+      ${scatterSVG()}
+    </div>
+    <div class="card">
+      <h3>Reading the board</h3>
+      <div class="insight"><div class="dot"></div><div><b>SH%</b> = share of all shots in the match (possession/territory proxy). <b>CONV%</b> = goals ÷ shots. <b>SOG%</b> = shots on target ÷ shots.</div></div>
+      <div class="insight warn"><div class="dot"></div><div><b>CS</b> = clean sheets. <b>YC</b> = yellow cards from box scores. Figures marked “/g” are per game.</div></div>
+      <div class="insight"><div class="dot"></div><div>Use the <b>All games / Big 12 play</b> switch to isolate conference form. Click a column header to sort, a team to open its page.</div></div>
+      <div class="insight"><div class="dot"></div><div>Everything here is the completed <b>2026</b> season, built from 222 league box scores — not a projection.</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="hd2">
+      <h3>Conference board · ${state.scope==='all'?'all games':'Big 12 only'}</h3>
+      <span class="spacer"></span>
+      <input type="text" id="q" placeholder="Filter teams…" value="${state.q}" style="width:170px">
+      <button class="chip" id="csvBoard">Export CSV</button>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr>
+          <th class="l">#</th><th class="l" data-k="name">Team</th><th data-k="w">W-L-T</th><th data-k="pts">PTS</th>
+          <th title="Goals for – goals against">GF–GA</th><th data-k="gd" title="Goal difference">GD</th>
+          ${COLS.filter(c=>!['w','l','t','pts','gf','ga','gd','name'].includes(c.k)).map(c=>`<th data-k="${c.k}" class="${state.sort.key===c.k?'on':''}" title="${TITLES[c.k]||c.l}">${c.l}</th>`).join('')}
+        </tr></thead>
+        <tbody>${body}</tbody>
+      </table>
+    </div>
+    <p class="note" style="margin:10px 0 0">Sorted by ${state.sort.key.toUpperCase()} · ${state.season} season · ${seasonCounts().label} · last match ${seasonCounts().last}</p>
+  </div>`;
+}
+
+function scatterSVG(){
+  const w=660,h=360,pad={l:46,r:18,t:20,b:38};
+  const xs=B12.map(t=>M(t).shotshare), ys=B12.map(t=>M(t).conv);
+  const x0=Math.floor(Math.min(...xs)-4),x1=Math.ceil(Math.max(...xs)+4);
+  const y0=Math.max(0,Math.floor(Math.min(...ys)-2)),y1=Math.ceil(Math.max(...ys)+2);
+  const X=v=>pad.l+(v-x0)/(x1-x0)*(w-pad.l-pad.r);
+  const Y=v=>h-pad.b-(v-y0)/(y1-y0)*(h-pad.t-pad.b);
+  const mx=50,my=11;
+  let g=`<svg viewBox="0 0 ${w} ${h}" class="scatter">
+    <defs><linearGradient id="gl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#35d39a" stop-opacity=".10"/><stop offset="1" stop-color="#35d39a" stop-opacity=".02"/></linearGradient></defs>
+    <rect x="${X(mx)}" y="${pad.t}" width="${w-pad.r-X(mx)}" height="${Math.max(0,Y(my)-pad.t)}" fill="url(#gl)"/>
+    <line x1="${pad.l}" y1="${Y(my)}" x2="${w-pad.r}" y2="${Y(my)}" stroke="#22333f"/>
+    <line x1="${X(mx)}" y1="${pad.t}" x2="${X(mx)}" y2="${h-pad.b}" stroke="#22333f"/>
+    <text x="${w-pad.r-4}" y="${pad.t+11}" text-anchor="end" fill="#2f7f61" font-size="9" font-family="ui-monospace">DOMINANT + CLINICAL</text>
+    <text x="${pad.l+4}" y="${pad.t+11}" fill="#4b6273" font-size="9" font-family="ui-monospace">LOW VOLUME, CLINICAL</text>
+    <text x="${pad.l+4}" y="${h-pad.b-5}" fill="#4b6273" font-size="9" font-family="ui-monospace">LOW VOLUME, WASTEFUL</text>
+    <text x="${w-pad.r-4}" y="${h-pad.b-5}" text-anchor="end" fill="#4b6273" font-size="9" font-family="ui-monospace">HIGH VOLUME, WASTEFUL</text>`;
+  const pts=B12.map(t=>{const m=M(t);return {t,cx:X(m.shotshare),cy:Y(m.conv),mine:t===state.myTeam};});
+  pts.sort((a,b)=>a.cy-b.cy);
+  const placed=[];
+  pts.forEach(p=>{
+    let ly=p.cy-11, tries=0;
+    while(placed.some(q=>Math.abs(q.x-p.cx)<36 && Math.abs(q.y-ly)<11) && tries<7){ ly+=11; tries++; }
+    placed.push({x:p.cx,y:ly});
+    g+=`<circle cx="${p.cx}" cy="${p.cy}" r="${p.mine?8:5.5}" fill="${COLORS[p.t]||'#888'}" stroke="${p.mine?'#fff':'#0a0f14'}" stroke-width="${p.mine?2:1.4}"><title>${p.t}: ${M(p.t).shotshare.toFixed(1)}% shot share · ${M(p.t).conv.toFixed(1)}% conversion · ${fmt(M(p.t).shpg,1)} shots/g</title></circle>
+      <text x="${p.cx}" y="${ly}" text-anchor="middle" font-size="${p.mine?10:8.6}" font-family="ui-monospace" font-weight="600" fill="${p.mine?'#fff':'#9db2c0'}">${T(p.t).abbr}</text>`;
+  });
+  for(let i=0;i<=4;i++){ const v=x0+(x1-x0)*i/4; g+=`<text x="${X(v)}" y="${h-pad.b+14}" text-anchor="middle" fill="#5f7788" font-size="9" font-family="ui-monospace">${v.toFixed(0)}%</text>`; }
+  for(let i=0;i<=4;i++){ const v=y0+(y1-y0)*i/4; g+=`<text x="${pad.l-8}" y="${Y(v)+3}" text-anchor="end" fill="#5f7788" font-size="9" font-family="ui-monospace">${v.toFixed(0)}%</text>`; }
+  g+=`<text x="${(pad.l+w-pad.r)/2}" y="${h-6}" text-anchor="middle" fill="#5f7788" font-size="9.5" font-family="ui-monospace">SHOT SHARE %</text>
+      <text transform="translate(12,${(pad.t+h-pad.b)/2}) rotate(-90)" text-anchor="middle" fill="#5f7788" font-size="9.5" font-family="ui-monospace">CONVERSION %</text></svg>`;
+  return g;
+}
