@@ -1,0 +1,1034 @@
+
+function teamView(){
+  const t=state.team, obj=T(t), m=M(t);
+  const logs = obj.log.filter(g=>{
+    if(state.scope==='conf' && !g.conf) return false;
+    if(state.logF.venue!=='all' && g.ha!==state.logF.venue) return false;
+    if(state.logF.res!=='all' && g.r!==state.logF.res) return false;
+    if(state.logF.conf==='conf' && !g.conf) return false;
+    if(state.logF.conf==='nc' && g.conf) return false;
+    return true;
+  });
+  const att=[
+    ['Goals / game','gpg',2,'gpg'],['Shots / game','shpg',1,'shpg'],['SOG / game','sogpg',1,'sogpg'],['SOG rate','acc',0,'acc'],
+    ['Conversion','conv',0,'conv'],['Shot share','shotshare',0,'shotshare'],['Corners / game','cpg',1,'cpg'],['Assists','assists',0,null]
+  ];
+  const def=[
+    ['Goals against / game','gapg',2,'gapg'],['Opp shots / game','oppshpg',1,'oppshpg'],['Opp SOG / game','oppsogpg',1,'oppsogpg'],
+    ['Save %','savepct',0,'savepct'],['Clean sheets','shutouts',0,'shutouts'],['Opp corners / game','oppcpg',1,null],
+    ['Fouls / game','fpg',1,'fpg'],['Yellow cards','yc',0,null]
+  ];
+  const gk = obj.players.filter(p=>p.gk).sort((a,b)=>b.gkmin-a.gkmin);
+  const scorers = obj.players.filter(p=>!p.gk || p.g>0).slice(0,12);
+  const tc = (t!==state.myTeam && state.myTeam) ? `<button class="chip" data-matchup="${t}">Compare with ${state.myTeam}</button>` : '';
+  return `
+  <div class="thero">
+    <div class="badge" style="background:${COLORS[t]||'#35d39a'}">${obj.abbr}</div>
+    <div>
+      <h2>${t}</h2>
+      <div class="meta">${state.scope==='all'?'All games':'Big 12 play'} · ${m.gp} matches · ${m.gf} GF / ${m.ga} GA · full-season SOS ${obj.sos}%</div>
+    </div>
+    <div class="rec">
+      <div class="b"><b>${rec(m)}</b><span>Record</span></div>
+      <div class="b"><b>${m.w*3+m.t}</b><span>Points</span></div>
+      <div class="b"><b>${gd(m)>0?'+':''}${gd(m)}</b><span>Goal diff</span></div>
+      <div class="b"><b>${fmt(m.gpg)}</b><span>GF/G</span></div>
+      <div class="b"><b>${fmt(m.gapg)}</b><span>GA/G</span></div>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:14px">
+    ${formChips((state.scope==='conf'?obj.log.filter(g=>g.conf):obj.log).slice(-6))}
+    <span class="note">Last six · left to right</span>
+    <span class="spacer"></span>
+    <select id="teamSel">${B12.map(x=>`<option ${x===t?'selected':''}>${x}</option>`).join('')}</select>
+    ${tc}
+    <button class="chip" id="setMine">${t===state.myTeam?'✓ This is my team':'Set as my team'}</button>
+    ${(state.myTeam && t!==state.myTeam)?`<button class="chip" data-prep="${state.myTeam}|${t}">Prep sheet (PDF)</button>`:''}
+    <button class="chip" id="printTeam">Print</button>
+  </div>
+
+  <div class="grid g3">
+    <div class="card"><h3>Attack</h3>${att.map(([l,k,d,rk])=>`
+      <div class="metric"><div class="k">${l}</div>
+        <div class="v">${(k==='acc'||k==='conv'||k==='shotshare')?fmt(m[k],1)+'%':fmt(m[k],d)}</div>
+        <div class="r">${rk?rankBar(t,rk):''}</div></div>`).join('')}
+      <p class="note" style="margin-top:8px">From ${m.boxgp} box scores.${m.boxgp<m.gp?` ${m.gp-m.boxgp} match(es) without a full stat line.`:''}</p>
+    </div>
+    <div class="card"><h3>Defence &amp; discipline</h3>${def.map(([l,k,d,rk])=>`
+      <div class="metric"><div class="k">${l}</div>
+        <div class="v">${(k==='savepct')?fmt(m[k],1)+'%':fmt(m[k],d)}</div>
+        <div class="r">${rk?rankBar(t,rk):''}</div></div>`).join('')}
+      <p class="note" style="margin-top:8px">Lower is better for goals, opponent shots, fouls and cards. Bars show rank vs the other 15.</p>
+    </div>
+    <div class="card"><h3>Match shape</h3>
+      <div class="metric"><div class="k">Games scoring first</div><div class="v">${m.sf}</div><div class="r"></div></div>
+      <div class="metric"><div class="k">Games conceding first</div><div class="v">${m.cf}</div><div class="r"></div></div>
+      <div class="metric"><div class="k">Failed to score</div><div class="v">${m.fts}</div><div class="r"></div></div>
+      <div class="metric"><div class="k">1st-half goals for</div><div class="v">${m.g1h}</div><div class="r"></div></div>
+      <div class="metric"><div class="k">1st-half goals against</div><div class="v">${m.ga1h}</div><div class="r"></div></div>
+      <div class="metric"><div class="k">Penalties (made/att)</div><div class="v">${m.pk??'—'}/${m.pka??'—'}</div><div class="r"></div></div>
+      <div class="metric"><div class="k">Offsides</div><div class="v">${m.offsides??'—'}</div><div class="r"></div></div>
+      <div class="metric"><div class="k">Home record</div><div class="v">${homeRec(t)}</div><div class="r"></div></div>
+      <div class="metric"><div class="k">Away record</div><div class="v">${awayRec(t)}</div><div class="r"></div></div>
+    </div>
+  </div>
+
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card">
+      <h3>When they score · when they concede</h3>
+      ${timingChart(t)}
+      <h3 style="margin-top:18px">Scoring by half</h3>
+      <div class="metric"><div class="k">1st half</div><div class="v">${m.g1h}–${m.ga1h}</div><div class="r">${bar(Math.min(100,(m.g1h/(m.gf||1))*100))}</div></div>
+      <div class="metric"><div class="k">2nd half &amp; OT</div><div class="v">${m.gf-m.g1h}–${m.ga-m.ga1h}</div><div class="r">${bar(Math.min(100,((m.gf-m.g1h)/(m.gf||1))*100))}</div></div>
+    </div>
+    <div class="card">
+      <h3>Personnel · goals &amp; assists (box scores)</h3>
+      ${state.scope==='conf'?'<p class="note" style="margin:-6px 0 8px">Personnel figures are full-season totals.</p>':''}
+      <div class="tblwrap" style="max-height:330px">
+        <table><thead><tr><th class="l">Player</th><th>Pos</th><th>G</th><th>A</th><th>PTS</th><th>SH</th><th>SOG</th><th>MIN</th></tr></thead>
+        <tbody>${scorers.length?scorers.map(p=>`<tr><td class="l">${p.name}</td><td class="muted small">${p.pos||'—'}</td>
+          <td class="mono">${p.g||''}</td><td class="mono">${p.a||''}</td><td class="mono">${p.pts||''}</td>
+          <td class="mono muted">${p.sh||''}</td><td class="mono muted">${p.sog||''}</td><td class="mono muted">${p.min||''}</td></tr>`).join('')
+          :`<tr><td colspan="8" class="empty">No player detail captured for this team.</td></tr>`}</tbody></table>
+      </div>
+      ${gk.length?`<h3 style="margin-top:14px">Goalkeepers</h3>
+      <table><thead><tr><th class="l">Keeper</th><th>MIN</th><th>GA</th><th>SV</th><th>SV%</th><th>GAA</th></tr></thead><tbody>
+      ${gk.map(p=>`<tr><td class="l">${p.name}</td><td class="mono">${p.gkmin}</td><td class="mono">${p.ga}</td>
+        <td class="mono">${p.sv}</td><td class="mono">${p.ga+p.sv?((100*p.sv/(p.ga+p.sv)).toFixed(0)+'%'):'—'}</td>
+        <td class="mono">${p.gkmin?(90*p.ga/p.gkmin).toFixed(2):'—'}</td></tr>`).join('')}</tbody></table>`:''}
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="hd2"><h3>Match log</h3><span class="spacer"></span>
+      <div class="chips">
+        <button class="chip ${state.logF.venue==='all'?'on':''}" data-lf="venue:all">All venues</button>
+        <button class="chip ${state.logF.venue==='H'?'on':''}" data-lf="venue:H">Home</button>
+        <button class="chip ${state.logF.venue==='A'?'on':''}" data-lf="venue:A">Away</button>
+        <button class="chip ${state.logF.conf==='conf'?'on':''}" data-lf="conf:conf">Big 12</button>
+        <button class="chip ${state.logF.conf==='nc'?'on':''}" data-lf="conf:nc">Non-conf</button>
+        <button class="chip ${state.logF.res==='W'?'on':''}" data-lf="res:W">Wins</button>
+        <button class="chip ${state.logF.res==='L'?'on':''}" data-lf="res:L">Losses</button>
+        <button class="chip ${state.logF.res==='T'?'on':''}" data-lf="res:T">Draws</button>
+      </div>
+    </div>
+    <div class="tblwrap" style="max-height:600px">
+      <table><thead><tr><th class="l">Date</th><th class="l">Opponent</th><th>H/A</th><th>Res</th><th>Score</th>
+        <th>SH</th><th>SOG</th><th>Opp SH</th><th>Opp SOG</th><th>CK</th><th>Opp CK</th><th>SV</th><th>Fouls</th><th class="l">Goals</th></tr></thead>
+      <tbody>${logs.map(g=>`<tr>
+        <td class="l mono muted">${g.date.slice(5)}</td>
+        <td class="l"><span style="cursor:pointer" data-team="${g.opp}">${g.opp}</span> ${g.conf?'<span class="tag c">B12</span>':''}</td>
+        <td class="mono muted">${g.ha}</td><td>${resTag(g.r)}</td>
+        <td class="mono"><b>${g.gf}–${g.ga}</b></td>
+        <td class="mono">${g.sh??'—'}</td><td class="mono">${g.sog??'—'}</td>
+        <td class="mono muted">${g.osh??'—'}</td><td class="mono muted">${g.osog??'—'}</td>
+        <td class="mono">${g.ck??'—'}</td><td class="mono muted">${g.opck??'—'}</td>
+        <td class="mono">${g.sv??'—'}</td><td class="mono muted">${g.fls??'—'}</td>
+        <td class="l small muted" style="white-space:normal;max-width:320px">${(g.goals||[]).map(e=>`${e.t===t?'●':'○'} ${e.min} ${e.n}${(e.a&&e.a.length)?' ('+e.a.join(', ')+')':''}`).join(' · ')}</td>
+      </tr>`).join('')||`<tr><td colspan="14" class="empty">No matches for this filter.</td></tr>`}</tbody></table>
+    </div>
+  </div>`;
+}
+function homeRec(t){ const lg=T(t).log; const arr=state.scope==='conf'?lg.filter(g=>g.conf):lg;
+  const a=arr.filter(g=>g.ha==='H');
+  return `${a.filter(g=>g.r==='W').length}-${a.filter(g=>g.r==='L').length}-${a.filter(g=>g.r==='T').length}`; }
+function awayRec(t){ const lg=T(t).log; const arr=state.scope==='conf'?lg.filter(g=>g.conf):lg;
+  const a=arr.filter(g=>g.ha==='A');
+  return `${a.filter(g=>g.r==='W').length}-${a.filter(g=>g.r==='L').length}-${a.filter(g=>g.r==='T').length}`; }
+
+function timingChart(t){
+  const m=M(t); const labels=['0-15','16-30','31-45','46-60','61-75','76-90','90+'];
+  const gf=labels.map(l=>m.gtime[l]||0), ga=labels.map(l=>m.otime[l]||0);
+  const mx=Math.max(1,...gf,...ga);
+  const bars=(arr,cls)=>arr.map(v=>`<div class="tb ${cls}" style="height:${Math.max(3,v/mx*100)}%"><span>${v||''}</span></div>`).join('');
+  return `<div class="ax"><div></div><div class="tick">${labels.map(l=>`<span>${l}'</span>`).join('')}</div></div>
+    <div class="timing" style="margin-top:6px">
+      <div class="lab">Scored</div><div class="tbars">${bars(gf,'em')}</div>
+      <div class="lab">Conceded</div><div class="tbars">${bars(ga,'am')}</div>
+    </div>
+    <p class="note" style="margin-top:8px">${timingNote(t)}</p>`;
+}
+function timingNote(t){
+  const m=M(t); const labels=['0-15','16-30','31-45','46-60','61-75','76-90','90+'];
+  const pick=o=>{let b=labels[0];labels.forEach(l=>{if((o[l]||0)>(o[b]||0))b=l});return {b,v:o[b]||0};};
+  const a=pick(m.gtime), d=pick(m.otime);
+  return `<b>${T(t).abbr}</b> does most damage in the <b>${a.b}′</b> window (${a.v} goals) and concedes most in <b>${d.b}′</b> (${d.v}).`
+    + (m.ga1h>m.g1h? ` Net negative before half-time (${m.g1h}–${m.ga1h}).` : ` Net positive before half-time (${m.g1h}–${m.ga1h}).`);
+}
+
+/* ---------- matchup ---------- */
+const TAPE=[
+  {g:'Form & results',rows:[
+    {l:'Points',fn:m=>m.w*3+m.t,d:0},{l:'Goal difference',fn:m=>gd(m),d:0},
+    {l:'Goals for / game',fn:m=>m.gpg,d:2,key:'gpg'},{l:'Goals against / game',fn:m=>m.gapg,d:2,key:'gapg',inv:1}
+  ]},
+  {g:'Attack',rows:[
+    {l:'Shots / game',fn:m=>m.shpg,d:1,key:'shpg'},{l:'Shots on target / game',fn:m=>m.sogpg,d:1,key:'sogpg'},
+    {l:'Shot accuracy',fn:m=>m.acc,s:'%',d:1,key:'acc'},{l:'Conversion (goals ÷ shots)',fn:m=>m.conv,s:'%',d:1,key:'conv'},
+    {l:'Shot share',fn:m=>m.shotshare,s:'%',d:0,key:'shotshare'},{l:'Corners / game',fn:m=>m.cpg,d:1,key:'cpg'}
+  ]},
+  {g:'Defence',rows:[
+    {l:'Opp shots / game',fn:m=>m.oppshpg,d:1,key:'oppshpg',inv:1},{l:'Opp SOG / game',fn:m=>m.oppsogpg,d:1,key:'oppsogpg',inv:1},
+    {l:'Save %',fn:m=>m.savepct,s:'%',d:1,key:'savepct'},{l:'Clean sheets',fn:m=>m.shutouts,d:0,key:'shutouts'},
+    {l:'Fouls / game',fn:m=>m.fpg,d:1,key:'fpg',inv:1},{l:'Yellow cards',fn:m=>m.yc,d:0,inv:1}
+  ]},
+  {g:'Game shape',rows:[
+    {l:'Games scoring first',fn:m=>m.sf,d:0},{l:'Games conceding first',fn:m=>m.cf,d:0,inv:1},
+    {l:'Failed to score',fn:m=>m.fts,d:0,inv:1},{l:'1st-half goals for',fn:m=>m.g1h,d:0},{l:'1st-half goals against',fn:m=>m.ga1h,d:0,inv:1}
+  ]}
+];
+function matchupView(){
+  if(!state.mA) state.mA = state.myTeam || B12[0];
+  if(!state.mB) state.mB = B12.find(t=>t!==state.mA);
+  if(state.mB===state.mA) state.mB = B12.find(t=>t!==state.mA);
+  const A=state.mA,B=state.mB, ma=M(A), mb=M(B);
+  const h2h=T(A).log.find(g=>g.opp===B && (state.scope==='all' || g.conf));
+  const rows = TAPE.map(sec=>{
+    const rws = sec.rows.map(rw=>{
+      const {l:label,fn,s:suffix='',d:dec=0,key,inv:invert}=rw;
+      const va=fn(ma), vb=fn(mb);
+      const aW = invert? (va<vb) : (va>vb);
+      const bW = invert? (vb<va) : (vb>va);
+      const tot=(Math.abs(va)+Math.abs(vb))||1;
+      const pa=Math.abs(va)/tot*100;
+      return `<div class="tot">
+        <div class="side"><span class="val ${aW?'win':''}">${fmt(va,dec)}${suffix}</span><span class="nm">${T(A).abbr}</span></div>
+        <div class="mid">${label}${key?`<div class="rk">#${R(A,key)||'—'} · #${R(B,key)||'—'}</div>`:''}<div class="dual"><i style="width:${pa}%;background:var(--acc)"></i><i style="width:${100-pa}%;background:var(--acc2)"></i></div></div>
+        <div class="side r"><span class="nm">${T(B).abbr}</span><span class="val ${bW?'win':''}">${fmt(vb,dec)}${suffix}</span></div>
+      </div>`;
+    }).join('');
+    return `<div style="margin-top:12px"><h3 style="margin:0 0 4px">${sec.g}</h3>${rws}</div>`;
+  }).join('');
+  return `
+  <div class="card" style="margin-bottom:14px">
+    <div class="hd2">
+      <div class="row" style="gap:8px">
+        <select id="selA">${B12.map(t=>`<option ${t===A?'selected':''}>${t}</option>`).join('')}</select>
+        <span class="pill">vs</span>
+        <select id="selB">${B12.map(t=>`<option ${t===B?'selected':''}>${t}</option>`).join('')}</select>
+        ${state.myTeam?`<button class="chip" id="useMine">My team in slot A</button>`:''}
+      </div>
+      <span class="spacer"></span>
+      <span class="note">${state.scope==='all'?'All 2026 games':'Big 12 games only'} · highlight = better side</span>
+      <button class="chip" id="prepBtn" data-prep="${A}|${B}">Prep sheet (PDF)</button>
+    </div>
+    <div class="grid g2">
+      <div class="card" style="background:#0d1720">
+        <div class="row"><div class="badge" style="width:46px;height:46px;font-size:15px;background:${COLORS[A]}">${T(A).abbr}</div>
+          <div><b style="font-size:16px">${A}</b><div class="note">${rec(ma)} · ${ma.gf}–${ma.ga} · SOS ${T(A).sos}%</div></div></div>
+        <div style="margin-top:10px">${styleTag(A)}</div>
+      </div>
+      <div class="card" style="background:#0d1720">
+        <div class="row"><div class="badge" style="width:46px;height:46px;font-size:15px;background:${COLORS[B]}">${T(B).abbr}</div>
+          <div><b style="font-size:16px">${B}</b><div class="note">${rec(mb)} · ${mb.gf}–${mb.ga} · SOS ${T(B).sos}%</div></div></div>
+        <div style="margin-top:10px">${styleTag(B)}</div>
+      </div>
+    </div>
+  </div>
+  <div class="grid" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)">
+    <div class="card">${rows}</div>
+    <div>
+      <div class="card" style="margin-bottom:14px">
+        <h3>Scouting read</h3>
+        ${insights(A,B)}
+      </div>
+      <div class="card">
+        <h3>This season's meeting</h3>
+        ${h2h?`<div class="insight"><div class="dot"></div><div><b>${A} ${h2h.gf}–${h2h.ga} ${B}</b> (${h2h.ha==='H'?'home':'away'}, ${h2h.date}).<br>
+          <span class="muted">Shots ${h2h.sh??'—'}–${h2h.osh??'—'} · SOG ${h2h.sog??'—'}–${h2h.osog??'—'} · Corners ${h2h.ck??'—'}–${h2h.opck??'—'}</span><br>
+          <span class="small muted">${(h2h.goals||[]).map(e=>`${e.min} ${e.n} (${e.t===A?T(A).abbr:T(B).abbr})`).join(' · ')}</span></div></div>`
+          :`<p class="note">No ${state.scope==='conf'?'Big 12':'2026'} meeting between these two. Use the scope switch to check the other competition.</p>`}
+      </div>
+    </div>
+  </div>`;
+}
+function styleTag(t){
+  const m=M(t);
+  const vol = m.shpg>=15?'high-volume':(m.shpg<=11.5?'low-volume':'balanced volume');
+  const qual = m.conv>=13?'clinical':(m.conv<=9?'wasteful':'average finishing');
+  const press = m.fpg>=11?'aggressive / foul-prone':(m.fpg<=8?'disciplined':'moderate fouls');
+  const def = m.oppshpg<=11?'shot-suppressing':(m.oppshpg>=15?'gives up volume':'mid-block');
+  return `<span class="tag x">${vol}</span> <span class="tag x">${qual}</span> <span class="tag x">${def}</span> <span class="tag x">${press}</span>`;
+}
+function insights(A,B){ return insightsData(A,B).map(([h,x,c])=>`<div class="insight ${c||''}"><div class="dot"></div><div><b>${h}.</b> ${x}</div></div>`).join(''); }
+function insightsData(A,B){
+  const ma=M(A),mb=M(B);
+  const out=[];
+  const rank=(t,k)=>R(t,k)?`#${R(t,k)}`:'—';
+  const volEdge = (ma.shpg - mb.oppshpg) >= (mb.shpg - ma.oppshpg) ? A : B;
+  const volGen = volEdge===A ? ma.shpg : mb.shpg, volAllow = volEdge===A ? mb.oppshpg : ma.oppshpg;
+  out.push(['Volume edge', `<b>${volEdge}</b> holds the shot edge: it generates ${fmt(volGen,1)} shots per game against the ${fmt(volAllow,1)} its opponent concedes.`,'']);
+  if(Math.abs(ma.conv-mb.conv)>2){
+    out.push(['Finishing gap', `<b>${ma.conv>mb.conv?A:B}</b> is the more efficient side (${fmt(ma.conv,1)}% vs ${fmt(mb.conv,1)}%) — chances are worth more to them, so a low-shot game favours ${ma.conv>mb.conv?A:B}.`,'']);
+  }
+  const softer = ma.oppsogpg>mb.oppsogpg? A:B;
+  out.push(['Soft spot', `<b>${softer}</b> concedes ${fmt(softer===A?ma.oppsogpg:mb.oppsogpg,1)} shots on target per game (rank ${rank(softer,'oppsogpg')} in the conference) — the clearest place to attack.`,'warn']);
+  const lateA=(ma.otime['76-90']||0)+(ma.otime['90+']||0), lateB=(mb.otime['76-90']||0)+(mb.otime['90+']||0);
+  if(lateA||lateB) out.push(['Late-game risk', `${A} concedes ${lateA} after the 76th minute, ${B} ${lateB}.${lateA>lateB+1?` Target the last 15 against ${A}.`:lateB>lateA+1?` Target the last 15 against ${B}.`:' Neither is notably vulnerable late.'}`,'warn']);
+  const ck = (ma.cpg - mb.oppcpg) >= (mb.cpg - ma.oppcpg) ? A : B;
+  const ckFor = ck===A ? ma.cpg : mb.cpg, ckAgainst = ck===A ? mb.oppcpg : ma.oppcpg;
+  out.push(['Set pieces', `<b>${ck}</b> owns the corner edge — ${fmt(ckFor,1)} corners taken per game against ${fmt(ckAgainst,1)} conceded by its opponent.`,'']);
+  const cardy = (ma.yc||0)>=(mb.yc||0)?A:B;
+  out.push(['Cards', `<b>${cardy}</b> carries the heavier yellow-card load (${cardy===A?ma.yc:mb.yc}) — pressing traps and running at them can draw fouls.`,'']);
+  const threats=t=>{const p=(T(t).players||[]).filter(x=>x.g>0).slice(0,3);return p.map(x=>`${x.name} (${x.g}G/${x.a}A)`).join(', ')||'no scorer detail';};
+  out.push(['Threats to plan for', `<b>${B}:</b> ${threats(B)}<br><span class="muted"><b>${A}:</b> ${threats(A)}</span>`,'']);
+  const f5=t=>T(t).log.slice(-5).map(g=>g.r).join('');
+  out.push(['Form (last 5)', `${A} <b>${f5(A)}</b> · ${B} <b>${f5(B)}</b>`,'']);
+  return out;
+}
+
+/* ---------- game explorer ---------- */
+function gamesView(){
+  const all=[]; const seen=new Set();
+  B12.forEach(t=>T(t).log.forEach(g=>{
+    const key=[t,g.opp].sort().join('|')+g.date;
+    if(seen.has(key)) return; seen.add(key);
+    all.push({date:g.date,team:t,opp:g.opp,ha:g.ha,gf:g.gf,ga:g.ga,r:g.r,conf:g.conf,
+      sh:g.sh,sog:g.sog,osh:g.osh,osog:g.osog,ck:g.ck,opck:g.opck,sv:g.sv,fls:g.fls});
+  }));
+  let rows=all.filter(g=>{
+    if(state.gF.team!=='all' && g.team!==state.gF.team && g.opp!==state.gF.team) return false;
+    if(state.gF.conf==='conf' && !g.conf) return false;
+    if(state.gF.conf==='nc' && g.conf) return false;
+    if(state.gF.res!=='all' && g.r!==state.gF.res) return false;
+    return true;
+  });
+  const K=state.gSort.key, dir=state.gSort.dir;
+  rows.sort((a,b)=>{
+    let va=a[K],vb=b[K];
+    if(va==null) va=-1; if(vb==null) vb=-1;
+    return (va>vb?1:va<vb?-1:0)*dir;
+  });
+  const th=(k,l)=>`<th class="${state.gSort.key===k?'on':''}" data-gk="${k}">${l}</th>`;
+  return `
+  <div class="card">
+    <div class="hd2">
+      <h3>Game explorer · ${rows.length} matches</h3><span class="spacer"></span>
+      <div class="chips">
+        <select id="gTeam"><option value="all">All teams</option>${B12.map(t=>`<option ${state.gF.team===t?'selected':''}>${t}</option>`).join('')}</select>
+        <button class="chip ${state.gF.conf==='all'?'on':''}" data-gf="conf:all">All</button>
+        <button class="chip ${state.gF.conf==='conf'?'on':''}" data-gf="conf:conf">Big 12</button>
+        <button class="chip ${state.gF.conf==='nc'?'on':''}" data-gf="conf:nc">Non-conf</button>
+        <button class="chip ${state.gF.res==='all'?'on':''}" data-gf="res:all">Any result</button>
+        <button class="chip ${state.gF.res==='W'?'on':''}" data-gf="res:W">W</button>
+        <button class="chip ${state.gF.res==='T'?'on':''}" data-gf="res:T">D</button>
+        <button class="chip ${state.gF.res==='L'?'on':''}" data-gf="res:L">L</button>
+      </div>
+    </div>
+    <div class="tblwrap" style="max-height:70vh">
+      <table><thead><tr>${th('date','Date')}${th('team','Team')}<th class="l">Opponent</th><th>H/A</th><th>Score</th><th>Res</th>
+        ${th('sh','SH')}${th('sog','SOG')}${th('osh','Opp SH')}${th('osog','Opp SOG')}${th('ck','CK')}${th('sv','SV')}${th('fls','Fouls')}</tr></thead>
+      <tbody>${rows.map(g=>`<tr>
+        <td class="mono muted">${g.date.slice(5)}</td>
+        <td class="l team" data-team="${g.team}">${g.team} ${g.conf?'<span class="tag c">B12</span>':''}</td>
+        <td class="l"><span style="cursor:pointer" data-team="${g.opp}">${g.opp}</span></td>
+        <td class="mono muted">${g.ha}</td>
+        <td class="mono"><b>${g.gf}–${g.ga}</b></td><td>${resTag(g.r)}</td>
+        <td class="mono">${g.sh??'—'}</td><td class="mono">${g.sog??'—'}</td>
+        <td class="mono muted">${g.osh??'—'}</td><td class="mono muted">${g.osog??'—'}</td>
+        <td class="mono">${g.ck??'—'}</td><td class="mono">${g.sv??'—'}</td><td class="mono muted">${g.fls??'—'}</td>
+      </tr>`).join('')}</tbody></table>
+    </div>
+    <p class="note" style="margin-top:10px">Each match appears once, from the listed team's perspective. Click a team name to open its page.</p>
+  </div>`;
+}
+
+/* ---------- method ---------- */
+function methodView(){
+  return `
+  <div class="grid g2">
+    <div class="card">
+      <h3>What is in here</h3>
+      <div class="insight"><div class="dot"></div><div><b>Scope.</b> The completed 2026 season: 222 matches (Aug 12 – Nov 20, 2026), 87 of them Big 12 regular-season or tournament games. Every Big 12 team's full schedule is included.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>Box scores, not just scores.</b> 221 of 222 matches were parsed from official school box score pages: shots, shots on target, corners, fouls, saves, cards, goal times, scorers, assists and line-ups.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>Cross-checked.</b> Wins, losses, ties, goals for and goals against for all 16 teams reconcile with the Big 12 Conference official statistics page.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>Derived metrics.</b> Shot share = own shots ÷ (own + opponent). Conversion = goals ÷ shots. SOG rate = shots on target ÷ shots. Save % = saves ÷ (saves + goals conceded). Per-game figures use matches that have a box score.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>Two seasons.</b> The 2025 and 2026 datasets were built the same way: 236 matches for 2025 (215 with a full stat line) and 222 for 2026 (221 with one). Both reconcile to the Big 12 conference statistics page for that season (which counts the postseason games it lists) on wins, losses, ties, goals for and goals against. BYU's and UCF's 2025 out-of-conference stat lines are the one real gap — their 2025 schedule pages are not archived, so those matches carry scores only; their conference games and all season totals are complete.</div></div>
+      <div class="insight warn"><div class="dot"></div><div><b>Known gaps.</b> Goal times/scorers cover 572 of ~609 goals (some box scores publish no goal log). One Texas Tech match and one Iowa State match carry a result but no stat line. Possession % is not published at this level, so shot share stands in as the territory proxy.</div></div>
+      <div class="insight warn"><div class="dot"></div><div><b>Venue.</b> Neutral-site games (Big 12 tournament in Mansfield, NCAA rounds) are attributed to the nominal host on the official schedule.</div></div>
+    </div>
+    <div class="card">
+      <h3>How to scout with it</h3>
+      <div class="insight"><div class="dot"></div><div><b>1.</b> Set <i>My team</i> in the header — it is saved on this device and highlighted everywhere.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>2.</b> Work the <i>Conference board</i> in Big 12 play to separate teams generating volume from teams living off conversion.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>3.</b> Open the opponent's <i>Team page</i>: the match log shows how they fared against similar styles, the timing chart shows when they break.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>4.</b> Use the <i>Matchup lab</i> for the side-by-side, the auto-generated scouting read, and this season's head-to-head.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>5.</b> Hit <i>Prep sheet (PDF)</i> in the Matchup lab or on any opponent's team page: it renders a print-ready sheet for that opponent, then use your browser's <i>Print → Save as PDF</i> (Letter).</div></div>
+      <div class="insight"><div class="dot"></div><div><b>6.</b> Use the <i>2027 projection</i> tab to see which opponents the shot data says are rising or fading, and why.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>7.</b> Export the board to CSV for staff meetings; every page prints cleanly (⌘/Ctrl+P).</div></div>
+      <h3 style="margin-top:14px">The 2027 projection</h3>
+      <div class="insight"><div class="dot"></div><div><b>Opponent-adjusted.</b> Shots for and against are corrected for the quality of each team's 2026 schedule (iterative SRS against a 12.7-shot league baseline over 95 fully-scored matches), so a team that piled up shots against weak non-conference opponents does not get false credit.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>Finishing is shrunk.</b> Conversion and save rates are pulled toward league averages (140-shot prior), which is why teams that rode an outlier finishing season fall and teams that wasted chances rise.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>Mapped to points.</b> Projected goal difference converts to points per game through the 2026 points-per-goal relationship (R² = 0.92), with a ±0.20 PPG band. No roster, eligibility, transfer or coaching data is used — treat it as a style-and-margins floor/ceiling, not a talent ranking.</div></div>
+      <div class="insight warn"><div class="dot"></div><div><b>Roster turnover is yours to supply.</b> The projection tab carries a per-team editor: tick the players who leave and the team's returning minutes, minutes lost and goals lost recalculate from the 2026 box-score minutes. The model then erodes the team's <i>strengths</i> toward the league average in proportion to minutes lost (35% system floor) and makes its <i>weaknesses</i> worse rather than better, with finishing additionally scaled by the share of recorded goals that return. Defaults assume everyone returns, so nothing is invented.</div></div>
+      <h3 style="margin-top:14px">Sources</h3>
+      <p class="note">Big 12 Conference official statistics, 2026 season (all games and conference games) · official athletics-site box scores for each member institution · Big 12 weekly releases for schedules and venues. Data pulled November 23, 2026.</p>
+    </div>
+  </div>`;
+}
+
+
+/* ---------- prep sheet: print / save as PDF ---------- */
+function prepRow(l, va, vb, dec, hi, suf){
+  const f = v => (typeof v === 'number' ? (dec ? v.toFixed(dec) : String(v)) : v) + (suf||'');
+  const aw = hi===1 ? va>vb : hi===-1 ? va<vb : false;
+  const bw = hi===1 ? vb>va : hi===-1 ? vb<va : false;
+  return `<tr><td class="pr-l">${l}</td><td class="pr-v ${aw?'pr-win':''}">${f(va)}</td><td class="pr-v pr-b ${bw?'pr-win':''}">${f(vb)}</td></tr>`;
+}
+function prepTiming(t, label, sharedMax){
+  const m=M(t);
+  const labels=['0-15','16-30','31-45','46-60','61-75','76-90','90+'];
+  const arr=k=>labels.map(l=>m[k][l]||0);
+  const gf=arr('gtime'), ga=arr('otime'), mx=Math.max(1,sharedMax||1);
+  const bars=(v,color)=>v.map(x=>`<div class="pt-cell"><div class="pt-bar" style="height:${Math.max(2,x/mx*22)}px;background:${color}"></div><div class="pt-n">${x||''}</div></div>`).join('');
+  return `<div class="pt"><div class="pt-title">${label}</div>
+    <div class="pt-grid">
+      <div class="pt-lab">Scored</div><div class="pt-row">${bars(gf,'#C8102E')}</div>
+      <div class="pt-lab">Conceded</div><div class="pt-row">${bars(ga,'#8b8f97')}</div>
+      <div></div><div class="pt-axis">${labels.map(l=>`<span>${l}′</span>`).join('')}</div>
+    </div></div>`;
+}
+function prepPlan(A,B){
+  const ma=M(A), mb=M(B), out=[];
+  const early = ma.ga1h && ma.ga ? Math.round(100*ma.g1h/ma.ga) : 0;
+  if(early>=40) out.push(`<b>Protect the first 30 minutes.</b> ${ma.g1h} of the ${ma.ga} goals conceded (${early}%) arrived before half-time${ma.ga1h?` (${ma.ga1h} before the break)`:''}. Compact block, no early press traps.`);
+  out.push(`<b>Chase volume.</b> You take ${fmt(ma.shpg,1)} shots a game; ${B} concedes ${fmt(mb.oppshpg,1)}. Target 12+ shots and 6+ on target — their keeper saves ${fmt(mb.savepct,0)}%.`);
+  out.push(`<b>Own the restarts.</b> ${B} concedes ${fmt(mb.oppcpg,1)} corners a game and commits ${fmt(mb.fpg,1)} fouls. Six corners is the benchmark.`);
+  const late = (mb.otime['61-75']||0)+(mb.otime['76-90']||0)+(mb.otime['90+']||0);
+  out.push(`<b>Win the last half hour.</b> ${B} concedes ${late} of its ${mb.ga} goals after the 60th minute — hold a substitution for 55–60′ and stay on the front foot.`);
+  if(mb.conv<=10) out.push(`<b>Make them shoot from distance.</b> ${B} converts only ${fmt(mb.conv,1)}% of its shots; conceding volume outside the box is a good trade as long as the six-yard box is shut.`);
+  return out.map(x=>`<li>${x}</li>`).join('');
+}
+function buildPrepSheet(A,B){
+  const a=T(A), b=T(B), ma=M(A), mb=M(B);
+  const rows = [
+    prepRow('Record', rec(ma), rec(mb), 0, 0),
+    prepRow('Points', ma.w*3+ma.t, mb.w*3+mb.t, 0, 1),
+    prepRow('Goals for / against', `${ma.gf} / ${ma.ga}`, `${mb.gf} / ${mb.ga}`, 0, 0),
+    prepRow('Goals for per game', ma.gpg, mb.gpg, 2, 1),
+    prepRow('Goals against per game', ma.gapg, mb.gapg, 2, -1),
+    prepRow('Shots per game', ma.shpg, mb.shpg, 1, 1),
+    prepRow('Shots on target per game', ma.sogpg, mb.sogpg, 1, 1),
+    prepRow('Conversion', ma.conv, mb.conv, 1, 1, '%'),
+    prepRow('Shot share', ma.shotshare, mb.shotshare, 0, 1, '%'),
+    prepRow('Opponent shots per game', ma.oppshpg, mb.oppshpg, 1, -1),
+    prepRow('Opponent SOG per game', ma.oppsogpg, mb.oppsogpg, 1, -1),
+    prepRow('Save %', ma.savepct, mb.savepct, 1, 1, '%'),
+    prepRow('Clean sheets', ma.shutouts, mb.shutouts, 0, 1),
+    prepRow('Corners / conceded per game', `${fmt(ma.cpg,1)} / ${fmt(ma.oppcpg,1)}`, `${fmt(mb.cpg,1)} / ${fmt(mb.oppcpg,1)}`, 0, 0),
+    prepRow('Fouls / yellow cards', `${fmt(ma.fpg,1)} / ${ma.yc}`, `${fmt(mb.fpg,1)} / ${mb.yc}`, 0, 0),
+    prepRow('Scored first / conceded first', `${ma.sf} / ${ma.cf}`, `${mb.sf} / ${mb.cf}`, 0, 0),
+    prepRow('Failed to score', ma.fts, mb.fts, 0, -1)
+  ].join('');
+  const pl = (team,n)=>team.players.filter(p=>p.g>0).slice(0,n).map(p=>`<tr><td>${p.name}</td><td class="c">${p.pos||'—'}</td><td class="c b">${p.g}</td><td class="c">${p.a}</td><td class="c">${p.sh}</td></tr>`).join('');
+  const gk = t => { const g=t.players.filter(p=>p.gk)[0]; return g?`${g.name} · ${g.gkmin}′ · ${g.ga} GA · ${g.sv} SV (${(100*g.sv/(g.sv+g.ga)).toFixed(1)}%)`:'—'; };
+  const h2h = a.log.find(g=>g.opp===B && (state.scope==='all' || g.conf));
+  const date = new Date().toISOString().slice(0,10);
+  const twoMax=Math.max(...['gtime','otime'].flatMap(k=>Object.values(ma[k]).concat(Object.values(mb[k]))).map(Number));
+  return `<div class="prepDoc">
+    <div class="pr-head">
+      <div class="pr-kicker">Match prep · ${state.season} season · ${state.scope==='all'?'all matches':'Big 12 play only'}</div>
+      <h1>${A} <em>vs</em> ${B}</h1>
+      <div class="pr-sub">Generated ${date} from the ${state.season} Big 12 box scores · per-game rates from matches with a stat line</div>
+    </div>
+    <div class="pr-cols">
+      <div class="pr-col" style="width:52%">
+        <h2>At a glance</h2>
+        <table class="pr"><tr><th>Metric</th><th>${a.abbr}</th><th>${b.abbr}</th></tr>${rows}</table>
+      </div>
+      <div class="pr-col" style="width:46%">
+        <h2>Scouting read</h2>
+        <ul class="pr-list">${insights(A,B).replace(/<div class="insight[^"]*"><div class="dot"><\/div><div>/g,'<li>').replace(/<\/div><\/div>/g,'</li>')}</ul>
+        ${h2h?`<div class="pr-box"><b>This season's meeting:</b> ${A} ${h2h.gf}–${h2h.ga} ${B} (${h2h.ha==='H'?'home':'away'}, ${h2h.date}) — shots ${h2h.sh??'—'}–${h2h.osh??'—'}, SOG ${h2h.sog??'—'}–${h2h.osog??'—'}, corners ${h2h.ck??'—'}–${h2h.opck??'—'}.</div>`:''}
+      </div>
+    </div>
+    <div class="pr-cols" style="margin-top:6px">
+      <div class="pr-col" style="width:49%">${prepTiming(A,A+' · goals by window',twoMax)}</div>
+      <div class="pr-col" style="width:49%">${prepTiming(B,B+' · goals by window',twoMax)}</div>
+    </div>
+    <div class="pr-cols">
+      <div class="pr-col" style="width:49%">
+        <h2>Personnel — ${A}</h2>
+        <table class="pr pl"><tr><th>Player</th><th class="c">Pos</th><th class="c">G</th><th class="c">A</th><th class="c">SH</th></tr>${pl(a,5)}</table>
+        <div class="pr-note">Keeper: ${gk(a)}</div>
+      </div>
+      <div class="pr-col" style="width:49%">
+        <h2>Personnel — ${B}</h2>
+        <table class="pr pl"><tr><th>Player</th><th class="c">Pos</th><th class="c">G</th><th class="c">A</th><th class="c">SH</th></tr>${pl(b,5)}</table>
+        <div class="pr-note">Keeper: ${gk(b)} · blank SH rows are players whose line-ups were not published</div>
+      </div>
+    </div>
+    <h2>Targets for the fixture</h2>
+    <table class="pr"><tr><th>Measure</th><th>${B} average</th><th>Target</th></tr>
+      <tr><td class="pr-l">Shots conceded</td><td class="pr-v">${fmt(mb.shpg,1)}</td><td class="pr-v">≤ ${Math.max(6,Math.round(mb.shpg*0.8))}</td></tr>
+      <tr><td class="pr-l">Shots on target conceded</td><td class="pr-v">${fmt(mb.sogpg,1)}</td><td class="pr-v">≤ ${Math.max(3,Math.round(mb.sogpg*0.7))}</td></tr>
+      <tr><td class="pr-l">Our shots</td><td class="pr-v">${fmt(ma.shpg,1)}</td><td class="pr-v">≥ ${Math.max(10,Math.round(mb.oppshpg*0.9))}</td></tr>
+      <tr><td class="pr-l">Our corners</td><td class="pr-v">${fmt(ma.cpg,1)}</td><td class="pr-v">≥ 6</td></tr>
+      <tr><td class="pr-l">Their first-half goals</td><td class="pr-v">${mb.g1h} of ${mb.gf}</td><td class="pr-v">0–1</td></tr>
+    </table>
+    <h2>Game plan</h2>
+    <ul class="pr-list pr-plan">${prepPlan(A,B)}</ul>
+    <div class="pr-foot">Built from 222 Big 12 box scores (2026 season); per-game rates use matches with a box score. Shot share substitutes for possession, which is not published at this level. Scorer totals come from published goal logs.</div>
+  </div>`;
+}
+function openPrep(A,B){
+  let el=document.getElementById('prepOverlay');
+  if(!el){ el=document.createElement('div'); el.id='prepOverlay'; el.className='prepOverlay'; document.body.appendChild(el); }
+  el.innerHTML=`<div class="prepBar"><span>Prep sheet · ${A} vs ${B}</span>
+    <button id="prepPrint">Print / Save as PDF</button><button id="prepClose">Close</button></div>${buildPrepSheet(A,B)}`;
+  document.body.classList.add('prep-open');
+  el.querySelector('#prepPrint').onclick=()=>window.print();
+  el.querySelector('#prepClose').onclick=()=>{el.remove();document.body.classList.remove('prep-open');};
+  el.scrollTop=0;
+}
+
+/* ---------- 2027 projection ---------- */
+const PROJ_ROWS=[
+  {k:'proj_ppg',l:'Proj PPG',d:2,dec:2},{k:'proj_pts11',l:'Proj pts / 11',d:1,dec:1},
+  {k:'proj_gf',l:'Proj GF/g',d:2,dec:2},{k:'proj_ga',l:'Proj GA/g',d:2,dec:2},
+  {k:'shotdiff',l:'Adj shot diff/g',d:1,dec:1},{k:'ppg_2026',l:'2026 PPG',d:2,dec:2},
+  {k:'luck',l:'2026 luck',d:2,dec:2,signed:true}
+];
+function projRowBar(p){
+  const lo=p.lo, hi=p.hi, w=(v)=>((v)/2.9*100).toFixed(1);
+  return `<div class="pbar"><span style="left:${w(lo)}%;width:${(hi-lo)/2.9*100}%"></span><i style="left:${w(p.proj_ppg)}%"></i></div>`;
+}
+/* ---------- 2027 turnover model ---------- */
+const TURN_KEY='b12_turn_v1';
+function turnAll(){
+  if(!state.turn){
+    try{ state.turn = JSON.parse(localStorage.getItem(TURN_KEY)||'{}'); }catch(e){ state.turn={}; }
+  }
+  return state.turn;
+}
+function turnSave(){ try{ localStorage.setItem(TURN_KEY, JSON.stringify(turnAll())); }catch(e){} }
+function turnFor(t){
+  const s=turnAll()[t];
+  if(!s) return {mode:'roster', out:[], r:1};
+  return s;
+}
+function turnCalc(t){
+  const R=DATA.rosters[t], st=turnFor(t);
+  if(!R||!R.players.length) return {r:st.r??1, goalRet:null, minLost:0, goalsLost:0, tracked:0, coverage:0, mode:'manual', out:[]};
+  if(st.mode==='manual'){
+    return {r:Math.max(0,Math.min(1,st.r??1)), goalRet:null, minLost:(1-(st.r??1))*R.trackedMin,
+            goalsLost:(1-(st.r??1))*R.trackedGoals, tracked:R.trackedMin, coverage:R.coverage, mode:'manual', out:[]};
+  }
+  const out=st.out||[];
+  const outSet=new Set(out);
+  let lostMin=0, lostG=0;
+  R.players.forEach(p=>{ if(outSet.has(p.name)){ lostMin+=p.min; lostG+=p.g; } });
+  const r = R.trackedMin ? Math.max(0, 1 - lostMin/R.trackedMin) : 1;
+  const goalRet = R.trackedGoals>0 ? Math.max(0, 1 - lostG/R.trackedGoals) : null;
+  return {r, goalRet, minLost:lostMin, goalsLost:lostG, tracked:R.trackedMin,
+          coverage:R.coverage, mode:'roster', out, trackedGoals:R.trackedGoals};
+}
+function applyTurnover(p, tc, model){
+  if(state.turnOn===false) return {gf:p.proj_gf, ga:p.proj_ga, ppg:p.proj_ppg};
+  const W=0.35, LOST=0.45;
+  const LGF=model.L*model.L_CONV, LGA=model.L*model.L_CONV_A;
+  // strengths erode toward the league average; weaknesses do not fix themselves
+  const dim = edge => edge>=0 ? edge*(W+(1-W)*tc.r) : edge*(1+LOST*(1-tc.r));
+  const fin = tc.goalRet==null ? 1 : (0.75 + 0.25*tc.goalRet);
+  const gfAdvRaw = dim(p.proj_gf-LGF);
+  const gfAdv = gfAdvRaw>0 ? gfAdvRaw*fin : gfAdvRaw;
+  const gaAdv = dim(LGA-p.proj_ga);
+  const gf = Math.max(0.1, LGF+gfAdv), ga = Math.max(0.1, LGA-gaAdv);
+  const gd = gf-ga;
+  return {gf, ga, ppg: Math.max(0.15, Math.min(2.85, model.b0 + model.b1*gd))};
+}
+function setTurn(t, patch){
+  const cur=turnFor(t);
+  turnAll()[t]=Object.assign({}, cur, patch);
+  turnSave(); render();
+}
+function rosterEditor(sel){
+  const R=DATA.rosters[sel], tc=turnCalc(sel), st=turnFor(sel);
+  const pct=Math.round(tc.r*100);
+  const rows=(R?R.players:[]).slice(0,26).map(p=>{
+    const isOut=(st.mode==='roster')&&(st.out||[]).includes(p.name);
+    const mp=R.trackedMin?Math.round(100*p.min/R.trackedMin):0;
+    return `<tr data-out="${p.name}" style="cursor:pointer" class="${isOut?'rowoff':''}">
+      <td class="l"><span class="cb">${isOut?'':'✓'}</span> ${p.name}</td>
+      <td class="muted small">${p.pos||'—'}</td>
+      <td class="mono">${p.min?p.min.toLocaleString():'—'}</td>
+      <td class="mono muted">${p.min?mp+'%':'—'}</td>
+      <td class="mono">${p.g||''}</td>
+    </tr>`;
+  }).join('');
+  return `
+  <div class="card" style="margin-bottom:14px">
+    <div class="hd2">
+      <h3 style="margin:0">2027 roster turnover · ${sel}</h3>
+      <span class="spacer"></span>
+      <label class="row" style="gap:6px;font-size:11.5px;color:var(--mut)">
+        <input type="checkbox" id="turnOn" ${state.turnOn===false?'':'checked'} style="accent-color:var(--acc)"> Apply turnover to projection
+      </label>
+      <button class="chip" id="turn70">70% league scenario</button>
+      <button class="chip" id="turnResetAll">Reset all teams</button>
+    </div>
+    <div class="row" style="align-items:flex-end;gap:16px;margin-bottom:6px">
+      <div>
+        <div class="note">Returning minutes</div>
+        <div class="mono" style="font:700 26px/1 var(--mono);color:${pct<70?'var(--acc2)':'var(--text)'}">${pct}%</div>
+      </div>
+      <div>
+        <div class="note">Minutes lost</div>
+        <div class="mono" style="font:700 15px/1.4 var(--mono)">${Math.round(tc.minLost).toLocaleString()}<span class="note"> of ${Math.round(tc.tracked).toLocaleString()} tracked</span></div>
+      </div>
+      <div>
+        <div class="note">Goals lost</div>
+        <div class="mono" style="font:700 15px/1.4 var(--mono)">${tc.goalsLost}<span class="note"> of ${tc.trackedGoals||0} recorded${tc.mode==='manual'?' (est.)':''}</span></div>
+      </div>
+      <div>
+        <div class="note">Minutes coverage</div>
+        <div class="mono" style="font:700 15px/1.4 var(--mono);color:${tc.coverage<0.6?'var(--acc2)':(tc.coverage>0.7?'var(--acc)':'var(--text)')}">${Math.round(tc.coverage*100)}%</div>
+      </div>
+      <span class="spacer"></span>
+      <div class="chips">
+        <button class="chip" data-quick="all">All return</button>
+        <button class="chip" data-quick="half">Lose top half</button>
+        <button class="chip" data-quick="seniors">Lose top 4</button>
+        <button class="chip" data-quick="none">Lose all</button>
+      </div>
+    </div>
+    <div class="row" style="gap:10px;margin-bottom:8px">
+      <input type="range" min="0" max="100" step="1" value="${pct}" id="turnSlider" style="flex:1;accent-color:var(--acc)">
+      <span class="note" style="min-width:150px">${st.mode==='manual'?'Manual % — click a player to switch back to roster marks':'Click any player below to mark them as departing'}</span>
+    </div>
+    <div class="tblwrap" style="max-height:260px">
+      <table>
+        <thead><tr><th class="l">Player (✓ = returns)</th><th class="l">Pos</th><th>Min</th><th>% of min</th><th>G</th></tr></thead>
+        <tbody>${rows||'<tr><td colspan="5" class="empty">No roster minutes published for this team — use the slider.</td></tr>'}</tbody>
+      </table>
+    </div>
+    <p class="note" style="margin:8px 0 0">Model: a team's <i>strengths</i> erode toward the league average in proportion to minutes lost (35% system floor — a rebuilt side keeps a third of its identity), while <i>weaknesses</i> get worse rather than fixing themselves (1.45× at 100% turnover). Finishing is additionally scaled by the share of recorded goals that return. Defaults assume everyone returns — no turnover is invented for you.</p>
+  </div>`;
+}
+
+/* ---------- projection view ---------- */
+const PCOLS=[
+  {k:'r',l:'Ret %'},{k:'proj_ppg',l:'Proj PPG'},{k:'toDelta',l:'Δ TO'},{k:'proj_pts11',l:'Pts/11'},
+  {k:'proj_gf',l:'GF/g'},{k:'proj_ga',l:'GA/g'},{k:'shotdiff',l:'Adj diff'},
+  {k:'ppg_2026',l:'2026 PPG'},{k:'luck',l:'Luck'},{k:'delta_rank',l:'Δ rank'}
+];
+function projRowBar(p){
+  const w=v=>((v)/2.9*100).toFixed(1);
+  return `<div class="pbar"><span style="left:${w(p.lo)}%;width:${(p.hi-p.lo)/2.9*100}%"></span><i style="left:${w(p.proj_ppg)}%"></i></div>`;
+}
+function projectionView(){
+  const P=DATA.projection, pr=P.teams, model=P.model, proster=DATA.rosters;
+  let rows=P.order.map(t=>{
+    const p=pr[t];
+    const tc=turnCalc(t);
+    const adj=applyTurnover(p,tc,model);
+    return {t,p,tc,adj,delta:adj.ppg-p.proj_ppg};
+  });
+  if(state.projTier!=='all') rows=rows.filter(r=>r.p.tier===state.projTier);
+  const val=(r,k)=>({r:r.tc.r, proj_ppg:r.adj.ppg, toDelta:r.delta, proj_pts11:r.adj.ppg*11,
+    proj_gf:r.adj.gf, proj_ga:r.adj.ga, shotdiff:r.p.shotdiff, ppg_2026:r.p.ppg_2026,
+    luck:r.p.luck, delta_rank:r.p.rank_2026-r.nr, proj_rank:r.nr})[k] ?? -9;
+  const K=state.projSort.key, dir=state.projSort.dir;
+  rows.sort((a,b)=>{ const va=val(a,K), vb=val(b,K); return (va>vb?1:va<vb?-1:0)*dir; });
+  const ranked=[...rows].sort((a,b)=>b.adj.ppg-a.adj.ppg);
+  const newRank={}; ranked.forEach((r,i)=>{ newRank[r.t]=i+1; r.nr=i+1; });
+  const sel=state.projSel||state.myTeam||P.order[0];
+  const sp=pr[sel], stc=turnCalc(sel), sadj=applyTurnover(sp,stc,model);
+  const lc=model.L_CONV*100;
+  const body=rows.map(r=>{
+    const p=r.p, mine=r.t===state.myTeam, isSel=r.t===sel, ad=r.adj;
+    const dcls=p.delta_rank>0?'up':p.delta_rank<0?'down':'';
+    const lcls=p.luck>0.15?'down':p.luck<-0.15?'up':'';
+    const tcls=r.delta<-0.05?'down':r.delta>0.05?'up':'';
+    const rc=r.tc.r*100;
+    return `<tr class="${mine?'mine':''} projRow" data-pt="${r.t}" style="${isSel?'box-shadow:inset 2px 0 0 var(--acc)':''}">
+      <td class="l mono muted">${newRank[r.t]}</td>
+      <td class="l team"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${COLORS[r.t]};margin-right:8px"></span>${r.t}${mine?' <span class="tag w">me</span>':''}</td>
+      <td class="mono ${rc<70?'':'muted'}">${Math.round(rc)}%${rc<99.5?' <span style="color:var(--acc2)" title="turnover edited">•</span>':''}</td>
+      <td class="mono"><b>${ad.ppg.toFixed(2)}</b>${projRowBar({...p, proj_ppg:ad.ppg})}</td>
+      <td class="mono ${tcls}">${r.delta>0?'+':''}${r.delta.toFixed(2)}</td>
+      <td class="mono">${(ad.ppg*11).toFixed(1)}</td>
+      <td class="mono">${ad.gf.toFixed(2)}</td>
+      <td class="mono">${ad.ga.toFixed(2)}</td>
+      <td class="mono">${p.shotdiff>0?'+':''}${p.shotdiff.toFixed(1)}</td>
+      <td class="mono muted">${p.ppg_2026.toFixed(2)}</td>
+      <td class="mono ${lcls}">${p.luck>0?'+':''}${p.luck.toFixed(2)}</td>
+      <td class="mono ${dcls}">${p.rank_2026-newRank[r.t]>0?'▲'+(p.rank_2026-newRank[r.t]):p.rank_2026-newRank[r.t]<0?'▼'+Math.abs(p.rank_2026-newRank[r.t]):'—'}</td>
+    </tr>`;
+  }).join('');
+  const drivers=[];
+  drivers.push(['Shot profile', `Opponent-adjusted <b>${sp.adj_sf.toFixed(1)}</b> shots for and <b>${sp.adj_sa.toFixed(1)}</b> against per game (league baseline ${model.L.toFixed(1)}). The differential of ${sp.shotdiff>0?'+':''}${sp.shotdiff.toFixed(1)} per game is the biggest driver of the base projection.`]);
+  const cdiff=sp.c_for*100-lc;
+  drivers.push(['Finishing', `Scored on <b>${(sp.c_for*100).toFixed(1)}%</b> of shots after shrinkage (league ${lc.toFixed(1)}%). ${cdiff>0.5?'Above the league rate — the model gives some of it back next season.':cdiff<-0.5?'Below the league rate — the model credits a bounce-back.':'In line with the league rate.'}`]);
+  drivers.push(['Base projection', `${sp.proj_gf.toFixed(2)} goals for and ${sp.proj_ga.toFixed(2)} against → ${sp.proj_ppg.toFixed(2)} PPG before any turnover.`]);
+  drivers.push(['Turnover applied', `${Math.round(stc.r*100)}% of tracked minutes returning (${Math.round(stc.minLost).toLocaleString()} lost, ${stc.goalsLost} recorded goals lost) → <b>${sadj.ppg.toFixed(2)} PPG</b>, ${sadj.ppg>=sp.proj_ppg?'+':''}${(sadj.ppg-sp.proj_ppg).toFixed(2)} versus the base case.`]);
+  drivers.push(['2026 luck', `Actual ${sp.ppg_2026.toFixed(2)} points per game against a shot-expected <b>${sp.exp_ppg_2026.toFixed(2)}</b> — ${sp.luck>0.15?`<b>${sp.luck.toFixed(2)} above</b> expectation, a negative signal`:sp.luck<-0.15?`<b>${Math.abs(sp.luck).toFixed(2)} below</b> expectation, a positive signal`:'essentially on expectation'}.`]);
+  const movers=P.order.map(t=>({t,p:pr[t]})).sort((a,b)=>b.p.delta_rank-a.p.delta_rank);
+  const ups=movers.slice(0,3), downs=movers.slice(-3).reverse();
+  const moverRow=(r,up)=>`<tr data-pt="${r.t}" style="cursor:pointer"><td class="l"><span style="display:inline-block;width:7px;height:7px;border-radius:2px;background:${COLORS[r.t]};margin-right:7px"></span>${r.t}</td>
+    <td class="mono muted">#${r.p.rank_2026} → <b class="${up?'up':'down'}">#${r.p.proj_rank}</b></td>
+    <td class="mono ${r.p.luck>0.15?'down':r.p.luck<-0.15?'up':''}">${r.p.luck>0?'+':''}${r.p.luck.toFixed(2)}</td>
+    <td class="mono muted">${r.p.shotdiff.toFixed(1)}</td></tr>`;
+  const dirty=Object.keys(turnAll()).length;
+  return `
+  <div class="grid g2" style="margin-bottom:14px">
+    <div class="card">
+      ${state.season==='2026'?'':'<div class="box gold" style="margin-bottom:8px;padding:6px 9px"><b>Heads up.</b> The 2027 projection is built on 2026 data only — the season switch does not change it.</div>'}
+      <h3>How the projection is built</h3>
+      <div class="insight"><div class="dot"></div><div><b>1 · Opponent-adjust the shot rates.</b> Each team's shots for and against are corrected for the quality of the schedule it faced (iterative SRS against a ${model.L.toFixed(1)}-shot league baseline, ${model.games} matched games).</div></div>
+      <div class="insight"><div class="dot"></div><div><b>2 · Shrink finishing.</b> Conversion is pulled toward the league rate (${(model.L_CONV*100).toFixed(1)}%) with a 140-shot prior, so hot and cold finishing seasons partly cancel.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>3 · Convert to points.</b> Projected goal difference maps to points per game through the 2026 relationship: <b>PPG = ${model.b0.toFixed(2)} + ${model.b1.toFixed(2)} × GD/g</b> (R² = ${model.r2.toFixed(2)}).</div></div>
+      <div class="insight warn"><div class="dot"></div><div><b>4 · Apply turnover.</b> Your roster marks scale the team's edge over the league; the <i>2027 roster turnover</i> panel below does the work. ${dirty?`<b>${dirty} team${dirty===1?'':'s'} currently edited.</b>`:'No teams edited yet — the table matches the base projection.'}</div></div>
+    </div>
+    <div class="card">
+      <h3>2026 form vs 2027 projection</h3>
+      ${projScatter(rows)}
+      <p class="note">Above the diagonal = projected to improve on 2026 conference points per game; below = regression risk. Turnover-adjusted.</p>
+    </div>
+  </div>
+
+  ${rosterEditor(sel)}
+
+  <div class="card" style="margin-bottom:14px">
+    <div class="hd2"><h3>Projected 2027 table${state.turnOn===false?' · turnover off':''}</h3><span class="spacer"></span>
+      <div class="chips">
+        ${['all','Contender','Middle','Rebuild'].map(x=>`<button class="chip ${state.projTier===x?'on':''}" data-tier="${x}">${x==='all'?'All tiers':x}</button>`).join('')}
+      </div>
+    </div>
+    <div class="tblwrap" style="max-height:none;overflow-x:auto">
+      <table class="ptable">
+        <thead><tr>
+          <th class="l" data-pk="proj_rank">#</th><th class="l">Team</th>
+          ${PCOLS.map(c=>`<th data-pk="${c.k}" class="${state.projSort.key===c.k?'on':''}">${c.l}${state.projSort.key===c.k?(state.projSort.dir===-1?' ↓':' ↑'):''}</th>`).join('')}
+        </tr></thead>
+        <tbody>${body}</tbody>
+      </table>
+    </div>
+    <p class="note" style="margin:9px 0 0">“Δ TO” = points per game added or lost by your turnover marks · “Pts / 11” assumes an 11-game conference slate · click any row to edit that team's returners</p>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="row" style="margin-bottom:8px">
+        <div class="badge" style="width:44px;height:44px;font-size:14px;background:${COLORS[sel]}">${T(sel).abbr}</div>
+        <div><b style="font-size:15px">${sel}</b><div class="note">Base ${sp.proj_ppg.toFixed(2)} → turnover ${sadj.ppg.toFixed(2)} PPG (${Math.round(stc.r*100)}% returning) · ${(sadj.ppg*11).toFixed(1)} pts per 11</div></div>
+        <span class="spacer"></span>
+        ${sel!==state.myTeam?`<button class="chip" data-matchup="${sel}">Prep vs ${sel}</button>`:''}
+      </div>
+      <h3 style="margin-top:4px">Why ${sel} lands at #${newRank[sel]}</h3>
+      ${drivers.map(([h,b])=>`<div class="insight"><div class="dot"></div><div><b>${h}.</b> ${b}</div></div>`).join('')}
+    </div>
+    <div class="card">
+      <h3>Movers &amp; regression watch</h3>
+      <p class="note" style="margin:-4px 0 8px">Largest projected rank swings before turnover. “Luck” = 2026 points per game minus shot-expected points per game; “Adj diff” = opponent-adjusted shots for minus against.</p>
+      <table><thead><tr><th class="l">Risers</th><th>Rank</th><th>Luck</th><th>Adj diff</th></tr></thead>
+        <tbody>${ups.map(r=>moverRow(r,true)).join('')}</tbody></table>
+      <table style="margin-top:10px"><thead><tr><th class="l">Regression risk</th><th>Rank</th><th>Luck</th><th>Adj diff</th></tr></thead>
+        <tbody>${downs.map(r=>moverRow(r,false)).join('')}</tbody></table>
+      <p class="note" style="margin-top:10px">Turnover marks move the table too — check the Δ TO column after editing a contender.</p>
+    </div>
+  </div>`;
+}
+function projScatter(rowsIn){
+  const P=DATA.projection, model=P.model;
+  const data=rowsIn||P.order.map(t=>({t,p:P.teams[t],tc:turnCalc(t),adj:applyTurnover(P.teams[t],turnCalc(t),model)}));
+  const w=640,h=310,pad={l:44,r:14,t:14,b:34};
+  const xs=data.map(d=>d.p.ppg_2026), ys=data.map(d=>d.adj.ppg);
+  const x1=Math.max(...xs)+0.2, y1=Math.max(...ys)+0.2;
+  const X=v=>pad.l+v/x1*(w-pad.l-pad.r), Y=v=>h-pad.b-v/y1*(h-pad.t-pad.b);
+  let g=`<svg viewBox="0 0 ${w} ${h}" class="scatter">
+    <line x1="${X(0)}" y1="${Y(0)}" x2="${X(Math.min(x1,y1))}" y2="${Y(Math.min(x1,y1))}" stroke="#2b3f4c" stroke-dasharray="3 3"/>`;
+  const pts=data.map(d=>({t:d.t,cx:X(d.p.ppg_2026),cy:Y(d.adj.ppg),mine:d.t===state.myTeam}));
+  pts.sort((a,b)=>a.cy-b.cy);
+  const placed=[];
+  pts.forEach(p=>{
+    let ly=p.cy-9, tries=0;
+    while(placed.some(q=>Math.abs(q.x-p.cx)<46 && Math.abs(q.y-ly)<10) && tries<10){ ly+=10; tries++; }
+    let lx=p.cx, anchor='middle';
+    if(tries>=10){ lx=p.cx+8; ly=p.cy+3; anchor='start'; }
+    placed.push({x:lx,y:ly});
+    const d=data.find(z=>z.t===p.t);
+    g+=`<circle cx="${p.cx}" cy="${p.cy}" r="${p.mine?7:4.5}" fill="${COLORS[p.t]||'#888'}" stroke="${p.mine?'#fff':'#0a0f14'}" stroke-width="${p.mine?2:1.2}"><title>${p.t}: 2026 ${d.p.ppg_2026.toFixed(2)} PPG → projected ${d.adj.ppg.toFixed(2)} (${Math.round(d.tc.r*100)}% returning)</title></circle>
+      <text x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="${p.mine?9:8}" font-family="ui-monospace" font-weight="600" fill="${p.mine?'#fff':'#9db2c0'}">${T(p.t).abbr}</text>`;
+  });
+  for(let i=0;i<=4;i++){const v=x1*i/4;g+=`<text x="${X(v)}" y="${h-pad.b+13}" text-anchor="middle" fill="#5f7788" font-size="8.6" font-family="ui-monospace">${v.toFixed(1)}</text>`;}
+  for(let i=0;i<=4;i++){const v=y1*i/4;g+=`<text x="${pad.l-7}" y="${Y(v)+3}" text-anchor="end" fill="#5f7788" font-size="8.6" font-family="ui-monospace">${v.toFixed(1)}</text>`;}
+  return g+`<text x="${(pad.l+w-pad.r)/2}" y="${h-4}" text-anchor="middle" fill="#5f7788" font-size="9" font-family="ui-monospace">2026 POINTS PER GAME →</text>
+    <text transform="translate(12,${(pad.t+h-pad.b)/2}) rotate(-90)" text-anchor="middle" fill="#5f7788" font-size="9" font-family="ui-monospace">PROJECTED →</text></svg>`;
+}
+
+/* ---------- year over year ---------- */
+const Y25 = '2025', Y26 = '2026';
+const yM = (team, season, scope) => DATA.seasons[season].teams[team].metrics[scope];
+const yPpg = m => (m.w*3 + m.t) / Math.max(1, m.gp);
+const yRank = (team, season, scope) => (DATA.seasons[season].teams[team].metrics.rank[scope]||{});
+function yoyRows(){
+  return B12.map(t=>{
+    const a=yM(t,Y25,state.scope), b=yM(t,Y26,state.scope);
+    return {t, a, b,
+      ppg25:yPpg(a), ppg26:yPpg(b),
+      dPpg:yPpg(b)-yPpg(a),
+      dGf:b.gpg-a.gpg, dGa:b.gapg-a.gapg,
+      dSh:b.shpg-a.shpg, dSog:b.sogpg-a.sogpg,
+      dConv:b.conv-a.conv, dAcc:b.acc-a.acc,
+      dSave:b.savepct-a.savepct, dCk:b.cpg-a.cpg,
+      dShare:b.shotshare-a.shotshare,
+      r25:yRank(t,Y25,state.scope).w, r26:yRank(t,Y26,state.scope).w};
+  });
+}
+const YOY_COLS=[
+  {k:'ppg25',l:'2025 PPG'},{k:'ppg26',l:'2026 PPG'},{k:'dPpg',l:'Δ PPG'},
+  {k:'dGf',l:'Δ GF/g'},{k:'dGa',l:'Δ GA/g'},{k:'dSh',l:'Δ SH/g'},
+  {k:'dSog',l:'Δ SOG/g'},{k:'dConv',l:'Δ Conv'},{k:'dSave',l:'Δ SV%'},{k:'dCk',l:'Δ CK/g'}
+];
+function yoyView(){
+  const rows=yoyRows();
+  const K=state.yoySort.key, dir=state.yoySort.dir;
+  const sorted=[...rows].sort((x,y)=>{ const vx=x[K]??-9, vy=y[K]??-9; return (vx>vy?1:vx<vy?-1:0)*dir; });
+  const body=sorted.map(r=>{
+    const mine=r.t===state.myTeam;
+    const cell=(v,d=2,suf='')=>{ const c=v>0.001?'up':v<-0.001?'down':''; return `<td class="mono ${c}">${v>0?'+':''}${v.toFixed(d)}${suf}</td>`; };
+    return `<tr class="${mine?'mine':''} yoyRow" data-yt="${r.t}" style="cursor:pointer">
+      <td class="l team"><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${COLORS[r.t]};margin-right:8px"></span>${r.t}${mine?' <span class="tag w">me</span>':''}</td>
+      <td class="mono muted">${r.a.w}-${r.a.l}-${r.a.t}</td>
+      <td class="mono muted">${r.b.w}-${r.b.l}-${r.b.t}</td>
+      <td class="mono">${r.ppg25.toFixed(2)}</td>
+      <td class="mono"><b>${r.ppg26.toFixed(2)}</b></td>
+      ${cell(r.dPpg)}${cell(r.dGf)}${cell(r.dGa)}
+      ${cell(r.dSh,1)}${cell(r.dSog,1)}${cell(r.dConv,1)}${cell(r.dSave,1)}${cell(r.dCk,1)}
+      <td class="mono muted">#${r.r25??'—'} → <b class="${(r.r26&&r.r25&&r.r26<r.r25)?'up':(r.r26&&r.r25&&r.r26>r.r25)?'down':''}">#${r.r26??'—'}</b></td>
+    </tr>`;
+  }).join('');
+  const sel=state.yoySel||state.myTeam||B12[0];
+  const s=yoyRows().find(r=>r.t===sel);
+  const pair=[
+    ['Points per game', s.ppg25, s.ppg26, 2],
+    ['Goals for / game', s.a.gpg, s.b.gpg, 2],
+    ['Goals against / game', s.a.gapg, s.b.gapg, 2],
+    ['Shots / game', s.a.shpg, s.b.shpg, 1],
+    ['Shots on target / game', s.a.sogpg, s.b.sogpg, 1],
+    ['Conversion', s.a.conv, s.b.conv, 1],
+    ['Shot share', s.a.shotshare, s.b.shotshare, 1],
+    ['Save %', s.a.savepct, s.b.savepct, 1],
+    ['Corners / game', s.a.cpg, s.b.cpg, 1],
+    ['Fouls / game', s.a.fpg, s.b.fpg, 1],
+    ['Clean sheets', s.a.shutouts, s.b.shutouts, 0]
+  ];
+  const maxOf = i => Math.max(...pair.map(p=>p[i])) || 1;
+  const chart = pair.map(([l,v25,v26,d])=>{
+    const mx=Math.max(v25,v26,0.001);
+    return `<div class="metric" style="align-items:center">
+      <div class="k">${l}</div>
+      <div class="mono" style="width:118px;text-align:right;font-size:11.5px">
+        <span class="muted">${(v25??0).toFixed(d)}</span> → <b>${(v26??0).toFixed(d)}</b>
+      </div>
+      <div class="r" style="width:120px">
+        <div class="bar blue" style="margin-bottom:2px"><i style="width:${Math.max(2,(v25/mx)*100)}%"></i></div>
+        <div class="bar"><i style="width:${Math.max(2,(v26/mx)*100)}%"></i></div>
+      </div>
+    </div>`;
+  }).join('');
+  const movers=[...rows].sort((a,b)=>b.dPpg-a.dPpg);
+  const up=movers.slice(0,3), down=movers.slice(-3).reverse();
+  const moverRow=(r,isUp)=>`<tr data-yt="${r.t}" style="cursor:pointer"><td class="l"><span style="display:inline-block;width:7px;height:7px;border-radius:2px;background:${COLORS[r.t]};margin-right:7px"></span>${r.t}</td>
+    <td class="mono">${r.ppg25.toFixed(2)} → <b>${r.ppg26.toFixed(2)}</b></td>
+    <td class="mono ${isUp?'up':'down'}">${r.dPpg>0?'+':''}${r.dPpg.toFixed(2)}</td>
+    <td class="mono muted">${r.dSh>0?'+':''}${r.dSh.toFixed(1)} / ${r.dConv>0?'+':''}${r.dConv.toFixed(1)}</td></tr>`;
+  const tot25=B12.reduce((x,t)=>x+yM(t,Y25,state.scope).gf,0)/2;
+  const tot26=B12.reduce((x,t)=>x+yM(t,Y26,state.scope).gf,0)/2;
+  const gp25=B12.reduce((x,t)=>x+yM(t,Y25,state.scope).gp,0)/2;
+  const gp26=B12.reduce((x,t)=>x+yM(t,Y26,state.scope).gp,0)/2;
+  return `
+  <div class="grid g2" style="margin-bottom:14px">
+    <div class="card">
+      <h3>2025 → 2026: how the league moved</h3>
+      <div class="insight"><div class="dot"></div><div><b>Scoring.</b> ${(tot25/gp25).toFixed(2)} goals per team per game in 2025 against ${(tot26/gp26).toFixed(2)} in 2026 across ${state.scope==='all'?'all matches':'conference play'} — the league ${tot26/gp26 >= tot25/gp25 ? 'scored more' : 'scored less'} this season.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>Year-over-year stickiness.</b> Points per game correlate ${yoyCorr().toFixed(2)} between the two seasons — ${yoyCorr()>0.6?'strong':'moderate'} continuity, but every season still produces two or three teams that jump or collapse.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>What carries over.</b> Across the 16 programs, shot volume repeats at <b>r = ${yc('shpg').toFixed(2)}</b>, shots on target <b>${yc('sogpg').toFixed(2)}</b>, corners <b>${yc('cpg').toFixed(2)}</b> and shot share <b>${yc('shotshare').toFixed(2)}</b>. Finishing holds up less well — conversion <b>${yc('conv').toFixed(2)}</b> across all matches but only <b>${yc('conv','conf').toFixed(2)}</b> inside conference play, and save percentage is the weakest signal of all (<b>${yc('savepct').toFixed(2)}</b> / <b>${yc('savepct','conf').toFixed(2)}</b>). Read a volume change as real; treat a finishing swing as noise — which is exactly what the 2027 projection shrinks.</div></div>
+      <div class="insight warn"><div class="dot"></div><div><b>Scope note.</b> The toggle above switches between all matches and Big 12 only — conference schedules differ between the two years, so compare conference-to-conference where you can.</div></div>
+    </div>
+    <div class="card">
+      <h3>2025 vs 2026 points per game</h3>
+      ${yoyScatter(rows)}
+      <p class="note">Above the diagonal = improved; below = declined. Correlation ${yoyCorr().toFixed(2)}.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px">
+    <div class="hd2"><h3>Year-over-year table · ${state.scope==='all'?'all matches':'Big 12 play'}</h3><span class="spacer"></span>
+      <span class="note">Click any column to sort · click a row for the season breakdown</span>
+    </div>
+    <div class="tblwrap" style="max-height:none;overflow-x:auto">
+      <table class="ptable">
+        <thead><tr>
+          <th class="l">Team</th><th>2025 record</th><th>2026 record</th>
+          ${YOY_COLS.map(c=>`<th data-yk="${c.k}" class="${state.yoySort.key===c.k?'on':''}">${c.l}${state.yoySort.key===c.k?(state.yoySort.dir===-1?' ↓':' ↑'):''}</th>`).join('')}
+          <th>Rank 25 → 26</th>
+        </tr></thead>
+        <tbody>${body}</tbody>
+      </table>
+    </div>
+    <p class="note" style="margin:9px 0 0">Δ columns are 2026 minus 2025. Green = improved, red = worse. PPG uses 3 points per win, 1 per draw.</p>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="row" style="margin-bottom:8px">
+        <div class="badge" style="width:44px;height:44px;font-size:14px;background:${COLORS[sel]}">${T(sel).abbr}</div>
+        <div><b style="font-size:15px">${sel}</b><div class="note">${s.a.w}-${s.a.l}-${s.a.t} in 2025 → ${s.b.w}-${s.b.l}-${s.b.t} in 2026 · ${s.dPpg>0?'+':''}${s.dPpg.toFixed(2)} PPG</div></div>
+        <span class="spacer"></span>
+        ${sel!==state.myTeam?`<button class="chip" data-matchup="${sel}">Prep vs ${sel}</button>`:''}
+      </div>
+      <div class="row" style="gap:14px;margin-bottom:8px">
+        <span class="tag c">2025</span><span class="tag w">2026</span>
+        <span class="spacer"></span>
+        <span class="note">top bar = 2025 · bottom bar = 2026</span>
+      </div>
+      ${chart}
+    </div>
+    <div class="card">
+      <h3>Biggest movers in points per game</h3>
+      <table><thead><tr><th class="l">Risers</th><th>PPG</th><th>Δ</th><th>Δ SH / Δ conv</th></tr></thead>
+        <tbody>${up.map(r=>moverRow(r,true)).join('')}</tbody></table>
+      <table style="margin-top:10px"><thead><tr><th class="l">Fallers</th><th>PPG</th><th>Δ</th><th>Δ SH / Δ conv</th></tr></thead>
+        <tbody>${down.map(r=>moverRow(r,false)).join('')}</tbody></table>
+      <h3 style="margin-top:14px">Read the cause, not the result</h3>
+      <div class="insight"><div class="dot"></div><div>If a riser gained <b>shots and shot share</b>, treat it as real. If it only gained <b>conversion</b>, expect a pullback — that is what the 2027 projection does when it shrinks finishing.</div></div>
+      <div class="insight warn"><div class="dot"></div><div>The same logic in reverse for fallers: lost volume is a warning, lost finishing is usually noise.</div></div>
+    </div>
+  </div>`;
+}
+function yc(key, scope){
+  const sc = scope||state.scope;
+  const xs=B12.map(t=>yM(t,Y25,sc)[key]), ys=B12.map(t=>yM(t,Y26,sc)[key]);
+  const mx=xs.reduce((a,b)=>a+b,0)/xs.length, my=ys.reduce((a,b)=>a+b,0)/ys.length;
+  const num=xs.reduce((s,x,i)=>s+(x-mx)*(ys[i]-my),0);
+  const dx=Math.sqrt(xs.reduce((s,x)=>s+(x-mx)**2,0)), dy=Math.sqrt(ys.reduce((s,y)=>s+(y-my)**2,0));
+  return dx&&dy ? num/(dx*dy) : 0;
+}
+function yoyCorr(){
+  const rows=yoyRows();
+  const xs=rows.map(r=>r.ppg25), ys=rows.map(r=>r.ppg26);
+  const mx=xs.reduce((a,b)=>a+b,0)/xs.length, my=ys.reduce((a,b)=>a+b,0)/ys.length;
+  const num=xs.reduce((s,x,i)=>s+(x-mx)*(ys[i]-my),0);
+  const dx=Math.sqrt(xs.reduce((s,x)=>s+(x-mx)**2,0)), dy=Math.sqrt(ys.reduce((s,y)=>s+(y-my)**2,0));
+  return dx&&dy ? num/(dx*dy) : 0;
+}
+function yoyScatter(rows){
+  const w=640,h=320,pad={l:44,r:14,t:14,b:36};
+  const xs=rows.map(r=>r.ppg25), ys=rows.map(r=>r.ppg26);
+  const x1=Math.max(...xs)+0.2, y1=Math.max(...ys)+0.2;
+  const X=v=>pad.l+v/x1*(w-pad.l-pad.r), Y=v=>h-pad.b-v/y1*(h-pad.t-pad.b);
+  let g=`<svg viewBox="0 0 ${w} ${h}" class="scatter">
+    <line x1="${X(0)}" y1="${Y(0)}" x2="${X(Math.min(x1,y1))}" y2="${Y(Math.min(x1,y1))}" stroke="#2b3f4c" stroke-dasharray="3 3"/>`;
+  const pts=rows.map(r=>({t:r.t,cx:X(r.ppg25),cy:Y(r.ppg26),mine:r.t===state.myTeam}));
+  pts.sort((a,b)=>a.cy-b.cy);
+  const placed=[];
+  pts.forEach(p=>{
+    let ly=p.cy-9, tries=0;
+    while(placed.some(q=>Math.abs(q.x-p.cx)<52 && Math.abs(q.y-ly)<10) && tries<11){ ly+=10; tries++; }
+    let lx=p.cx, anchor='middle';
+    if(tries>=11){ lx=p.cx+8; ly=p.cy+3; anchor='start'; }
+    placed.push({x:lx,y:ly});
+    const r=rows.find(z=>z.t===p.t);
+    g+=`<circle cx="${p.cx}" cy="${p.cy}" r="${p.mine?7:4.5}" fill="${COLORS[p.t]||'#888'}" stroke="${p.mine?'#fff':'#0a0f14'}" stroke-width="${p.mine?2:1.2}"><title>${p.t}: 2025 ${r.ppg25.toFixed(2)} → 2026 ${r.ppg26.toFixed(2)}</title></circle>
+      <text x="${lx}" y="${ly}" text-anchor="${anchor}" font-size="${p.mine?9:8}" font-family="ui-monospace" font-weight="600" fill="${p.mine?'#fff':'#9db2c0'}">${T(p.t).abbr}</text>`;
+  });
+  for(let i=0;i<=4;i++){const v=x1*i/4;g+=`<text x="${X(v)}" y="${h-pad.b+13}" text-anchor="middle" fill="#5f7788" font-size="8.6" font-family="ui-monospace">${v.toFixed(1)}</text>`;}
+  for(let i=0;i<=4;i++){const v=y1*i/4;g+=`<text x="${pad.l-7}" y="${Y(v)+3}" text-anchor="end" fill="#5f7788" font-size="8.6" font-family="ui-monospace">${v.toFixed(1)}</text>`;}
+  return g+`<text x="${(pad.l+w-pad.r)/2}" y="${h-5}" text-anchor="middle" fill="#5f7788" font-size="9" font-family="ui-monospace">2025 POINTS PER GAME →</text>
+    <text transform="translate(12,${(pad.t+h-pad.b)/2}) rotate(-90)" text-anchor="middle" fill="#5f7788" font-size="9" font-family="ui-monospace">2026 →</text></svg>`;
+}
+
+/* ---------- render & events ---------- */
+function render(){
+  const v = state.tab==='board'?boardView() : state.tab==='team'?teamView() : state.tab==='matchup'?matchupView()
+    : state.tab==='games'?gamesView() : state.tab==='proj'?projectionView()
+    : state.tab==='yoy'?yoyView() : methodView();
+  document.getElementById('main').innerHTML = v;
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===state.tab));
+  document.querySelectorAll('#scopeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.scope===state.scope));
+  document.querySelectorAll('#seasonSeg button').forEach(b=>b.classList.toggle('on',b.dataset.season===state.season));
+  const sel=document.getElementById('myTeamSel'); if(sel) sel.value=state.myTeam;
+  const bs=document.getElementById('brandSeason'); if(bs) bs.textContent='· '+state.season;
+  const ao=document.getElementById('asof');
+  if(ao) ao.textContent='as of '+new Date(SD().generated+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  wire();
+}
+function wire(){
+  document.querySelectorAll('[data-team]').forEach(el=>el.onclick=()=>{state.team=el.dataset.team;state.tab='team';render();window.scrollTo({top:0,behavior:'smooth'})});
+  document.querySelectorAll('th[data-k]').forEach(el=>el.onclick=()=>{
+    const k=el.dataset.k; const c=COLS.find(x=>x.k===k);
+    if(state.sort.key===k) state.sort.dir*=-1; else state.sort={key:k,dir:(c&&c.d===1)?1:-1};
+    render();
+  });
+  const q=document.getElementById('q');
+  if(q) q.oninput=e=>{state.q=e.target.value; const p=e.target.selectionStart; render(); const n=document.getElementById('q'); if(n){n.focus(); n.setSelectionRange(p,p);}};
+  const csv=document.getElementById('csvBoard'); if(csv) csv.onclick=exportCSV;
+  const ts=document.getElementById('teamSel'); if(ts) ts.onchange=e=>{state.team=e.target.value;render();};
+  const sm=document.getElementById('setMine'); if(sm) sm.onclick=()=>{state.myTeam=state.team;localStorage.setItem('b12_myteam',state.myTeam);render();};
+  const pt=document.getElementById('printTeam'); if(pt) pt.onclick=()=>window.print();
+  document.querySelectorAll('[data-lf]').forEach(el=>el.onclick=()=>{const [k,v]=el.dataset.lf.split(':');state.logF[k]=v;render();});
+  document.querySelectorAll('[data-gf]').forEach(el=>el.onclick=()=>{const [k,v]=el.dataset.gf.split(':');state.gF[k]=v;render();});
+  const gt=document.getElementById('gTeam'); if(gt) gt.onchange=e=>{state.gF.team=e.target.value;render();};
+  document.querySelectorAll('th[data-gk]').forEach(el=>el.onclick=()=>{const k=el.dataset.gk;
+    if(state.gSort.key===k) state.gSort.dir*=-1; else state.gSort={key:k,dir:-1}; render();});
+  const sA=document.getElementById('selA'); if(sA) sA.onchange=e=>{state.mA=e.target.value;render();};
+  const sB=document.getElementById('selB'); if(sB) sB.onchange=e=>{state.mB=e.target.value;render();};
+  const um=document.getElementById('useMine'); if(um) um.onclick=()=>{state.mA=state.myTeam;render();};
+  const pb=document.getElementById('prepBtn'); if(pb) pb.onclick=()=>{const [x,y]=pb.dataset.prep.split('|');openPrep(x,y);};
+  document.querySelectorAll('[data-prep]').forEach(el=>{ if(el.id!=='prepBtn') el.onclick=()=>{const [x,y]=el.dataset.prep.split('|');openPrep(x,y);}; });
+  document.querySelectorAll('th[data-yk]').forEach(el=>el.onclick=()=>{const k=el.dataset.yk;
+    if(state.yoySort.key===k) state.yoySort.dir*=-1; else state.yoySort={key:k,dir:-1}; render();});
+  document.querySelectorAll('[data-yt]').forEach(el=>el.onclick=()=>{state.yoySel=el.dataset.yt;render();});
+  document.querySelectorAll('th[data-pk]').forEach(el=>el.onclick=()=>{const k=el.dataset.pk;
+    if(state.projSort.key===k) state.projSort.dir*=-1; else state.projSort={key:k,dir:-1}; render();});
+  document.querySelectorAll('[data-tier]').forEach(el=>el.onclick=()=>{state.projTier=el.dataset.tier;render();});
+  document.querySelectorAll('[data-pt]').forEach(el=>el.onclick=()=>{state.projSel=el.dataset.pt;render();});
+  const selTeam=()=>state.projSel||state.myTeam||DATA.projection.order[0];
+  const tOn=document.getElementById('turnOn');
+  if(tOn) tOn.onchange=e=>{state.turnOn=e.target.checked;render();};
+  document.querySelectorAll('tr[data-out]').forEach(row=>row.onclick=()=>{
+    const t=selTeam(), cur=turnFor(t), out=new Set(cur.out||[]), nm=row.dataset.out;
+    if(out.has(nm)) out.delete(nm); else out.add(nm);
+    setTurn(t,{mode:'roster', out:[...out]});
+  });
+  const sl=document.getElementById('turnSlider');
+  if(sl) sl.onchange=e=>setTurn(selTeam(),{mode:'manual', r:Number(e.target.value)/100});
+  document.querySelectorAll('[data-quick]').forEach(el=>el.onclick=()=>{
+    const t=selTeam(), R=DATA.rosters[t]; if(!R) return;
+    const players=R.players.filter(p=>p.min>0);
+    let out=[];
+    if(el.dataset.quick==='half') out=players.slice(0,Math.ceil(players.length/2)).map(p=>p.name);
+    if(el.dataset.quick==='seniors') out=players.slice(0,4).map(p=>p.name);
+    if(el.dataset.quick==='none') out=players.map(p=>p.name);
+    setTurn(t,{mode:'roster', out});
+  });
+  const rl=document.getElementById('turnResetAll');
+  if(rl) rl.onclick=()=>{state.turn={};turnSave();render();};
+  const r70=document.getElementById('turn70');
+  if(r70) r70.onclick=()=>{state.turn={};DATA.projection.order.forEach(t=>{turnAll()[t]={mode:'manual',r:0.7};});turnSave();render();};
+  document.querySelectorAll('[data-matchup]').forEach(el=>el.onclick=()=>{state.mA=state.myTeam||state.team;state.mB=el.dataset.matchup;state.tab='matchup';render();});
+}
+function exportCSV(){
+  const head=['Team','GP','W','L','T','PTS','GF','GA','GD','GFpg','GApg','SHpg','SOGpg','SOGpct','ConvPct','ShotShare','OppSHpg','SavePct','CS','CKpg','FoulsPg','YC','SOS'];
+  const lines=[head.join(',')];
+  B12.map(t=>({t,m:M(t)})).sort((a,b)=>b.m.w-a.m.w).forEach(({t,m})=>{
+    lines.push([t,m.gp,m.w,m.l,m.t,m.w*3+m.t,m.gf,m.ga,gd(m),m.gpg,m.gapg,m.shpg,m.sogpg,m.acc,m.conv,m.shotshare,m.oppshpg,m.savepct,m.shutouts,m.cpg,m.fpg,m.yc,T(t).sos].join(','));
+  });
+  const blob=new Blob([lines.join('\n')],{type:'text/csv'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='big12-soccer-'+state.season+'-'+state.scope+'.csv'; a.click();
+}
+document.getElementById('tabs').onclick=e=>{ const b=e.target.closest('button'); if(!b) return; state.tab=b.dataset.tab; render(); };
+document.getElementById('scopeSeg').onclick=e=>{ const b=e.target.closest('button'); if(!b) return; state.scope=b.dataset.scope; render(); };
+document.getElementById('seasonSeg').onclick=e=>{ const b=e.target.closest('button'); if(!b) return;
+  state.season=b.dataset.season; state.projSel=''; render(); window.scrollTo({top:0,behavior:'smooth'}); };
+const msel=document.getElementById('myTeamSel');
+msel.innerHTML='<option value="">— select —</option>'+B12.map(t=>`<option ${t===state.myTeam?'selected':''}>${t}</option>`).join('');
+msel.onchange=e=>{state.myTeam=e.target.value; localStorage.setItem('b12_myteam',state.myTeam); render();};
+document.getElementById('asof').textContent='as of '+new Date(SD().generated+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+render();
+</script>
+</body>
+</html>
