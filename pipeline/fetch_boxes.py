@@ -23,4 +23,7 @@ def fetch(item):
 with ThreadPoolExecutor(max_workers=10) as ex:
     res=list(ex.map(fetch,batch))
 open('done-%d.txt'%int(time.time()*1000),'w').write("\n".join(u for u,fn,c in res if fn))
+school_of = {u: t for t, u in uj}
+report = [{'school': school_of.get(u, '?'), 'url': u, 'ok': bool(fn), 'code': c} for u, fn, c in res]
+json.dump(report, open('fetch_report.json', 'w'))
 print('fetched',sum(1 for _,fn,_ in res if fn),'of',len(batch),'remaining',len(todo)-len(batch),'fails',[(u,c) for u,fn,c in res if not fn][:3])
