@@ -279,15 +279,23 @@ function insightsData(A,B){
 
 /* ---------- game explorer ---------- */
 function gamesView(){
-  const all=[]; const seen=new Set();
-  B12.forEach(t=>T(t).log.forEach(g=>{
-    const key=[t,g.opp].sort().join('|')+g.date;
-    if(seen.has(key)) return; seen.add(key);
-    all.push({date:g.date,team:t,opp:g.opp,ha:g.ha,gf:g.gf,ga:g.ga,r:g.r,conf:g.conf,
-      sh:g.sh,sog:g.sog,osh:g.osh,osog:g.osog,ck:g.ck,opck:g.opck,sv:g.sv,fls:g.fls});
-  }));
+  const all=[];
+  const push=(t,g)=>({date:g.date,team:t,opp:g.opp,ha:g.ha,gf:g.gf,ga:g.ga,r:g.r,conf:g.conf,
+    sh:g.sh,sog:g.sog,osh:g.osh,osog:g.osog,ck:g.ck,opck:g.opck,sv:g.sv,fls:g.fls});
+  if(state.gF.team!=='all'){
+    // a single team's view: use that team's own log so score, result and stats are its perspective
+    T(state.gF.team).log.forEach(g=>all.push(push(state.gF.team,g)));
+  } else {
+    // all matches: one row each, stored from the home team's perspective
+    const seen=new Map();
+    B12.forEach(t=>T(t).log.forEach(g=>{
+      const key=[t,g.opp].sort().join('|')+g.date;
+      const prev=seen.get(key);
+      if(!prev || (g.ha==='H' && prev.ha!=='H')) seen.set(key, push(t,g));
+    }));
+    all.push(...seen.values());
+  }
   let rows=all.filter(g=>{
-    if(state.gF.team!=='all' && g.team!==state.gF.team && g.opp!==state.gF.team) return false;
     if(state.gF.conf==='conf' && !g.conf) return false;
     if(state.gF.conf==='nc' && g.conf) return false;
     if(state.gF.res!=='all' && g.r!==state.gF.res) return false;
@@ -329,7 +337,7 @@ function gamesView(){
         <td class="mono">${g.ck??'—'}</td><td class="mono">${g.sv??'—'}</td><td class="mono muted">${g.fls??'—'}</td>
       </tr>`).join('')}</tbody></table>
     </div>
-    <p class="note" style="margin-top:10px">Each match appears once, from the listed team's perspective. Click a team name to open its page.</p>
+    <p class="note" style="margin-top:10px">With “All teams” selected, each match appears once from the home team's perspective. Selecting a team shows only that team's matches, with the score and result from its own side. Click a team name to open its page.</p>
   </div>`;
 }
 
