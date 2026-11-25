@@ -272,7 +272,8 @@ const state = {scope:'all', season:SEASONS[0], tab:'board', myTeam:localStorage.
   team:'Iowa State', logF:{venue:'all',res:'all',conf:'all'},
   mA:'Iowa State', mB:'Kansas State', gF:{team:'all',conf:'all',venue:'all',res:'all'}, gSort:{key:'date',dir:-1},
   projSort:{key:'proj_ppg',dir:-1}, projTier:'all', projSel:'', turn:null, turnOn:true,
-  yoySort:{key:'dPpg',dir:-1}, yoySel:''};
+  yoySort:{key:'dPpg',dir:-1}, yoySel:'',
+  teamBoard:{metric:'g', mode:'team'}};
 
 const fmt = (v,d=2) => v==null? '—' : (typeof v==='number'? (Number.isInteger(v)? v : v.toFixed(d)) : v);
 const M = t => T(t).metrics[state.scope];
@@ -412,6 +413,77 @@ function scatterSVG(){
   return g;
 }
 
+/* ---------- team page: leaders vs the conference ---------- */
+const TEAM_METRICS = [
+  {k:'g',  l:'Goals',        sec:'sh',  secLabel:'SH', suf:''},
+  {k:'as', l:'Assists',      sec:'g',   secLabel:'G',  suf:''},
+  {k:'sh', l:'Shots',        sec:'sog', secLabel:'SOG',suf:''},
+  {k:'sv', l:'Save %',       sec:'gk_sv', secLabel:'SV', suf:'%', gk:true},
+  {k:'so', l:'Clean sheets', sec:'gk_ga', secLabel:'GA', suf:'', gk:true},
+  {k:'cd', l:'Cards',        sec:'apps', secLabel:'APP', suf:''}
+];
+function leaderPool(metricDef){
+  const sc = state.scope === 'conf' ? 'c' : 'a';
+  const L = (DATA.leaders || {})[state.season] || [];
+  const minGK = state.scope === 'conf' ? 360 : 450;
+  const val = p => {
+    const d = p[sc] || {};
+    if (metricDef.k === 'sv') return d.sv_pct || 0;
+    if (metricDef.k === 'so') return d.gk_so || 0;
+    if (metricDef.k === 'cd') return d.cards || 0;
+    return d[metricDef.k] || 0;
+  };
+  const ok = p => {
+    const d = p[sc] || {};
+    if (metricDef.k === 'sv') return (d.gk_min || 0) >= minGK;
+    if (metricDef.k === 'so') return (d.gk_min || 0) > 0;
+    return val(p) > 0;
+  };
+  return L.filter(ok).map(p => ({ p, v: val(p), d: p[sc] || {} })).sort((a, b) => b.v - a.v);
+}
+function teamLeaderBlock(t){
+  const def = TEAM_METRICS.find(m => m.k === state.teamBoard.metric) || TEAM_METRICS[0];
+  const mode = state.teamBoard.mode;
+  const pool = leaderPool(def);
+  const rankOf = new Map(pool.map((x, i) => [x.p.t + '|' + x.p.n, i + 1]));
+  const rows = mode === 'team' ? pool.filter(x => x.p.t === t) : pool.slice(0, 12);
+  const teamRank = (() => {
+    // where the team sits if you sum its players' value (useful for goals/assists)
+    return null;
+  })();
+  const valFmt = v => typeof v === 'number' ? (Number.isInteger(v) ? v : v.toFixed(1)) : v;
+  const body = rows.map(x => {
+    const r = rankOf.get(x.p.t + '|' + x.p.n);
+    const mine = x.p.t === state.myTeam, focus = x.p.t === t;
+    return `<tr class="${focus ? 'mine' : ''}">
+      <td class="l mono ${r <= 10 ? 'up' : 'muted'}" style="width:44px">#${r}</td>
+      <td class="l">${x.p.n}${x.p.p ? ` <span class="note">${x.p.p}</span>` : ''}</td>
+      ${mode === 'team' ? '' : `<td class="l note">${x.p.t}</td>`}
+      <td class="mono"><b>${valFmt(x.v)}${def.suf}</b></td>
+      <td class="mono muted">${valFmt(x.d[def.sec] || 0)} ${def.secLabel}</td>
+    </tr>`;
+  }).join('');
+  const chips = TEAM_METRICS.map(m =>
+    `<button class="chip ${m.k === def.k ? 'on' : ''}" data-tb="metric:${m.k}">${m.l}</button>`).join('');
+  const modes = `<button class="chip ${mode === 'team' ? 'on' : ''}" data-tb="mode:team">This team</button>
+                 <button class="chip ${mode === 'conf' ? 'on' : ''}" data-tb="mode:conf">Conference top 12</button>`;
+  return `
+    <div class="row" style="gap:6px;margin-bottom:8px">
+      <div class="chips">${chips}</div>
+      <span class="spacer"></span>
+      <div class="chips">${modes}</div>
+    </div>
+    <div class="tblwrap" style="max-height:340px">
+      <table class="ptable" style="font-size:12.5px">
+        <thead><tr><th class="l" style="width:44px">Conf #</th><th class="l">Player</th>
+          ${mode === 'team' ? '' : '<th class="l">Team</th>'}
+          <th>${def.l}</th><th>${def.secLabel}</th></tr></thead>
+        <tbody>${body || `<tr><td colspan="${mode === 'team' ? 4 : 5}" class="empty">No ${def.l.toLowerCase()} recorded for ${t} in this scope.</td></tr>`}</tbody>
+      </table>
+    </div>
+    <p class="note" style="margin:7px 0 0">Rank is league-wide, not within the team.${def.k === 'sv' ? ' Keepers need ' + (state.scope === 'conf' ? 360 : 450) + ' minutes to qualify.' : ''}${def.k === 'cd' ? ' Box scores do not publish card colour per player — see the team yellow/red boards on League leaders.' : ''}</p>`;
+}
+
 function teamView(){
   const t=state.team, obj=T(t), m=M(t);
   const logs = obj.log.filter(g=>{
@@ -495,15 +567,9 @@ function teamView(){
       <div class="metric"><div class="k">2nd half &amp; OT</div><div class="v">${m.gf-m.g1h}–${m.ga-m.ga1h}</div><div class="r">${bar(Math.min(100,((m.gf-m.g1h)/(m.gf||1))*100))}</div></div>
     </div>
     <div class="card">
-      <h3>Personnel · goals &amp; assists (box scores)</h3>
-      ${state.scope==='conf'?'<p class="note" style="margin:-6px 0 8px">Personnel figures are full-season totals.</p>':''}
-      <div class="tblwrap" style="max-height:330px">
-        <table><thead><tr><th class="l">Player</th><th>Pos</th><th>G</th><th>A</th><th>PTS</th><th>SH</th><th>SOG</th><th>MIN</th></tr></thead>
-        <tbody>${scorers.length?scorers.map(p=>`<tr><td class="l">${p.name}</td><td class="muted small">${p.pos||'—'}</td>
-          <td class="mono">${p.g||''}</td><td class="mono">${p.a||''}</td><td class="mono">${p.pts||''}</td>
-          <td class="mono muted">${p.sh||''}</td><td class="mono muted">${p.sog||''}</td><td class="mono muted">${p.min||''}</td></tr>`).join('')
-          :`<tr><td colspan="8" class="empty">No player detail captured for this team.</td></tr>`}</tbody></table>
-      </div>
+      <h3>Team leaders · ranked against the conference</h3>
+      <p class="note" style="margin:-4px 0 8px">${state.season} · ${state.scope==='all'?'all matches':'Big 12 play'} · every player ranked league-wide</p>
+      ${teamLeaderBlock(t)}
       ${gk.length?`<h3 style="margin-top:14px">Goalkeepers</h3>
       <table><thead><tr><th class="l">Keeper</th><th>MIN</th><th>GA</th><th>SV</th><th>SV%</th><th>GAA</th></tr></thead><tbody>
       ${gk.map(p=>`<tr><td class="l">${p.name}</td><td class="mono">${p.gkmin}</td><td class="mono">${p.ga}</td>
@@ -1237,7 +1303,10 @@ function leadersView(){
   const keepMin = state.scope === 'conf' ? 360 : 450;
   const keepers = players('sv_pct', 10, p => val(p, 'gk_min') >= keepMin, p => (p[sc] || {}).sv_pct || 0);
   const shutouts = players('gk_so', 10, p => val(p, 'gk_min') > 0);
-  const playerCards = players('cards', 10);
+  const playerCards = players('cards', 12);
+  const cardRate = L.filter(p => val(p, 'cards') > 0 && val(p, 'apps') >= 8)
+    .map(p => ({ p, v: val(p, 'cards') / val(p, 'apps') }))
+    .sort((a, b) => b.v - a.v).slice(0, 12);
 
   const covPct = totalGoals ? Math.round(100 * namedGoals / totalGoals) : 0;
 
@@ -1269,7 +1338,8 @@ function leadersView(){
   </div>
 
   <div class="grid g2" style="margin-top:14px">
-    ${card('Player cards', 'all cards · box scores', ['Player', 'Team', 'Cards', ''], playerCards.map((x, i) => rowPlayer(x, i)).join(''))}
+    ${card('Player cards — most', 'all cards · box scores', ['Player', 'Team', 'Cards', 'Apps'], playerCards.map((x, i) => rowPlayer(x, i, '', p => `${val(p, 'apps')} apps`)).join(''))}
+    ${card('Player cards — per game', 'min 8 appearances', ['Player', 'Team', 'Cards/g', 'Cards'], cardRate.map((x, i) => rowPlayer(x, i, '', p => `${val(p, 'cards')} in ${val(p, 'apps')}`)).join(''))}
     <div class="card">
       <h3>How to read this page</h3>
       <div class="insight"><div class="dot"></div><div><b>Goals and assists are exact</b> for ${state.scope === 'conf' ? 'conference play' : 'the season'} — they are taken from the goal logs and reconcile to every team's goals-for. ${covPct < 100 ? `${totalGoals - namedGoals} of ${totalGoals} goals league-wide have no named scorer because the box score published no goal log.` : ''}</div></div>
@@ -1493,6 +1563,7 @@ function wire(){
   const sm=document.getElementById('setMine'); if(sm) sm.onclick=()=>{state.myTeam=state.team;localStorage.setItem('b12_myteam',state.myTeam);render();};
   const pt=document.getElementById('printTeam'); if(pt) pt.onclick=()=>window.print();
   document.querySelectorAll('[data-lf]').forEach(el=>el.onclick=()=>{const [k,v]=el.dataset.lf.split(':');state.logF[k]=v;render();});
+  document.querySelectorAll('[data-tb]').forEach(el=>el.onclick=()=>{const [k,v]=el.dataset.tb.split(':');state.teamBoard[k]=v;render();});
   document.querySelectorAll('[data-gf]').forEach(el=>el.onclick=()=>{const [k,v]=el.dataset.gf.split(':');state.gF[k]=v;render();});
   const gt=document.getElementById('gTeam'); if(gt) gt.onchange=e=>{state.gF.team=e.target.value;render();};
   document.querySelectorAll('th[data-gk]').forEach(el=>el.onclick=()=>{const k=el.dataset.gk;
