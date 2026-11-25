@@ -176,6 +176,7 @@ table.pr td.b{font-weight:700}
 .pr-box{border:1px solid #d9dde3;border-left:3px solid #C8102E;border-radius:4px;padding:6px 8px;
   margin-top:7px;font-size:8.5pt;background:#fafbfc}
 .pr-note{font-size:7.9pt;color:#6b7178;margin-top:3px}
+.pr-rk{font:400 6.6pt/1 var(--mono);color:#98a0a8}
 .pr-foot{page-break-inside:avoid;font-size:6.9pt;color:#8b9198;border-top:1px solid #e0e3e8;margin-top:11px;padding-top:5px}
 .pt{margin-bottom:6px}
 .pt-title{font:700 7.6pt/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#3d434b;margin:0 0 6px}
@@ -855,8 +856,8 @@ const TAPE=[
     {l:'Failed to score',fn:m=>m.fts,d:0,inv:1},{l:'1st-half goals for',fn:m=>m.g1h,d:0},{l:'1st-half goals against',fn:m=>m.ga1h,d:0,inv:1}
   ]}
 ];
-/* ---------- matchup lab: top players, head to head ---------- */
-function matchupTopPlayers(A, B){
+/* ---------- shared model: top players, head to head ---------- */
+function topPlayersModel(A, B){
   const sc = state.scope === 'conf' ? 'c' : 'a';
   const L = (DATA.leaders || {})[state.season] || [];
   const d = p => p[sc] || {};
@@ -868,60 +869,64 @@ function matchupTopPlayers(A, B){
     const pool = leaderPool(def);
     rankMap[k] = new Map(pool.map((x, i) => [x.p.t + '|' + x.p.n, i + 1]));
   });
-  const rk = (p, k) => {
+  const rk = (p, k, cap = 30) => {
     const r = rankMap[k] && rankMap[k].get(p.t + '|' + p.n);
-    return r && r <= 30 ? `<span class="rank" style="margin:0">#${r}</span>` : '';   // only meaningful ranks
+    return r && r <= cap ? r : null;
   };
-  const shotsText = p => d(p).apps ? `${v(p, 'sh')} shots · ${v(p, 'sog')} on target` : 'line-up not published';
   const pool = t => L.filter(p => p.t === t && (p[sc] || {}));
   const scorers = t => pool(t).filter(p => v(p, 'g') > 0)
     .sort((x, y) => v(y, 'g') - v(x, 'g') || v(y, 'as') - v(x, 'as')).slice(0, 3);
-  const playmaker = (t, exclude) => pool(t)
+  const creator = (t, exclude) => pool(t)
     .filter(p => v(p, 'as') > 0 && !exclude.includes(p.n))
     .sort((x, y) => v(y, 'as') - v(x, 'as'))[0];
   const keeper = t => pool(t).filter(p => v(p, 'gk_min') > 0)
     .sort((x, y) => v(y, 'gk_min') - v(x, 'gk_min'))[0];
+  const sa = scorers(A), sb = scorers(B);
+  return {
+    d, v, rk,
+    sa, sb,
+    ca: creator(A, sa.map(x => x.n)), cb: creator(B, sb.map(x => x.n)),
+    ka: keeper(A), kb: keeper(B),
+  };
+}
+/* ---------- matchup lab: top players, head to head ---------- */
+function matchupTopPlayers(A, B){
+  const M = topPlayersModel(A, B);
+  const { v, rk, d } = M;
+  const rkChip = (p, k) => { const r = rk(p, k); return r ? `<span class="rank" style="margin:0">#${r}</span>` : ''; };
+  const shotsText = p => d(p).apps ? `${v(p, 'sh')} shots · ${v(p, 'sog')} on target` : 'line-up not published';
 
-  const line = (label, pa, pb, aText, bText, aSub, bSub) => `
+  const line = (label, rankKey, pa, pb, aText, bText, aSub, bSub) => `
     <div class="tot" style="grid-template-columns:1fr 104px 1fr">
       <div class="side" style="flex-direction:column;align-items:flex-start;gap:1px">
-        <span style="font:650 12.5px/1.3 inherit">${pa ? pa.n : '—'} ${pa ? rk(pa, label.rank) : ''}</span>
+        <span style="font:650 12.5px/1.3 inherit">${pa ? pa.n : '—'} ${pa ? rkChip(pa, rankKey) : ''}</span>
         <span class="mono" style="font-size:12px;color:var(--text)">${aText}</span>
         <span class="note" style="font-size:10.5px">${aSub || ''}</span>
       </div>
-      <div class="mid">${label.label}</div>
+      <div class="mid">${label}</div>
       <div class="side r" style="flex-direction:column;align-items:flex-end;gap:1px">
-        <span style="font:650 12.5px/1.3 inherit">${pb ? rk(pb, label.rank) + ' ' + pb.n : '—'}</span>
+        <span style="font:650 12.5px/1.3 inherit">${pb ? rkChip(pb, rankKey) + ' ' + pb.n : '—'}</span>
         <span class="mono" style="font-size:12px;color:var(--text)">${bText}</span>
         <span class="note" style="font-size:10.5px">${bSub || ''}</span>
       </div>
     </div>`;
 
-  const sa = scorers(A), sb = scorers(B);
   const rows = [];
-  for (let i = 0; i < Math.max(sa.length, sb.length); i++) {
-    const pa = sa[i], pb = sb[i];
-    rows.push(line({ label: `${['Top scorer', '2nd scorer', '3rd scorer'][i]}`, rank: 'g' },
-      pa, pb,
+  for (let i = 0; i < Math.max(M.sa.length, M.sb.length); i++) {
+    const pa = M.sa[i], pb = M.sb[i];
+    rows.push(line(['Top scorer', '2nd scorer', '3rd scorer'][i], 'g', pa, pb,
       pa ? `${v(pa, 'g')}G ${v(pa, 'as')}A` : '—',
       pb ? `${v(pb, 'g')}G ${v(pb, 'as')}A` : '—',
-      pa ? shotsText(pa) : '',
-      pb ? shotsText(pb) : ''));
+      pa ? shotsText(pa) : '', pb ? shotsText(pb) : ''));
   }
-  const pam = playmaker(A, sa.map(x => x.n)), pbm = playmaker(B, sb.map(x => x.n));
-  if (pam || pbm) {
-    rows.push(line({ label: 'Top creator', rank: 'as' }, pam, pbm,
-      pam ? `${v(pam, 'as')}A` : '—', pbm ? `${v(pbm, 'as')}A` : '—',
-      pam ? `${v(pam, 'g')}G ${v(pam, 'sh')} sh` : '', pbm ? `${v(pbm, 'g')}G ${v(pbm, 'sh')} sh` : ''));
-  }
-  const ka = keeper(A), kb = keeper(B);
-  if (ka || kb) {
-    rows.push(line({ label: "In goal", rank: 'sv' }, ka, kb,
-      ka ? `${(d(ka).sv_pct ?? 0).toFixed(1)}% · ${(d(ka).ga90 ?? 0).toFixed(2)} GAA` : '—',
-      kb ? `${(d(kb).sv_pct ?? 0).toFixed(1)}% · ${(d(kb).ga90 ?? 0).toFixed(2)} GAA` : '—',
-      ka ? `${d(ka).gk_so || 0} shutouts · ${d(ka).gk_sv || 0} saves` : '',
-      kb ? `${d(kb).gk_so || 0} shutouts · ${d(kb).gk_sv || 0} saves` : ''));
-  }
+  if (M.ca || M.cb) rows.push(line('Top creator', 'as', M.ca, M.cb,
+    M.ca ? `${v(M.ca, 'as')}A` : '—', M.cb ? `${v(M.cb, 'as')}A` : '—',
+    M.ca ? `${v(M.ca, 'g')}G ${v(M.ca, 'sh')} sh` : '', M.cb ? `${v(M.cb, 'g')}G ${v(M.cb, 'sh')} sh` : ''));
+  if (M.ka || M.kb) rows.push(line('In goal', 'sv', M.ka, M.kb,
+    M.ka ? `${(d(M.ka).sv_pct ?? 0).toFixed(1)}% · ${(d(M.ka).ga90 ?? 0).toFixed(2)} GAA` : '—',
+    M.kb ? `${(d(M.kb).sv_pct ?? 0).toFixed(1)}% · ${(d(M.kb).ga90 ?? 0).toFixed(2)} GAA` : '—',
+    M.ka ? `${d(M.ka).gk_so || 0} shutouts · ${d(M.ka).gk_sv || 0} saves` : '',
+    M.kb ? `${d(M.kb).gk_so || 0} shutouts · ${d(M.kb).gk_sv || 0} saves` : ''));
 
   return `
     <div class="card" style="margin-bottom:14px">
@@ -934,7 +939,42 @@ function matchupTopPlayers(A, B){
       ${rows.join('')}
     </div>`;
 }
-
+/* ---------- prep sheet: same comparison, print styling ---------- */
+function prepTopPlayers(A, B){
+  const M = topPlayersModel(A, B);
+  const { v, rk, d } = M;
+  const nameCell = (p, k) => p
+    ? `${p.n}${rk(p, k) ? ` <span class="pr-rk">#${rk(p, k)}</span>` : ''}`
+    : '—';
+  const row = (label, k, pa, pb, aTxt, bTxt) => `<tr>
+      <td class="pr-l">${label}</td>
+      <td>${nameCell(pa, k)}</td>
+      <td class="pr-v">${aTxt}</td>
+      <td>${nameCell(pb, k)}</td>
+      <td class="pr-v">${bTxt}</td>
+    </tr>`;
+  const rows = [];
+  for (let i = 0; i < Math.max(M.sa.length, M.sb.length); i++) {
+    const pa = M.sa[i], pb = M.sb[i];
+    const tail = p => d(p).apps ? `${v(p, 'sh')} sh` : 'no line-up data';
+    rows.push(row(['Top scorer', '2nd scorer', '3rd scorer'][i], 'g', pa, pb,
+      pa ? `${v(pa, 'g')}G ${v(pa, 'as')}A · ${tail(pa)}` : '—',
+      pb ? `${v(pb, 'g')}G ${v(pb, 'as')}A · ${tail(pb)}` : '—'));
+  }
+  if (M.ca || M.cb) rows.push(row('Top creator', 'as', M.ca, M.cb,
+    M.ca ? `${v(M.ca, 'as')}A · ${d(M.ca).apps ? v(M.ca, 'sh') + ' sh' : 'no line-up data'}` : '—',
+    M.cb ? `${v(M.cb, 'as')}A · ${d(M.cb).apps ? v(M.cb, 'sh') + ' sh' : 'no line-up data'}` : '—'));
+  if (M.ka || M.kb) rows.push(row('In goal', 'sv', M.ka, M.kb,
+    M.ka ? `${(d(M.ka).sv_pct ?? 0).toFixed(1)}% · ${(d(M.ka).ga90 ?? 0).toFixed(2)} GAA · ${d(M.ka).gk_so || 0} SO` : '—',
+    M.kb ? `${(d(M.kb).sv_pct ?? 0).toFixed(1)}% · ${(d(M.kb).ga90 ?? 0).toFixed(2)} GAA · ${d(M.kb).gk_so || 0} SO` : '—'));
+  return `
+    <h2>Personnel — head to head <span>2026 ${state.scope === 'all' ? 'all matches' : 'Big 12 play'} · league rank in grey</span></h2>
+    <table class="pr">
+      <tr><th class="l" style="width:16%">Role</th><th class="l" style="width:26%">${A}</th><th style="width:16%">G / A / SH</th>
+        <th class="l" style="width:26%">${B}</th><th style="width:16%">G / A / SH</th></tr>
+      ${rows.join('')}
+    </table>`;
+}
 function matchupView(){
   if(!state.mA) state.mA = state.myTeam || B12[0];
   if(!state.mB) state.mB = B12.find(t=>t!==state.mA);
@@ -1213,18 +1253,8 @@ function buildPrepSheet(A,B){
       <div class="pr-col" style="width:49%">${prepTiming(A,A+' · goals by window',twoMax)}</div>
       <div class="pr-col" style="width:49%">${prepTiming(B,B+' · goals by window',twoMax)}</div>
     </div>
-    <div class="pr-cols">
-      <div class="pr-col" style="width:49%">
-        <h2>Personnel — ${A}</h2>
-        <table class="pr pl"><tr><th>Player</th><th class="c">Pos</th><th class="c">G</th><th class="c">A</th><th class="c">SH</th></tr>${pl(a,5)}</table>
-        <div class="pr-note">Keeper: ${gk(a)}</div>
-      </div>
-      <div class="pr-col" style="width:49%">
-        <h2>Personnel — ${B}</h2>
-        <table class="pr pl"><tr><th>Player</th><th class="c">Pos</th><th class="c">G</th><th class="c">A</th><th class="c">SH</th></tr>${pl(b,5)}</table>
-        <div class="pr-note">Keeper: ${gk(b)} · blank SH rows are players whose line-ups were not published</div>
-      </div>
-    </div>
+    ${prepTopPlayers(A,B)}
+    <div style="page-break-before:always"></div>
     <h2>Targets for the fixture</h2>
     <table class="pr"><tr><th>Measure</th><th>${B} average</th><th>Target</th></tr>
       <tr><td class="pr-l">Shots conceded</td><td class="pr-v">${fmt(mb.shpg,1)}</td><td class="pr-v">≤ ${Math.max(6,Math.round(mb.shpg*0.8))}</td></tr>
