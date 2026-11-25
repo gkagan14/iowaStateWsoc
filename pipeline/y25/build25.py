@@ -29,6 +29,8 @@ for r in old:
     if not r['date']: continue
     k=(r['date'],frozenset([r['home'],r['away']]),tuple(sorted([r['hs'],r['as']])))
     score=len(r.get('stats') or {})*2 + (1 if r.get('goals') else 0)
+    # prefer a school's own sidearm box score (full line-ups, clean goal text) over a widget
+    if '/boxes/' in (r.get('src') or '') or '/pages/' in (r.get('src') or ''): score += 3
     if k in seen and score<=seen[k][0]: continue
     seen[k]=(score,r)
 games=[]
