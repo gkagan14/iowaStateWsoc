@@ -24,8 +24,8 @@ for season, path in SOURCES:
     players = collections.defaultdict(lambda: {'pos': '', 'all': blank(), 'conf': blank()})
 
     def add(team, name, scope, key, val):
-        if not name:
-            return
+        if not name or re.fullmatch(r'[\d\s#.]+', name):
+            return          # jersey numbers and blank entries are not players
         d = players[(team, name)]
         d['all'][key] += val
         if scope:
