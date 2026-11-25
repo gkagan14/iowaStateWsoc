@@ -51,6 +51,7 @@ BOX_DIRS="/tmp/boxes/*.html:/tmp/wmt/w_*.html" python3 parse2.py | tail -2
 step "Matching box scores to official results and reconciling totals"
 python3 build3.py | tail -4
 python3 merge_games.py games_clean.json results_games.json games_clean.json official.json
+python3 fix_goals.py games_clean.json
 
 # ---------------------------------------------------------------- 3. 2025 season (static unless --both)
 if [ "$BOTH" = "1" ]; then
@@ -62,6 +63,7 @@ if [ "$BOTH" = "1" ]; then
   python3 y25/results25.py  | tail -3
   python3 y25/build25.py    | tail -4
   python3 merge_games.py y25/games_clean25.json y25/results_games25.json y25/games_clean25.json y25/official25.json
+  python3 fix_goals.py y25/games_clean25.json
   python3 season_build.py y25/games_clean25.json y25/official25.json season2025.json 2025 2025-12-08
 elif [ ! -f season2025.json ]; then
   echo "  (2025 season data missing — run with --both)"; exit 1
@@ -70,6 +72,7 @@ fi
 # ---------------------------------------------------------------- 4. season metrics
 step "Building team metrics, logs and player tables"
 python3 season_build.py games_clean.json official.json season2026.json "$SEASON" "$TODAY"
+python3 build_leaders.py
 
 # ---------------------------------------------------------------- 5. projections
 step "Recomputing the 2027 projection and roster minutes"
