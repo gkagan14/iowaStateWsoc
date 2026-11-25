@@ -70,6 +70,171 @@ function teamLeaderBlock(t){
     <p class="note" style="margin:7px 0 0">Rank is league-wide, not within the team.${def.k === 'sv' ? ' Keepers need ' + (state.scope === 'conf' ? 360 : 450) + ' minutes to qualify.' : ''}${def.k === 'cd' ? ' Box scores do not publish card colour per player — see the team yellow/red boards on League leaders.' : ''}</p>`;
 }
 
+/* ---------- team page: full stat sheet ---------- */
+function confRankValue(key, value, lower){
+  const vals = B12.map(x => T(x).metrics[state.scope][key]).filter(v => typeof v === 'number');
+  vals.sort((a, b) => lower ? a - b : b - a);
+  const idx = vals.findIndex(v => v === value);
+  return idx === -1 ? null : idx + 1;
+}
+function teamFullStats(t){
+  const m = M(t), L = (DATA.leaders || {})[state.season] || [];
+  const sc = state.scope === 'conf' ? 'c' : 'a';
+  const num = (v, d = 0) => (typeof v === 'number' ? (d ? v.toFixed(d) : String(v)) : '—');
+  const R2 = (key, lower) => {
+    const r = confRankValue(key, m[key], lower);
+    return r ? `<span class="rank ${r <= 5 ? 'top' : r >= 14 ? 'bot' : ''}" style="margin:0">#${r}</span>` : '';
+  };
+  const ppgT = (m.w * 3 + m.t) / Math.max(1, m.gp);
+  const group = (title, rows) => `
+    <tr><td colspan="3" class="l" style="padding-top:9px"><span class="note" style="letter-spacing:.12em;text-transform:uppercase;font-weight:700">${title}</span></td></tr>
+    ${rows.map(([label, val, rank]) => `<tr><td class="l">${label}</td><td class="mono" style="text-align:right"><b>${val}</b></td><td style="width:56px;text-align:right">${rank || ''}</td></tr>`).join('')}`;
+
+  const teamRows = [
+    group('Record', [
+      ['Record', `${m.w}-${m.l}-${m.t}`, ''],
+      ['Points', m.w * 3 + m.t, R2('w')],
+      ['Points per game', ppgT.toFixed(2), R2('w')],
+      ['Goals for / against', `${m.gf}–${m.ga}`, R2('gf')],
+      ['Goal difference', `${m.gf - m.ga > 0 ? '+' : ''}${m.gf - m.ga}`, R2('gd')],
+      ['Home / away record', `${homeRec(t)} / ${awayRec(t)}`, '']
+    ]),
+    group('Attack', [
+      ['Goals per game', m.gpg.toFixed(2), R2('gpg')],
+      ['Assists', m.assists ?? '—', ''],
+      ['Shots', m.shots, ''],
+      ['Shots per game', m.shpg.toFixed(1), R2('shpg')],
+      ['Shots on target', m.sog, ''],
+      ['Shots on target per game', m.sogpg.toFixed(1), R2('sogpg')],
+      ['Shot accuracy', `${m.acc.toFixed(1)}%`, R2('acc')],
+      ['Conversion', `${m.conv.toFixed(1)}%`, R2('conv')],
+      ['Shot share', `${m.shotshare.toFixed(1)}%`, R2('shotshare')],
+      ['Penalties (made / taken)', `${m.pk ?? '—'} / ${m.pka ?? '—'}`, '']
+    ]),
+    group('Defence', [
+      ['Goals against per game', m.gapg.toFixed(2), R2('gapg', true)],
+      ['Opponent shots per game', m.oppshpg.toFixed(1), R2('oppshpg', true)],
+      ['Opponent shots on target / g', m.oppsogpg.toFixed(1), R2('oppsogpg', true)],
+      ['Saves', m.saves, ''],
+      ['Save %', `${m.savepct.toFixed(1)}%`, R2('savepct')],
+      ['Clean sheets', m.shutouts ?? '—', R2('shutouts')]
+    ]),
+    group('Set pieces & discipline', [
+      ['Corners per game', m.cpg.toFixed(1), R2('cpg')],
+      ['Corners conceded per game', m.oppcpg.toFixed(1), ''],
+      ['Fouls per game', m.fpg.toFixed(1), R2('fpg', true)],
+      ['Yellow cards', m.yc ?? '—', R2('yc', true)],
+      ['Red cards', m.rc ?? '—', R2('rc', true)],
+      ['Offsides', m.offsides ?? '—', '']
+    ]),
+    group('Game shape', [
+      ['Games scoring first', m.sf, ''],
+      ['Games conceding first', m.cf, ''],
+      ['Failed to score', m.fts, ''],
+      ['1st-half goals (for–against)', `${m.g1h}–${m.ga1h}`, ''],
+      ['Goals 61′+ (for–against)', `${(m.gtime['61-75'] || 0) + (m.gtime['76-90'] || 0) + (m.gtime['90+'] || 0)}–${(m.otime['61-75'] || 0) + (m.otime['76-90'] || 0) + (m.otime['90+'] || 0)}`, '']
+    ])
+  ].join('');
+
+  const roster = L.filter(p => p.t === t && (p[sc] || {})).map(p => {
+    const d = p[sc] || {};
+    const g = d.g || 0, a = d.as || 0, sh = d.sh || 0, sog = d.sog || 0, min = d.min || 0;
+    return {
+      name: p.n, pos: p.p || '', apps: d.apps || 0, min, g, a, pts: 2 * g + a,
+      sh, sog, acc: sh ? Math.round(100 * sog / sh) : null,
+      cards: d.cards || 0,
+      g90: min >= 300 ? (g / (min / 90)).toFixed(2) : '—',
+      a90: min >= 300 ? (a / (min / 90)).toFixed(2) : '—',
+      gk: (d.gk_min || 0) > 0, gk_min: d.gk_min || 0, gk_ga: d.gk_ga || 0, gk_sv: d.gk_sv || 0,
+      gk_so: d.gk_so || 0, sv_pct: d.sv_pct, ga90: d.ga90
+    };
+  }).sort((a, b) => b.pts - a.pts || b.g - a.g || b.sh - a.sh);
+
+  const outfield = roster.filter(p => !p.gk || p.g > 0);
+  const keepers = roster.filter(p => p.gk);
+
+  const outRows = outfield.map(p => `<tr>
+      <td class="l">${p.name}</td><td class="l note">${p.pos || '—'}</td>
+      <td class="mono">${p.apps || ''}</td><td class="mono muted">${p.min || ''}</td>
+      <td class="mono"><b>${p.g || ''}</b></td><td class="mono">${p.a || ''}</td><td class="mono"><b>${p.pts || ''}</b></td>
+      <td class="mono">${p.sh || ''}</td><td class="mono">${p.sog || ''}</td><td class="mono muted">${p.acc != null ? p.acc + '%' : ''}</td>
+      <td class="mono">${p.cards || ''}</td><td class="mono muted">${p.g90}</td><td class="mono muted">${p.a90}</td>
+    </tr>`).join('');
+
+  const gkRows = keepers.map(p => `<tr>
+      <td class="l">${p.name}</td>
+      <td class="mono">${p.apps || ''}</td><td class="mono">${p.gk_min || ''}</td>
+      <td class="mono">${p.gk_ga}</td><td class="mono">${p.gk_sv}</td>
+      <td class="mono"><b>${p.sv_pct != null ? p.sv_pct + '%' : '—'}</b></td>
+      <td class="mono">${p.ga90 != null ? p.ga90 : '—'}</td><td class="mono"><b>${p.gk_so}</b></td>
+    </tr>`).join('');
+
+  return `
+  <div class="card" style="margin-top:14px">
+    <div class="hd2">
+      <h3 style="margin:0">Full stat sheet · ${t}</h3><span class="spacer"></span>
+      <span class="note">${state.season} · ${state.scope === 'all' ? 'all matches' : 'Big 12 play'} · rank out of 16</span>
+      <button class="chip" id="teamCsv">Export CSV</button>
+    </div>
+    <div class="grid g2">
+      <div>
+        <div class="tblwrap" style="max-height:none">
+          <table class="ptable" style="font-size:12.5px">
+            <thead><tr><th class="l">Team stat</th><th style="text-align:right">Value</th><th style="text-align:right">Big 12</th></tr></thead>
+            <tbody>${teamRows}</tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="tblwrap" style="max-height:420px">
+          <table class="ptable" style="font-size:12.5px">
+            <thead><tr><th class="l">Player</th><th class="l">Pos</th><th>APP</th><th>MIN</th><th>G</th><th>A</th><th>PTS</th>
+              <th>SH</th><th>SOG</th><th>SOG%</th><th>Cards</th><th>G/90</th><th>A/90</th></tr></thead>
+            <tbody>${outRows || '<tr><td colspan="13" class="empty">No player detail captured for this team.</td></tr>'}</tbody>
+          </table>
+        </div>
+        ${keepers.length ? `<h3 style="margin:12px 0 5px">Goalkeepers</h3>
+        <table class="ptable" style="font-size:12.5px">
+          <thead><tr><th class="l">Keeper</th><th>APP</th><th>MIN</th><th>GA</th><th>SV</th><th>SV%</th><th>GAA</th><th>SO</th></tr></thead>
+          <tbody>${gkRows}</tbody>
+        </table>` : ''}
+      </div>
+    </div>
+    <p class="note" style="margin:9px 0 0">Every figure above is for the selected season and scope. G/90 and A/90 need 300 minutes. Player rows come from published box scores — a school that skips line-ups will show fewer minutes and shots.${state.scope === 'all' ? ' For the four widget-published schools, a few non-conference goals have no named scorer, so player totals can sit below team goals.' : ''}</p>
+  </div>`;
+}
+function exportTeamCSV(t){
+  const m = M(t), L = (DATA.leaders || {})[state.season] || [];
+  const sc = state.scope === 'conf' ? 'c' : 'a';
+  const lines = [`${t} — ${state.season} — ${state.scope === 'all' ? 'all matches' : 'Big 12 play'}`];
+  lines.push('');
+  lines.push('TEAM');
+  lines.push('Metric,Value');
+  [['Record', `${m.w}-${m.l}-${m.t}`], ['Points', m.w * 3 + m.t], ['Goals for', m.gf], ['Goals against', m.ga],
+   ['GF/game', m.gpg], ['GA/game', m.gapg], ['Shots', m.shots], ['Shots/game', m.shpg], ['SOG', m.sog],
+   ['SOG/game', m.sogpg], ['SOG%', m.acc], ['Conversion%', m.conv], ['Shot share%', m.shotshare],
+   ['Corners/game', m.cpg], ['Corners conceded/game', m.oppcpg], ['Fouls/game', m.fpg],
+   ['Yellow', m.yc], ['Red', m.rc], ['Offsides', m.offsides], ['Saves', m.saves], ['Save%', m.savepct],
+   ['Clean sheets', m.shutouts], ['Assists', m.assists], ['Scored first', m.sf], ['Conceded first', m.cf],
+   ['Failed to score', m.fts], ['1st half GF', m.g1h], ['1st half GA', m.ga1h]
+  ].forEach(([k, v]) => lines.push(`${k},${v ?? ''}`));
+  lines.push('');
+  lines.push('PLAYERS');
+  lines.push('Player,Pos,Apps,Min,G,A,Pts,Shots,SOG,SOG%,Cards,GK_min,GA,SV,SV%,SO');
+  L.filter(p => p.t === t && (p[sc] || {})).sort((a, b) => (2 * (b[sc].g || 0) + (b[sc].as || 0)) - (2 * (a[sc].g || 0) + (a[sc].as || 0)))
+    .forEach(p => {
+      const d = p[sc] || {};
+      lines.push([p.n, p.p || '', d.apps || 0, d.min || 0, d.g || 0, d.as || 0, 2 * (d.g || 0) + (d.as || 0),
+        d.sh || 0, d.sog || 0, d.sh ? Math.round(100 * d.sog / d.sh) : '', d.cards || 0,
+        d.gk_min || 0, d.gk_ga || 0, d.gk_sv || 0, d.sv_pct ?? '', d.gk_so || 0].join(','));
+    });
+  const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${t.replace(/\s+/g, '-')}-${state.season}-${state.scope}.csv`;
+  a.click();
+}
+
 function teamView(){
   const t=state.team, obj=T(t), m=M(t);
   const logs = obj.log.filter(g=>{
@@ -163,6 +328,8 @@ function teamView(){
         <td class="mono">${p.gkmin?(90*p.ga/p.gkmin).toFixed(2):'—'}</td></tr>`).join('')}</tbody></table>`:''}
     </div>
   </div>
+
+  ${teamFullStats(t)}
 
   <div class="card" style="margin-top:14px">
     <div class="hd2"><h3>Match log</h3><span class="spacer"></span>
@@ -1150,6 +1317,7 @@ function wire(){
   const pt=document.getElementById('printTeam'); if(pt) pt.onclick=()=>window.print();
   document.querySelectorAll('[data-lf]').forEach(el=>el.onclick=()=>{const [k,v]=el.dataset.lf.split(':');state.logF[k]=v;render();});
   document.querySelectorAll('[data-tb]').forEach(el=>el.onclick=()=>{const [k,v]=el.dataset.tb.split(':');state.teamBoard[k]=v;render();});
+  const tc=document.getElementById('teamCsv'); if(tc) tc.onclick=()=>exportTeamCSV(state.team);
   document.querySelectorAll('[data-gf]').forEach(el=>el.onclick=()=>{const [k,v]=el.dataset.gf.split(':');state.gF[k]=v;render();});
   const gt=document.getElementById('gTeam'); if(gt) gt.onchange=e=>{state.gF.team=e.target.value;render();};
   document.querySelectorAll('th[data-gk]').forEach(el=>el.onclick=()=>{const k=el.dataset.gk;
