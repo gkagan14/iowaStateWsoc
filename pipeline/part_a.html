@@ -271,7 +271,8 @@ const state = {scope:'all', season:SEASONS[0], tab:'board', myTeam:localStorage.
   team:'Iowa State', logF:{venue:'all',res:'all',conf:'all'},
   mA:'Iowa State', mB:'Kansas State', gF:{team:'all',conf:'all',venue:'all',res:'all'}, gSort:{key:'date',dir:-1},
   projSort:{key:'proj_ppg',dir:-1}, projTier:'all', projSel:'', turn:null, turnOn:true,
-  yoySort:{key:'dPpg',dir:-1}, yoySel:''};
+  yoySort:{key:'dPpg',dir:-1}, yoySel:'',
+  teamBoard:{metric:'g', mode:'team'}};
 
 const fmt = (v,d=2) => v==null? '—' : (typeof v==='number'? (Number.isInteger(v)? v : v.toFixed(d)) : v);
 const M = t => T(t).metrics[state.scope];
