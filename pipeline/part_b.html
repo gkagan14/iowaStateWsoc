@@ -153,15 +153,52 @@ function teamFullStats(t){
   const outfield = roster.filter(p => !p.gk || p.g > 0);
   const keepers = roster.filter(p => p.gk);
 
-  const outRows = outfield.map(p => `<tr>
+  // sortable player table
+  const PS = [
+    { k: 'name', l: 'Player', lft: true }, { k: 'pos', l: 'Pos', lft: true },
+    { k: 'apps', l: 'APP' }, { k: 'min', l: 'MIN' }, { k: 'g', l: 'G' }, { k: 'a', l: 'A' },
+    { k: 'pts', l: 'PTS' }, { k: 'sh', l: 'SH' }, { k: 'sog', l: 'SOG' },
+    { k: 'acc', l: 'SOG%' }, { k: 'cards', l: 'Cards' }, { k: 'g90', l: 'G/90' }, { k: 'a90', l: 'A/90' }
+  ];
+  const ps = state.teamPlySort;
+  const sortArr = (arr, key, dir) => [...arr].sort((x, y) => {
+    let va = x[key], vb = y[key];
+    if (typeof va === 'string' || typeof vb === 'string') {
+      if (key === 'g90' || key === 'a90') { va = parseFloat(va) || 0; vb = parseFloat(vb) || 0; }
+      else return String(va || '').localeCompare(String(vb || '')) * dir;
+    }
+    if (va == null) va = -1; if (vb == null) vb = -1;
+    if (va === vb) return (y.pts - x.pts) || (y.g - x.g);
+    return (va - vb) * dir;
+  });
+  const sortedOut = sortArr(outfield, ps.key, ps.dir);
+  const pHead = PS.map(c => {
+    const on = ps.key === c.k;
+    return `<th class="${c.lft ? 'l' : ''} ${on ? 'on' : ''}" data-ps="${c.k}" title="Sort by ${c.l}">${c.l}${on ? (ps.dir === -1 ? ' ↓' : ' ↑') : ''}</th>`;
+  }).join('');
+
+  const known = p => (p.apps || 0) > 0;               // line-up published -> zeros are real
+  const cnt = (v, p) => (v ? v : (known(p) ? '0' : '—'));
+  const outRows = sortedOut.map(p => `<tr>
       <td class="l">${p.name}</td><td class="l note">${p.pos || '—'}</td>
-      <td class="mono">${p.apps || ''}</td><td class="mono muted">${p.min || ''}</td>
-      <td class="mono"><b>${p.g || ''}</b></td><td class="mono">${p.a || ''}</td><td class="mono"><b>${p.pts || ''}</b></td>
-      <td class="mono">${p.sh || ''}</td><td class="mono">${p.sog || ''}</td><td class="mono muted">${p.acc != null ? p.acc + '%' : ''}</td>
-      <td class="mono">${p.cards || ''}</td><td class="mono muted">${p.g90}</td><td class="mono muted">${p.a90}</td>
+      <td class="mono">${p.apps || '—'}</td><td class="mono muted">${p.min || '—'}</td>
+      <td class="mono"><b>${cnt(p.g, p)}</b></td><td class="mono">${cnt(p.a, p)}</td><td class="mono"><b>${cnt(p.pts, p)}</b></td>
+      <td class="mono">${cnt(p.sh, p)}</td><td class="mono">${cnt(p.sog, p)}</td><td class="mono muted">${p.acc != null ? p.acc + '%' : '—'}</td>
+      <td class="mono">${cnt(p.cards, p)}</td><td class="mono muted">${p.g90}</td><td class="mono muted">${p.a90}</td>
     </tr>`).join('');
 
-  const gkRows = keepers.map(p => `<tr>
+  // sortable keeper table
+  const GS = [
+    { k: 'name', l: 'Keeper', lft: true }, { k: 'apps', l: 'APP' }, { k: 'gk_min', l: 'MIN' },
+    { k: 'gk_ga', l: 'GA' }, { k: 'gk_sv', l: 'SV' }, { k: 'sv_pct', l: 'SV%' },
+    { k: 'ga90', l: 'GAA' }, { k: 'gk_so', l: 'SO' }
+  ];
+  const gs = state.teamGkSort;
+  const gkHead = GS.map(c => {
+    const on = gs.key === c.k;
+    return `<th class="${c.lft ? 'l' : ''} ${on ? 'on' : ''}" data-gs="${c.k}" title="Sort by ${c.l}">${c.l}${on ? (gs.dir === -1 ? ' ↓' : ' ↑') : ''}</th>`;
+  }).join('');
+  const gkRows = sortArr(keepers, gs.key, gs.dir).map(p => `<tr>
       <td class="l">${p.name}</td>
       <td class="mono">${p.apps || ''}</td><td class="mono">${p.gk_min || ''}</td>
       <td class="mono">${p.gk_ga}</td><td class="mono">${p.gk_sv}</td>
@@ -186,16 +223,15 @@ function teamFullStats(t){
         </div>
       </div>
       <div>
-        <div class="tblwrap" style="max-height:420px">
+        <div class="tblwrap" style="max-height:520px">
           <table class="ptable" style="font-size:12.5px">
-            <thead><tr><th class="l">Player</th><th class="l">Pos</th><th>APP</th><th>MIN</th><th>G</th><th>A</th><th>PTS</th>
-              <th>SH</th><th>SOG</th><th>SOG%</th><th>Cards</th><th>G/90</th><th>A/90</th></tr></thead>
+            <thead><tr>${pHead}</tr></thead>
             <tbody>${outRows || '<tr><td colspan="13" class="empty">No player detail captured for this team.</td></tr>'}</tbody>
           </table>
         </div>
         ${keepers.length ? `<h3 style="margin:12px 0 5px">Goalkeepers</h3>
         <table class="ptable" style="font-size:12.5px">
-          <thead><tr><th class="l">Keeper</th><th>APP</th><th>MIN</th><th>GA</th><th>SV</th><th>SV%</th><th>GAA</th><th>SO</th></tr></thead>
+          <thead><tr>${gkHead}</tr></thead>
           <tbody>${gkRows}</tbody>
         </table>` : ''}
       </div>
@@ -321,11 +357,6 @@ function teamView(){
       <h3>Team leaders · ranked against the conference</h3>
       <p class="note" style="margin:-4px 0 8px">${state.season} · ${state.scope==='all'?'all matches':'Big 12 play'} · every player ranked league-wide</p>
       ${teamLeaderBlock(t)}
-      ${gk.length?`<h3 style="margin-top:14px">Goalkeepers</h3>
-      <table><thead><tr><th class="l">Keeper</th><th>MIN</th><th>GA</th><th>SV</th><th>SV%</th><th>GAA</th></tr></thead><tbody>
-      ${gk.map(p=>`<tr><td class="l">${p.name}</td><td class="mono">${p.gkmin}</td><td class="mono">${p.ga}</td>
-        <td class="mono">${p.sv}</td><td class="mono">${p.ga+p.sv?((100*p.sv/(p.ga+p.sv)).toFixed(0)+'%'):'—'}</td>
-        <td class="mono">${p.gkmin?(90*p.ga/p.gkmin).toFixed(2):'—'}</td></tr>`).join('')}</tbody></table>`:''}
     </div>
   </div>
 
@@ -1318,6 +1349,15 @@ function wire(){
   document.querySelectorAll('[data-lf]').forEach(el=>el.onclick=()=>{const [k,v]=el.dataset.lf.split(':');state.logF[k]=v;render();});
   document.querySelectorAll('[data-tb]').forEach(el=>el.onclick=()=>{const [k,v]=el.dataset.tb.split(':');state.teamBoard[k]=v;render();});
   const tc=document.getElementById('teamCsv'); if(tc) tc.onclick=()=>exportTeamCSV(state.team);
+  const keepScroll=(fn)=>()=>{const y=window.scrollY; fn(); render(); window.scrollTo({top:y});};
+  document.querySelectorAll('th[data-ps]').forEach(el=>el.onclick=keepScroll(()=>{
+    const k=el.dataset.ps;
+    state.teamPlySort = state.teamPlySort.key===k ? {key:k,dir:state.teamPlySort.dir*-1} : {key:k,dir:k==='name'||k==='pos'?1:-1};
+  }));
+  document.querySelectorAll('th[data-gs]').forEach(el=>el.onclick=keepScroll(()=>{
+    const k=el.dataset.gs;
+    state.teamGkSort = state.teamGkSort.key===k ? {key:k,dir:state.teamGkSort.dir*-1} : {key:k,dir:k==='name'?1:-1};
+  }));
   document.querySelectorAll('[data-gf]').forEach(el=>el.onclick=()=>{const [k,v]=el.dataset.gf.split(':');state.gF[k]=v;render();});
   const gt=document.getElementById('gTeam'); if(gt) gt.onchange=e=>{state.gF.team=e.target.value;render();};
   document.querySelectorAll('th[data-gk]').forEach(el=>el.onclick=()=>{const k=el.dataset.gk;
