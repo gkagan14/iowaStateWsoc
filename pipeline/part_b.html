@@ -765,6 +765,109 @@ function projScatter(rowsIn){
     <text transform="translate(12,${(pad.t+h-pad.b)/2}) rotate(-90)" text-anchor="middle" fill="#5f7788" font-size="9" font-family="ui-monospace">PROJECTED →</text></svg>`;
 }
 
+/* ---------- league leaders ---------- */
+function leadersView(){
+  const sc = state.scope === 'conf' ? 'c' : 'a';
+  const L = (DATA.leaders || {})[state.season] || [];
+  const val = (p, k) => (p[sc] || {})[k] || 0;
+  const teamYL = B12.map(t => ({ t, v: T(t).metrics[state.scope].yc || 0 })).sort((a, b) => b.v - a.v);
+  const teamRL = B12.map(t => ({ t, v: T(t).metrics[state.scope].rc || 0 })).sort((a, b) => b.v - a.v);
+  const totalGoals = B12.reduce((s, t) => s + T(t).metrics[state.scope].gf, 0);
+  const namedGoals = L.reduce((s, p) => s + val(p, 'g'), 0);
+  const totalYc = B12.reduce((s, t) => s + (T(t).metrics[state.scope].yc || 0), 0);
+
+  const players = (key, n, filter, use) => L
+    .filter(p => (use ? use(p) : val(p, key)) > 0 && (!filter || filter(p)))
+    .map(p => ({ p, v: use ? use(p) : val(p, key) }))
+    .sort((a, b) => b.v - a.v)
+    .slice(0, n);
+
+  const rowPlayer = (x, i, suffix = '', sub = null) => `
+    <tr class="${x.p.t === state.myTeam ? 'mine' : ''}">
+      <td class="l mono muted" style="width:26px">${i + 1}</td>
+      <td class="l"><span style="display:inline-block;width:7px;height:7px;border-radius:2px;background:${COLORS[x.p.t] || '#666'};margin-right:7px"></span>
+        ${x.p.n}${x.p.p ? ` <span class="note">${x.p.p}</span>` : ''}</td>
+      <td class="l note">${x.p.t}</td>
+      <td class="mono"><b>${typeof x.v === 'number' ? (Number.isInteger(x.v) ? x.v : x.v.toFixed(1)) : x.v}${suffix}</b></td>
+      <td class="mono muted">${sub ? sub(x.p) : ''}</td>
+    </tr>`;
+
+  const rowTeam = (x, i, suffix = '') => `
+    <tr class="${x.t === state.myTeam ? 'mine' : ''}">
+      <td class="l mono muted" style="width:26px">${i + 1}</td>
+      <td class="l"><span style="display:inline-block;width:7px;height:7px;border-radius:2px;background:${COLORS[x.t] || '#666'};margin-right:7px"></span>${x.t}</td>
+      <td class="mono" style="text-align:right"><b>${x.v}${suffix}</b></td>
+    </tr>`;
+
+  const cardTeam = (title, note, label, rows) => `
+    <div class="card">
+      <div class="hd2" style="margin-bottom:6px"><h3 style="margin:0">${title}</h3><span class="spacer"></span><span class="note">${note}</span></div>
+      <table class="ptable" style="font-size:12.5px">
+        <thead><tr><th class="l" style="width:26px">#</th><th class="l">Team</th><th style="text-align:right">${label}</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>`;
+  const card = (title, note, head, rows, foot) => `
+    <div class="card">
+      <div class="hd2" style="margin-bottom:6px"><h3 style="margin:0">${title}</h3><span class="spacer"></span><span class="note">${note}</span></div>
+      <table class="ptable" style="font-size:12.5px">
+        <thead><tr><th class="l" style="width:26px">#</th><th class="l">${head[0]}</th><th class="l">${head[1]}</th><th>${head[2]}</th><th>${head[3]}</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      ${foot ? `<p class="note" style="margin:7px 0 0">${foot}</p>` : ''}
+    </div>`;
+
+  const goals = players('g', 10);
+  const assists = players('as', 10);
+  const points = players('pts', 10, null, p => (val(p, 'g') * 2 + val(p, 'as')));
+  const shots = players('sh', 10);
+  const keepMin = state.scope === 'conf' ? 360 : 450;
+  const keepers = players('sv_pct', 10, p => val(p, 'gk_min') >= keepMin, p => (p[sc] || {}).sv_pct || 0);
+  const shutouts = players('gk_so', 10, p => val(p, 'gk_min') > 0);
+  const playerCards = players('cards', 10);
+
+  const covPct = totalGoals ? Math.round(100 * namedGoals / totalGoals) : 0;
+
+  return `
+  <div class="card" style="margin-bottom:14px">
+    <div class="hd2" style="margin-bottom:0">
+      <div>
+        <h3 style="margin:0 0 3px">League leaders · ${state.season} · ${state.scope === 'all' ? 'all matches' : 'Big 12 play'}</h3>
+        <p class="note" style="margin:0">Goals, assists, shots and cards come from every published box score; save % and clean sheets from the goalkeeper lines. Switch the header to change season or scope.</p>
+      </div>
+      <span class="spacer"></span>
+      <div class="chips">
+        <span class="chip on" style="cursor:default">${totalGoals} goals</span>
+        <span class="chip on" style="cursor:default">${namedGoals} with a named scorer (${covPct}%)</span>
+        <span class="chip on" style="cursor:default">${totalYc} yellows</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid g2">
+    ${card('Goals', 'player', ['Player', 'Team', 'G', 'SH'], goals.map((x, i) => rowPlayer(x, i, '', p => `${val(p, 'sh')} sh`)).join(''))}
+    ${card('Assists', 'player', ['Player', 'Team', 'A', 'G'], assists.map((x, i) => rowPlayer(x, i, '', p => `${val(p, 'g')} g`)).join(''))}
+    ${card('Points (G + A)', 'player', ['Player', 'Team', 'PTS', 'G / A'], points.map((x, i) => rowPlayer(x, i, '', p => `${val(p, 'g')} / ${val(p, 'as')}`)).join(''))}
+    ${card('Shots', 'player', ['Player', 'Team', 'SH', 'SOG'], shots.map((x, i) => rowPlayer(x, i, '', p => `${val(p, 'sog')} on target`)).join(''))}
+    ${cardTeam('Yellow cards', 'by team · official', 'YC', teamYL.slice(0, 10).map((x, i) => rowTeam(x, i)).join(''))}
+    ${cardTeam('Red cards', 'by team · official', 'RC', teamRL.slice(0, 10).map((x, i) => rowTeam(x, i)).join(''))}
+    ${card('Save %', `keepers · min ${keepMin}′`, ['Keeper', 'Team', 'SV%', 'SV'], keepers.map((x, i) => rowPlayer(x, i, '%', p => `${val(p, 'gk_sv')} sv`)).join(''))}
+    ${card('Clean sheets', 'keepers', ['Keeper', 'Team', 'CS', 'GA'], shutouts.map((x, i) => rowPlayer(x, i, '', p => `${val(p, 'gk_ga')} ga`)).join(''))}
+  </div>
+
+  <div class="grid g2" style="margin-top:14px">
+    ${card('Player cards', 'all cards · box scores', ['Player', 'Team', 'Cards', ''], playerCards.map((x, i) => rowPlayer(x, i)).join(''))}
+    <div class="card">
+      <h3>How to read this page</h3>
+      <div class="insight"><div class="dot"></div><div><b>Goals and assists are exact</b> for ${state.scope === 'conf' ? 'conference play' : 'the season'} — they are taken from the goal logs and reconcile to every team's goals-for. ${covPct < 100 ? `${totalGoals - namedGoals} of ${totalGoals} goals league-wide have no named scorer because the box score published no goal log.` : ''}</div></div>
+      <div class="insight"><div class="dot"></div><div><b>Shots, SOG and minutes</b> come from published line-ups; a school that does not publish line-ups every week will look light on shot volume. The team pages show each school's box-score coverage.</div></div>
+      <div class="insight warn"><div class="dot"></div><div><b>Cards:</b> the box scores do not reliably split yellow from red, so yellow and red are shown <b>by team</b> from the official conference totals. The player board is “all cards”, which is why it can read high against a yellow-card list.</div></div>
+      <div class="insight warn"><div class="dot"></div><div><b>Know the gap:</b> BYU, UCF, Arizona State and Cincinnati publish box scores through a widget that sometimes omits the scoring summary, so a handful of their non-conference goals are missing from the player boards. Team totals and everything in Big 12 play are unaffected except BYU (−3) and UCF (−1) in 2026.</div></div>
+      <div class="insight"><div class="dot"></div><div><b>Save %</b> = saves ÷ (saves + goals conceded), minimum ${keepMin} minutes so a single substitute appearance cannot top the board. <b>Clean sheets</b> credit every keeper who played in a match their team shut out.</div></div>
+    </div>
+  </div>`;
+}
+
 /* ---------- year over year ---------- */
 const Y25 = '2025', Y26 = '2026';
 const yM = (team, season, scope) => DATA.seasons[season].teams[team].metrics[scope];
@@ -951,8 +1054,8 @@ function yoyScatter(rows){
 /* ---------- render & events ---------- */
 function render(){
   const v = state.tab==='board'?boardView() : state.tab==='team'?teamView() : state.tab==='matchup'?matchupView()
-    : state.tab==='games'?gamesView() : state.tab==='proj'?projectionView()
-    : state.tab==='yoy'?yoyView() : methodView();
+    : state.tab==='games'?gamesView() : state.tab==='leaders'?leadersView()
+    : state.tab==='proj'?projectionView() : state.tab==='yoy'?yoyView() : methodView();
   document.getElementById('main').innerHTML = v;
   document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.tab===state.tab));
   document.querySelectorAll('#scopeSeg button').forEach(b=>b.classList.toggle('on',b.dataset.scope===state.scope));
