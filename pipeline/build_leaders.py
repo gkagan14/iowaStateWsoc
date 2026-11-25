@@ -21,12 +21,19 @@ def blank():
 out = {}
 for season, path in SOURCES:
     games = json.load(open(P(path)))
-    players = collections.defaultdict(lambda: {'pos': '', 'all': blank(), 'conf': blank()})
+    players = collections.defaultdict(lambda: {'pos': '', 'all': blank(), 'conf': blank(), 'name': '', 'from_lineup': False})
+
+    def key_of(name):
+        return re.sub(r'[^a-z ]', '', name.lower()).strip()
 
     def add(team, name, scope, key, val):
         if not name or re.fullmatch(r'[\d\s#.]+', name):
             return          # jersey numbers and blank entries are not players
-        d = players[(team, name)]
+        d = players[(team, key_of(name))]
+        if not d['name']:
+            d['name'] = name
+        elif name != d['name']:
+            d['alt'] = name
         d['all'][key] += val
         if scope:
             d['conf'][key] += val
@@ -47,9 +54,12 @@ for season, path in SOURCES:
             nm = p['name']
             if not nm:
                 continue
-            d = players[(team, nm)]
+            d = players[(team, key_of(nm))]
             if p.get('pos'):
                 d['pos'] = p['pos']
+            if not d['from_lineup']:
+                d['from_lineup'] = True
+                d['name'] = nm
             for key, src in (('sh', 'sh'), ('sog', 'sog'), ('min', 'min')):
                 d['all'][key] += p.get(src) or 0
                 if conf:
@@ -70,7 +80,7 @@ for season, path in SOURCES:
             team, nm = k['team'], k['name']
             if not nm:
                 continue
-            d = players[(team, nm)]
+            d = players[(team, key_of(nm))]
             shutout = 1 if team_ga.get(team) == 0 and (k.get('min') or 0) > 0 else 0
             for key, val in (('gk_min', k.get('min') or 0), ('gk_ga', k.get('ga') or 0),
                              ('gk_sv', k.get('sv') or 0), ('gk_so', shutout), ('gk_apps', 1)):
@@ -80,7 +90,11 @@ for season, path in SOURCES:
 
     b12 = set(json.load(open(P('dashboard_data.json')))['seasons'][season]['teams'].keys())
     rows = []
-    for (team, name), d in players.items():
+    for (team, _key), d in players.items():
+        name = d.get('name') or _key
+        alt = d.get('alt')
+        if alt and sum(c.isupper() for c in alt[1:]) > sum(c.isupper() for c in name[1:]):
+            name = alt
         if team not in b12:
             continue                          # league leaders are Big 12 players only
         a = d['all']
