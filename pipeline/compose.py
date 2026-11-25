@@ -5,7 +5,8 @@ s26=json.load(open(P('season2026.json')))
 s25=json.load(open(P('season2025.json')))
 proj=json.load(open(P('projection.json')))
 ros=json.load(open(P('rosters.json')))
-out={'generated':__import__('datetime').date.today().isoformat(),'seasons':{'2026':s26,'2025':s25},'projection':proj,'rosters':ros}
+lea=json.load(open(P('leaders.json')))
+out={'generated':__import__('datetime').date.today().isoformat(),'seasons':{'2026':s26,'2025':s25},'projection':proj,'rosters':ros,'leaders':lea}
 json.dump(out,open(P('dashboard_data.json'),'w'),separators=(',',':'))
 import os
 print('composed', round(os.path.getsize(P('dashboard_data.json'))/1024),'KB')
